@@ -4,9 +4,11 @@ import { Provider } from "react-redux";
 
 import store from "./redux/store";
 import { AuthProvider } from "./contexts/AuthContext";
+import { SoundProvider } from "./contexts/SoundContext";
 import { queryStringToObject } from "./helper/func";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
+import Navbar from "./components/navbar";
 
 function App() {
   const [str, setStr] = useState(null);
@@ -35,20 +37,22 @@ function App() {
   return (
     <Provider store={store}>
       <AuthProvider>
-        <Router>
-          <Suspense
-            fallback={
-              <div className="fixed top-0 left-0 z-20 w-full h-screen bg-[#000000] opacity-80 flex justify-center items-center">
-                <div className="animate-spin">
-                  <LoadingIcon />
+        <SoundProvider>
+          <Router>
+            <Suspense
+              fallback={
+                <div className="fixed top-0 left-0 z-20 w-full h-screen bg-[#000000] opacity-80 flex justify-center items-center">
+                  <div className="animate-spin">
+                    <LoadingIcon />
+                  </div>
                 </div>
-              </div>
-            }
-          >
-            <Routes></Routes>
-          </Suspense>
-        </Router>
-        <div className="App"></div>
+              }
+            >
+              <Routes></Routes>
+            </Suspense>
+            <Navbar params={str} />
+          </Router>
+        </SoundProvider>
       </AuthProvider>
     </Provider>
   );
