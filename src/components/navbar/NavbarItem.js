@@ -16,18 +16,11 @@ const NavbarItem = ({ title, icon, url, active }) => {
 
   return (
     <div
-      className="flex flex-col w-1/5 h-full justify-start pt-3 align-middle hover:cursor-pointer"
+      className="flex justify-center items-center h-[77px] w-[77px] hover:cursor-pointer bg-navbar-item rounded shadow-navbar-item"
       onClick={handleClick}
     >
-      <div className="flex justify-center">{icon}</div>
-      <div className="mt-2 flex justify-center">
-        <span
-          className={`text-[11px] ${
-            active ? "text-white font-bold" : "text-zinc-400"
-          }`}
-        >
-          {title}
-        </span>
+      <div className="flex justify-center items-center h-[71px] w-[71px] bg-[#00040C]">
+        <div className="flex justify-center">{icon}</div>
       </div>
     </div>
   );

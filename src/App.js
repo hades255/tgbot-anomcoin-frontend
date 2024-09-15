@@ -9,6 +9,7 @@ import { queryStringToObject } from "./helper/func";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
 import Navbar from "./components/navbar";
+import Home from "./pages/Home";
 
 function App() {
   const [str, setStr] = useState(null);
@@ -48,7 +49,9 @@ function App() {
                 </div>
               }
             >
-              <Routes></Routes>
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
             </Suspense>
             <Navbar params={str} />
           </Router>

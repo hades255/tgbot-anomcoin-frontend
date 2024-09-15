@@ -3,11 +3,14 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import HomeIcon from "../../assets/icons/Home";
-import { login } from "../../redux/authSlice";
 import NavbarItem from "./NavbarItem";
+import { login } from "../../redux/authSlice";
 import { BACKEND_PATH } from "../../constants/config";
 import { useAuth } from "../../contexts/AuthContext";
+import HomeIcon from "../../assets/icons/navbar/Home";
+import FriendsIcon from "../../assets/icons/navbar/Friends";
+import TaskIcon from "../../assets/icons/navbar/Task";
+import MineIcon from "../../assets/icons/navbar/Mine";
 
 const Navbar = ({ params }) => {
   const location = useLocation();
@@ -22,15 +25,15 @@ const Navbar = ({ params }) => {
         url: "/",
       },
       {
-        icon: <HomeIcon width={50} height={50} color={"custom"} />,
+        icon: <FriendsIcon width={50} height={50} color={"custom"} />,
         url: "/leaderboard",
       },
       {
-        icon: <HomeIcon width={50} height={50} color={"custom"} />,
+        icon: <TaskIcon width={50} height={50} color={"custom"} />,
         url: "/tasks",
       },
       {
-        icon: <HomeIcon width={50} height={50} color={"custom"} />,
+        icon: <MineIcon width={50} height={50} color={"custom"} />,
         url: "/me",
       },
     ];
@@ -76,7 +79,7 @@ const Navbar = ({ params }) => {
   return (
     <>
       <div className="w-full fixed bottom-0 mx-auto z-30">
-        <div className="flex justify-center h-20 bg-[#000713] px-3">
+        <div className="flex justify-center h-32 bg-[#0007] px-3 pt-5 gap-3">
           {navbar.map((item, index) => (
             <NavbarItem {...item} key={index} active={active === item.url} />
           ))}
