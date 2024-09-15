@@ -6,10 +6,10 @@ module.exports = {
       backgroundImage: {
         "navbar-item": "linear-gradient(to right, #04C3FF, #79DEFE, #79DEFF)",
         "home-profile":
-          "linear-gradient(to right bottom, #9AC4F4, #3A81D4, #737373)",
+          "linear-gradient(to right bottom, #9AC4F4, #3A81D4, #1A73A4)",
         "profile-image-border":
           "linear-gradient(to bottom, #1D85FF26, #66666600)",
-        "profile-image": "linear-gradient(to bottom, #111, #9CCAFF26)",
+        "profile-image": "linear-gradient(to bottom, #080808, #9CCAFF26)",
         "time-progress-bar": "linear-gradient(to right, #6EDBFF, #095DFF)",
       },
       boxShadow: {
