@@ -18,14 +18,23 @@
   font-optical-sizing: auto;
 }
 
+@font-face {
+  font-family: "comic-sans-ms";
+  src: url("./assets/font/Comic\ Sans\ MS/Comic\ Sans\ MS.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif, comicneue-bold, comicneue-light;
+    sans-serif, comicneue-bold, comicneue-light, comic-sans-ms;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('assets/imgs/shutter_1802686768@2x 1.png');
+  background-image: url("assets/imgs/shutter_1802686768@2x 1.png");
   background-size: cover;
   background-position: bottom;
   min-height: 100vh;

@@ -20,7 +20,7 @@ const NavbarItem = ({ title, icon, url, active }) => {
       onClick={handleClick}
     >
       <div className="flex justify-center items-center h-[71px] w-[71px] bg-[#00040C]">
-        <div className="flex justify-center">{icon}</div>
+        {icon}
       </div>
     </div>
   );
