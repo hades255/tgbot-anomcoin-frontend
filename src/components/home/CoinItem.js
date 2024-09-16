@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DefaultCoin from "../../assets/icons/coins/Default";
 import Coin1Icon from "../../assets/icons/coins/Coin1";
 import Coin2Icon from "../../assets/icons/coins/Coin2";
@@ -7,10 +7,25 @@ import Coin3Icon from "../../assets/icons/coins/Coin3";
 import Coin4Icon from "../../assets/icons/coins/Coin4";
 import Coin5Icon from "../../assets/icons/coins/Coin5";
 import Coin6Icon from "../../assets/icons/coins/Coin6";
+import "./CoinItem.css";
 
 const CoinItem = ({ coin }) => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <div style={{ position: "absolute", left: coin.x, top: coin.y }}>
+    <div
+      className={visible ? "coinitem-visible" : "coinitem-hidden"}
+      style={{ position: "absolute", left: coin.x, top: coin.y }}
+    >
       {coin.type === 0 && <DefaultCoin />}
       {coin.type === 1 && <Coin1Icon />}
       {coin.type === 2 && <Coin2Icon />}

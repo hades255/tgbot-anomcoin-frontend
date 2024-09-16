@@ -10,10 +10,10 @@ const Progress = () => {
   return (
     <div className="flex items-center justify-between mt-1">
       <div className="flex items-center">
-        <div className="w-36 h-[18px] rounded-s-[20px] bg-white flex justify-start items-center px-[2px]">
+        <div className="w-[154px] h-[18px] rounded-s-[20px] bg-white flex justify-start items-center px-[2px]">
           <div
             className="bg-time-progress-bar h-[16px] rounded-[20px]"
-            style={{ width: (progress / totalprogress) * 128 }}
+            style={{ width: (progress / totalprogress) * 148 }}
           ></div>
         </div>
         <div className="-ml-9">

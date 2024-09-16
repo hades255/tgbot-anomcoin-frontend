@@ -11,6 +11,7 @@ import HomeIcon from "../../assets/icons/navbar/Home";
 import FriendsIcon from "../../assets/icons/navbar/Friends";
 import TaskIcon from "../../assets/icons/navbar/Task";
 import MineIcon from "../../assets/icons/navbar/Mine";
+import { setScore } from "../../redux/coinSlice";
 
 const Navbar = ({ params }) => {
   const location = useLocation();
@@ -61,8 +62,9 @@ const Navbar = ({ params }) => {
           );
           const point = response.data.point;
           const user = response.data.user;
-          const bonus = response.data.bonus;
-          dispatch(login({ ...user, userId, point, name, username }));
+          // const bonus = response.data.bonus;
+          dispatch(login({ ...user, userId, name, username }));
+          dispatch(setScore(point));
         } catch (error) {
           console.log(error);
         }

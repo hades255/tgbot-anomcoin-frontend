@@ -17,7 +17,7 @@ const CoinHelper = () => {
     };
     const progresstimer = setInterval(() => {
       progresstimerFunc();
-    }, 600);
+    }, 1000);
     return () => {
       clearInterval(cointimer);
       clearInterval(progresstimer);

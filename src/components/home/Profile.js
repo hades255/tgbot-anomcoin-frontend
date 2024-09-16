@@ -3,9 +3,11 @@ import UserIcon from "../../assets/icons/User";
 import AnomIcon from "../../assets/icons/Anom";
 import { useAuth } from "../../contexts/AuthContext";
 import UserAvatar from "./UserAvatar";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const { point, username, avatar } = useAuth();
+  const { username, avatar } = useAuth();
+  const { point } = useSelector((state) => state.coin);
 
   return (
     <div className="bg-home-profile w-full h-20 rounded flex justify-center items-center">

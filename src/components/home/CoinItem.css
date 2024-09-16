@@ -1,0 +1,11 @@
+.coinitem-hidden {
+  visibility: hidden;
+  transform: scale(0);
+  transition: visibility 0s linear 0.3s, transform 0.3s linear;
+}
+
+.coinitem-visible {
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, transform 0.3s linear;
+}

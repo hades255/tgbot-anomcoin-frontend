@@ -8,7 +8,6 @@ const authSlice = createSlice({
     name: "",
     username: "",
     avatar: "",
-    point: 0,
   },
   reducers: {
     login: (state, payload) => {
@@ -21,12 +20,6 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
     },
-    setScore: (state, payload) => {
-      state.point = Math.round(payload.payload);
-    },
-    addScore: (state, payload) => {
-      state.point += Math.round(payload.payload);
-    },
     upgradeUser: (state, payload) => {
       payload.payload.forEach((item) => {
         state[item.key] = item.value;
@@ -35,6 +28,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { login, logout, setScore, addScore, upgradeUser } =
+export const { login, logout,  upgradeUser } =
   authSlice.actions;
 export default authSlice.reducer;
