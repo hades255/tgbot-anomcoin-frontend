@@ -37,7 +37,7 @@ const CoinGround = () => {
 
   return (
     <div
-      className="mt-4 h-[calc(100vh_-_352px)] w-full relative bg-[#3333]"
+      className="mt-4 h-[calc(100vh_-_352px)] w-full relative"
       onMouseMove={handleMouseMove}
     >
       {coins.map((item) => (
