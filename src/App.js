@@ -10,6 +10,7 @@ import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
 import Navbar from "./components/navbar";
 import Home from "./pages/Home";
+import CoinHelper from "./helper/coin";
 
 function App() {
   const [str, setStr] = useState(null);
@@ -38,6 +39,7 @@ function App() {
   return (
     <Provider store={store}>
       <AuthProvider>
+        <CoinHelper />
         <SoundProvider>
           <Router>
             <Suspense

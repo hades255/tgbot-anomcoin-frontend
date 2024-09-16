@@ -1,38 +1,31 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addScore } from "../../redux/authSlice";
+import { earnCoin, initSize } from "../../redux/coinSlice";
 import { newCoin } from "../../helper/func";
 import CoinItem from "./CoinItem";
 
 const CoinGround = () => {
-  const [height, setHeight] = useState(window.innerHeight - 360);
-  const [width, setWidth] = useState(window.innerWidth - 32);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const dispatch = useDispatch();
+  const coins = useSelector((state) => state.coin.coins);
 
-  const [coins, setCoins] = useState([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(window.innerHeight - 360);
-      setWidth(window.innerWidth - 32);
+      dispatch(
+        initSize({
+          width: window.innerWidth - 32,
+          height: window.innerHeight - 360,
+        })
+      );
     };
     window.addEventListener("resize", handleResize);
+    handleResize();
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  const createNewCoin = useCallback(() => {
-    if (coins.length >= 100) return;
-    setCoins([...coins, newCoin(width, height, 7)]);
-  }, [height, width, coins]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      createNewCoin();
-    }, 500);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [createNewCoin]);
+  }, [dispatch]);
 
   const handleMouseMove = useCallback((event) => {
     setMousePosition({
@@ -47,7 +40,11 @@ const CoinGround = () => {
         Math.abs(mousePosition.x - 42 - item.x) > 50 ||
         Math.abs(mousePosition.y - 32 - item.y) > 40
     );
-    if (remaining.length !== coins.length) setCoins(remaining);
+    const diff = coins.length - remaining.length;
+    if (diff > 0) {
+      dispatch(earnCoin({ diff, remaining }));
+      dispatch(addScore(diff));
+    }
   }, [mousePosition, coins]);
 
   return (
