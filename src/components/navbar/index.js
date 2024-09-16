@@ -44,7 +44,6 @@ const Navbar = ({ params }) => {
     [location]
   );
 
-  /*
   useEffect(() => {
     if (isAuthenticated || !params || !params.user) return;
     const userId = params.user.id;
@@ -70,7 +69,6 @@ const Navbar = ({ params }) => {
       })();
     }
   }, [queryParams, params, dispatch, isAuthenticated]);
-  */
 
   useEffect(() => {
     setActive(location.pathname);
