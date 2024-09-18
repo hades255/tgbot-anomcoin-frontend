@@ -52,12 +52,39 @@ const CoinGround = () => {
 
   const handleMouseUp = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
+  const handleTouchMove = useCallback(
+    (event) =>
+      dispatch(
+        earnCoin({
+          x: event.touches[0].clientX - 16,
+          y: event.touches[0].clientY - 188,
+        })
+      ),
+    [dispatch]
+  );
+
+  const handleTouchStart = useCallback(
+    (event) =>
+      dispatch(
+        onMouseDown({
+          x: event.touches[0].clientX - 16,
+          y: event.touches[0].clientY - 188,
+        })
+      ),
+    [dispatch]
+  );
+
+  const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
+
   return (
     <div
       className="mt-4 h-[calc(100vh_-_352px)] w-full relative"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
+      onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {coins.map((item) => (
         <CoinItem key={item.key} coin={item} />
