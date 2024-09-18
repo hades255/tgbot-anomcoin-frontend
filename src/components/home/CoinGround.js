@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { earnCoin, initSize } from "../../redux/coinSlice";
+import {
+  earnCoin,
+  initSize,
+  onMouseDown,
+  onMouseUp,
+} from "../../redux/coinSlice";
 import CoinItem from "./CoinItem";
 
 const CoinGround = () => {
@@ -24,21 +29,35 @@ const CoinGround = () => {
   }, [dispatch]);
 
   const handleMouseMove = useCallback(
-    (event) => {
+    (event) =>
       dispatch(
         earnCoin({
           x: event.clientX - 16,
           y: event.clientY - 188,
         })
-      );
-    },
+      ),
     [dispatch]
   );
+
+  const handleMouseDown = useCallback(
+    (event) =>
+      dispatch(
+        onMouseDown({
+          x: event.clientX - 16,
+          y: event.clientY - 188,
+        })
+      ),
+    [dispatch]
+  );
+
+  const handleMouseUp = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
   return (
     <div
       className="mt-4 h-[calc(100vh_-_352px)] w-full relative"
       onMouseMove={handleMouseMove}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
       {coins.map((item) => (
         <CoinItem key={item.key} coin={item} />
