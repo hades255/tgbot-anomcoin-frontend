@@ -77,18 +77,19 @@ const CoinGround = () => {
   const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
   return (
-    <div
-      className="mt-4 h-[calc(100vh_-_352px)] w-full relative"
-      onMouseMove={handleMouseMove}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className="mt-4 h-[calc(100vh_-_352px)] w-full relative">
       {coins.map((item) => (
         <CoinItem key={item.key} coin={item} />
       ))}
+      <div
+        className="mt-4 h-[calc(100vh_-_352px)] w-full absolute top-0 left-0"
+        onMouseMove={handleMouseMove}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onTouchMove={handleTouchMove}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      />
     </div>
   );
 };
