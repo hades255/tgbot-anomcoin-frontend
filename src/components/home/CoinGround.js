@@ -7,6 +7,7 @@ import {
   onMouseUp,
 } from "../../redux/coinSlice";
 import CoinItem from "./CoinItem";
+import FireworksEffect from "./FireworksEffect";
 
 const CoinGround = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,9 @@ const CoinGround = () => {
         onTouchMove={handleTouchMove}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-      />
+      >
+        <FireworksEffect />
+      </div>
     </div>
   );
 };

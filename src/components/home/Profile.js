@@ -27,7 +27,7 @@ const Profile = () => {
               <span className="text-[14px] text-white font-comicneue-bold">
                 LVL 1 - 10X BOOST
               </span>
-              <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded">
+              <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden">
                 {username}
               </button>
             </div>
