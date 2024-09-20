@@ -34,8 +34,8 @@ const FireworksEffect = () => {
     });
 
     canvas.addEventListener("touchmove", (event) => {
-      mouse.x = event.touches[0].x - rect.left;
-      mouse.y = event.touches[0].y - rect.top;
+      mouse.x = event.touches[0].clientX - rect.left;
+      mouse.y = event.touches[0].clientY - rect.top;
       for (let i = 0; i < 5; i++) {
         particlesArray.push(new Particle());
       }
