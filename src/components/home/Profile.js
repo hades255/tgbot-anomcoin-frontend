@@ -10,8 +10,8 @@ const Profile = () => {
   const { point } = useSelector((state) => state.coin);
 
   return (
-    <div className="bg-home-profile w-full h-20 rounded flex justify-center items-center">
-      <div className="w-[calc(100%_-_6px)] h-[calc(100%_-_6px)] bg-[#000000EF] px-2 py-[11px]">
+    <div className="bg-home-profile w-full min-h-20 rounded flex justify-center items-center p-[3px]">
+      <div className="w-full h-full bg-[#000000EF] px-2 py-[11px]">
         <div className="flex justify-between">
           <div className="flex">
             <div className="bg-profile-image-border min-w-[50px] w-[50px] h-[50px] flex justify-center items-center rounded-lg mr-3">
@@ -32,11 +32,13 @@ const Profile = () => {
               </button>
             </div>
           </div>
-          <div className="flex items-center">
-            <AnomIcon width={56} height={56} />
-            <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20">
-              {point.toLocaleString()}
-            </span>
+          <div>
+            <div className="flex items-center">
+              <AnomIcon width={56} height={56} />
+              <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20">
+                {point.toLocaleString()}
+              </span>
+            </div>
           </div>
         </div>
       </div>

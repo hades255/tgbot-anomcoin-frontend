@@ -78,6 +78,11 @@ const coinSlice = createSlice({
     onMouseUp: (state) => {
       state.unclicked = true;
     },
+    removeErasedItem: (state, payload) => {
+      state.erased = state.erased.filter(
+        (item) => item.key !== payload.payload
+      );
+    },
   },
 });
 
@@ -90,6 +95,7 @@ export const {
   earnCoin,
   onMouseDown,
   onMouseUp,
+  removeErasedItem,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

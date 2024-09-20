@@ -18,7 +18,7 @@ const FireworksEffect = () => {
 
     const ctx = canvas.getContext("2d");
     let particlesArray = [];
-    const colors = ["#ff0000", "#00ff00", "#00ffff", "#ffff00", "#ff00ff"];
+    const colors = ["#58A9E8", "#FFFFFF"];
 
     const mouse = {
       x: null,
@@ -56,7 +56,18 @@ const FireworksEffect = () => {
         if (this.size > 0.2) this.size -= 0.2;
       }
       draw() {
-        ctx.fillStyle = this.color;
+        const gradient = ctx.createRadialGradient(
+          this.x,
+          this.y,
+          0,
+          this.x,
+          this.y,
+          this.size
+        );
+        gradient.addColorStop(0, "#3377FF");
+        gradient.addColorStop(1, this.color);
+
+        ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { removeErasedItem } from "../../redux/coinSlice";
 
 const ExpireItem = ({ coin }) => {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -11,6 +14,15 @@ const ExpireItem = ({ coin }) => {
       clearTimeout(timer);
     };
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(removeErasedItem(coin.key));
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [coin, dispatch]);
 
   return (
     <div
