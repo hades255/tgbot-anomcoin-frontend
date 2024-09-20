@@ -18,7 +18,7 @@ const FireworksEffect = () => {
 
     const ctx = canvas.getContext("2d");
     let particlesArray = [];
-    const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff"];
+    const colors = ["#ff0000", "#00ff00", "#00ffff", "#ffff00", "#ff00ff"];
 
     const mouse = {
       x: null,
@@ -45,7 +45,7 @@ const FireworksEffect = () => {
       constructor() {
         this.x = mouse.x;
         this.y = mouse.y;
-        this.size = Math.random() * 5 + 1;
+        this.size = Math.random() * 10 + 1;
         this.speedX = Math.random() * 3 - 1.5;
         this.speedY = Math.random() * 3 - 1.5;
         this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -53,7 +53,7 @@ const FireworksEffect = () => {
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.1;
+        if (this.size > 0.2) this.size -= 0.2;
       }
       draw() {
         ctx.fillStyle = this.color;

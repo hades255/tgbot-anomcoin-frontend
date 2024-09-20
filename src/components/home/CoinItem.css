@@ -9,3 +9,26 @@
   transform: scale(1);
   transition: visibility 0s linear 0s, transform 0.3s linear;
 }
+
+.expireitem-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-400px);
+  transition: visibility 0s linear 0.6s, opacity 0.6s linear,
+    transform 0.6s linear;
+}
+
+.expireitem-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: visibility 0s linear 0s, opacity 0.6s linear,
+    transform 0.6s linear;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+}

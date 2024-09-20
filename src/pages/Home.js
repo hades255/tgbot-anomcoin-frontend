@@ -1,14 +1,16 @@
 import React from "react";
 import Profile from "../components/home/Profile";
 import Progress from "../components/home/Progress";
-import CoinGround from "../components/home/CoinGround";
+import TouchPad from "../components/home/TouchPad";
 
 const Home = () => {
   return (
-    <div className="p-4">
-      <Profile />
-      <Progress />
-      <CoinGround />
+    <div>
+      <TouchPad />
+      <div className="fixed top-0 left-0 w-full p-4 flex flex-col">
+        <Profile />
+        <Progress />
+      </div>
     </div>
   );
 };

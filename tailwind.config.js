@@ -37,6 +37,9 @@ module.exports = {
         ".spaced-text-4": {
           "letter-spacing": "4px",
         },
+        ".text-shadow-expire-item": {
+          textShadow: "1px 2px 6px rgba(0,0,255,1)",
+        },
       });
     },
   ],

@@ -33,8 +33,8 @@ export const queryStringToObject = (queryString) => {
 };
 
 export const newCoin = (width = 360, height = 320, types = 8) => {
-  const x = Math.round(Math.random() * (width - 100));
-  const y = Math.round(Math.random() * (height - 100));
+  const x = Math.round(Math.random() * (width - 80));
+  const y = Math.round(Math.random() * (height - 60));
   const type = Math.round(Math.random() * types);
   return { key: x + "-" + y + "-" + type, x, y, type };
 };

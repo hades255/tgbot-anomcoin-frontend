@@ -5,8 +5,8 @@ const coinSlice = createSlice({
   name: "coin",
   initialState: {
     point: 0,
-    diff: 0,
     coins: [],
+    erased: [],
     width: 0,
     height: 0,
     progress: 500,
@@ -34,17 +34,22 @@ const coinSlice = createSlice({
     },
     earnCoin: (state, payload) => {
       if (state.unclicked) return;
-      const remaining = state.coins.filter(
-        (item) =>
+      let remaining = [];
+      let diff = [];
+      for (let item of state.coins) {
+        if (
           Math.abs(payload.payload.x - 42 - item.x) > 50 ||
           Math.abs(payload.payload.y - 32 - item.y) > 40
-      );
-      const diff = state.coins.length - remaining.length;
-      if (diff) {
-        state.diff = diff;
-        state.progress -= diff;
+        )
+          remaining.push(item);
+        else diff.push(item);
+      }
+      const earned = diff.length;
+      if (earned) {
         state.coins = remaining;
-        state.point += diff;
+        state.erased = [...state.erased, ...diff];
+        state.progress -= earned;
+        state.point += earned;
       }
     },
     progresscounter: (state) => {
@@ -52,17 +57,22 @@ const coinSlice = createSlice({
     },
     onMouseDown: (state, payload) => {
       state.unclicked = false;
-      const remaining = state.coins.filter(
-        (item) =>
+      let remaining = [];
+      let diff = [];
+      for (let item of state.coins) {
+        if (
           Math.abs(payload.payload.x - 42 - item.x) > 50 ||
           Math.abs(payload.payload.y - 32 - item.y) > 40
-      );
-      const diff = state.coins.length - remaining.length;
-      if (diff) {
-        state.diff = diff;
-        state.progress -= diff;
+        )
+          remaining.push(item);
+        else diff.push(item);
+      }
+      const earned = diff.length;
+      if (earned) {
         state.coins = remaining;
-        state.point += diff;
+        state.erased = [...state.erased, ...diff];
+        state.progress -= earned;
+        state.point += earned;
       }
     },
     onMouseUp: (state) => {
