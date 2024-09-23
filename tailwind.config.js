@@ -11,6 +11,10 @@ module.exports = {
           "linear-gradient(to bottom, #1D85FF26, #66666600)",
         "profile-image": "linear-gradient(to bottom, #080808, #9CCAFF26)",
         "time-progress-bar": "linear-gradient(to right, #6EDBFF, #095DFF)",
+        "twitter-btn": "linear-gradient(to top, #111111, #050505)",
+        "telegram-btn": "linear-gradient(to bottom, #0099FF, #235ECA)",
+        "discord-btn": "linear-gradient(to bottom, #5361F8, #2436FD)",
+        "task-active-tab": "linear-gradient(to bottom, #9AC9FF, #0072F8)",
       },
       boxShadow: {
         "navbar-item": "inset 0 0 12px 0 #003B8F",
