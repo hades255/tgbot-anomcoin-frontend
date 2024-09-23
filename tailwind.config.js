@@ -19,6 +19,7 @@ module.exports = {
         comicneue: ["comicneue-light"],
         "comicneue-bold": ["comicneue-bold"],
         "comic-sans-ms": ["comic-sans-ms"],
+        "sf-pro-text": ["sf-pro-text"],
       },
     },
   },

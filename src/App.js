@@ -9,8 +9,10 @@ import { queryStringToObject } from "./helper/func";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
 import Navbar from "./components/navbar";
-import Home from "./pages/Home";
 import CoinHelper from "./helper/coin";
+
+const Home = lazy(() => import("./pages/Home"));
+const Task = lazy(() => import("./pages/Task"));
 
 function App() {
   const [str, setStr] = useState(null);
@@ -52,10 +54,18 @@ function App() {
               }
             >
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Home />
+                      <Navbar params={str} />
+                    </>
+                  }
+                />
+                <Route path="/tasks" element={<Task />} />
               </Routes>
             </Suspense>
-            <Navbar params={str} />
           </Router>
         </SoundProvider>
       </AuthProvider>
