@@ -15,6 +15,7 @@ module.exports = {
         "telegram-btn": "linear-gradient(to bottom, #0099FF, #235ECA)",
         "discord-btn": "linear-gradient(to bottom, #5361F8, #2436FD)",
         "task-active-tab": "linear-gradient(to bottom, #9AC9FF, #0072F8)",
+        "task-claim": "radial-gradient(farthest-corner at 95px -10px, #99D6FF 0%, #14A1FF 100%)",
       },
       boxShadow: {
         "navbar-item": "inset 0 0 12px 0 #003B8F",
