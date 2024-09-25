@@ -16,7 +16,7 @@ const Task = () => {
       </div>
       <div className="px-1 flex flex-col">
         <TabBar tab={tab} onClick={handleClickTab} />
-        <div className="z-0 -mt-2 bg-[#1A2B47] rounded-xl p-3 flex flex-col min-h-[500px] border border-[#10B3E8]">
+        <div className="z-0 -mt-2 mb-8 bg-[#1A2B47] rounded-xl p-3 flex flex-col min-h-[calc(100vh_-_188px)] border border-[#10B3E8] shadow-[0_4px_5.8px_#235ECA,0_8px_0px_#14A1FF]">
           {tab === 0 && <DailyTab />}
         </div>
       </div>

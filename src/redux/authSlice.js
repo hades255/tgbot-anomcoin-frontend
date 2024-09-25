@@ -20,7 +20,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false;
     },
-    upgradeUser: (state, payload) => {
+    updateUser: (state, payload) => {
       payload.payload.forEach((item) => {
         state[item.key] = item.value;
       });
@@ -28,6 +28,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { login, logout,  upgradeUser } =
+export const { login, logout,  updateUser } =
   authSlice.actions;
 export default authSlice.reducer;

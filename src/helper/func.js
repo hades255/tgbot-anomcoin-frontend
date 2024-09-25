@@ -1,20 +1,11 @@
 export const fix2 = (param, pow = 2) =>
   Math.round(param * Math.pow(10, pow)) / Math.pow(10, pow);
 
-export const selectLastItems = (arr, count) => {
-  if (arr.length <= count) {
-    return arr;
-  }
-  return arr.slice(-count);
-};
-
-export const getAverage = (array) => {
-  if (array.length === 0) return 0;
-  const sum = array.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
-  return sum / array.length;
+export const formatNumber = (num) => {
+  const cnt = Math.log10(num);
+  const index = Math.floor(cnt / 3);
+  const suffix = ["", "K", "M", "G", "T"][index];
+  return num / Math.pow(1000, index) + suffix;
 };
 
 export const queryStringToObject = (queryString) => {

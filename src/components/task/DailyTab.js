@@ -1,10 +1,7 @@
 import React from "react";
 import AnomIcon from "../../assets/icons/Anom";
-import TwitterIcon from "../../assets/icons/task/Twitter";
-import TelegramIcon from "../../assets/icons/task/Telegram";
-import DiscordIcon from "../../assets/icons/task/Discord";
-import RightArrowCircleGlowIcon from "../../assets/icons/task/RightArrowCircleGlow";
-import RightArrowCircleIcon from "../../assets/icons/task/RightArrowCircle";
+import { dailyTasks } from "../../constants/constants";
+import DailyTaskItem from "./DailyTaskItem";
 
 const DailyTab = () => {
   return (
@@ -37,73 +34,13 @@ const DailyTab = () => {
       <div className="text-white text-[10px] font-sf-pro-text py-1">
         Tips: Consistently completing daily task will trigger level-ups.
       </div>
-      <div className="bg-[#28426C] rounded my-1 px-2 py-3 flex flex-col">
+      <div className="bg-[#28426C] rounded my-1 px-2 py-3 flex flex-col min-h-[calc(100vh_-_320px)]">
         <div className="text-white text-[16px] font-sf-pro-text">
           Yes Headlines
         </div>
-        <div className="my-2 rounded px-5 pt-3 py-1 flex justify-between items-center bg-twitter-btn shadow-[0_6px_0px_#1D1D1D,0_12px_2px_#0000001A]">
-          <div className="flex items-center">
-            <div className="mr-5">
-              <TwitterIcon />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white text-[16px] font-sf-pro-text">
-                React 😘 on the post
-              </span>
-              <div className="flex items-center">
-                <span className="text-white text-[16px] font-sf-pro-text">
-                  +10K
-                </span>
-                <AnomIcon width={35} height={35} />
-              </div>
-            </div>
-          </div>
-          <div className="mr-[13px]">
-            <RightArrowCircleIcon />
-          </div>
-        </div>
-        <div className="my-2 rounded px-5 pt-3 py-1 flex justify-between items-center bg-telegram-btn shadow-[0_6px_0px_#0546BC,0_12px_2px_#0000001A]">
-          <div className="flex items-center">
-            <div className="mr-5">
-              <TelegramIcon />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white text-[16px] font-sf-pro-text">
-                React 😘 on the post
-              </span>
-              <div className="flex items-center">
-                <span className="text-white text-[16px] font-sf-pro-text">
-                  +10K
-                </span>
-                <AnomIcon width={35} height={35} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <RightArrowCircleGlowIcon />
-          </div>
-        </div>
-        <div className="my-2 rounded px-5 pt-3 py-1 flex justify-between items-center bg-discord-btn shadow-[0_6px_0px_#291DCF,0_12px_2px_#0000001A]">
-          <div className="flex items-center">
-            <div className="mr-5">
-              <DiscordIcon />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white text-[16px] font-sf-pro-text">
-                React 😘 on the post
-              </span>
-              <div className="flex items-center">
-                <span className="text-white text-[16px] font-sf-pro-text">
-                  +10K
-                </span>
-                <AnomIcon width={35} height={35} />
-              </div>
-            </div>
-          </div>
-          <div>
-          <RightArrowCircleGlowIcon />
-          </div>
-        </div>
+        {dailyTasks.map((item) => (
+          <DailyTaskItem key={item.id} task={item} />
+        ))}
         <div className="text-white text-[16px] font-sf-pro-text pt-2">
           Yes Questing
         </div>
