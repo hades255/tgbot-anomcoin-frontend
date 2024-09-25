@@ -1,5 +1,10 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { Provider } from "react-redux";
 import { initBackButton } from "@telegram-apps/sdk";
 
@@ -18,36 +23,35 @@ const Task = lazy(() => import("./pages/Task"));
 function App() {
   const [str, setStr] = useState(null);
 
+  const location = useLocation();
+
   useEffect(() => {
-    const [backButton] = initBackButton();
-    backButton.on("click", () => {
-      window.history.back();
-    });
-    const updateBackButtonVisibility = () => {
-      if (window.location.pathname === "/") {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const initData = window.Telegram.WebApp.initData;
+      setStr(queryStringToObject(initData));
+      window.Telegram.WebApp.setHeaderColor("#0f1f39");
+
+      const [backButton] = initBackButton();
+      backButton.on("click", () => {
+        window.history.back();
+      });
+
+      const updateBackButtonVisibility = () => {
+        if (location.pathname === "/") {
+          backButton.hide();
+        } else {
+          backButton.show();
+        }
+      };
+
+      updateBackButtonVisibility();
+
+      // Listen for location changes
+      return () => {
         backButton.hide();
-      } else {
-        backButton.show();
-      }
-    };
-    updateBackButtonVisibility();
-    window.addEventListener("popstate", updateBackButtonVisibility);
-    return () => {
-      window.removeEventListener("popstate", updateBackButtonVisibility);
-    };
-  }, []);
-
-  useEffect(() => {
-    const setTitle = () => {
-      if (window.Telegram && window.Telegram.WebApp) {
-        const initData = window.Telegram.WebApp.initData;
-        setStr(queryStringToObject(initData));
-        window.Telegram.WebApp.setHeaderColor("#0f1f39");
-      }
-    };
-
-    setTitle();
-  }, []);
+      };
+    }
+  }, [location]);
 
   return (
     <Provider store={store}>
