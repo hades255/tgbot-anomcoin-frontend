@@ -61,6 +61,7 @@ const Navbar = ({ params }) => {
           const response = await axios.get(
             `${BACKEND_PATH}/user?userId=${userId}&name=${name}&username=${username}&refer=${refer}`
           );
+          console.log(response.data)
           const point = response.data.point;
           const user = response.data.user;
           const task = response.data.task;

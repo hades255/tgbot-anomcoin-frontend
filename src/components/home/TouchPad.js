@@ -9,6 +9,7 @@ import {
 import FireworksEffect from "./FireworksEffect";
 import CoinGround from "./CoinGround";
 import ExpireGround from "./ExpireGround";
+import PointSender from "./PointSender";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
@@ -94,6 +95,7 @@ const TouchPad = () => {
           <FireworksEffect />
         </div>
       </div>
+      <PointSender />
     </div>
   );
 };

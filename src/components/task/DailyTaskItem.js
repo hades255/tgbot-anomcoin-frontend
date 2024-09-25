@@ -13,14 +13,17 @@ import { setScore } from "../../redux/coinSlice";
 
 const DailyTaskItem = ({ task }) => {
   const dispatch = useDispatch();
-  const userId = useAuth();
+  const { userId } = useAuth();
   const taskStatus = useSelector((state) => state.task[task.id]);
   const handleClick = useCallback(() => {
     if (taskStatus) return;
     (async () => {
       try {
-        const response = await axios.get(
-          `${BACKEND_PATH}/task/daily-${task.id}?userId=${userId}`
+        const response = await axios.post(
+          `${BACKEND_PATH}/task/dailytask?userId=${userId}`,
+          {
+            [task.id]: true,
+          }
         );
         if (response.data && response.data.data)
           dispatch(setScore(response.data.data));

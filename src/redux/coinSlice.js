@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { newCoin } from "../helper/func";
+import { sendPoint } from "../helper/apis";
 
 const coinSlice = createSlice({
   name: "coin",
@@ -26,6 +27,7 @@ const coinSlice = createSlice({
       state.height = payload.payload.height;
     },
     coincounter: (state) => {
+      if (state.width === 0 || state.height === 0) return;
       if (
         state.coins.length <= state.countperpage &&
         state.coins.length < state.progress
@@ -83,6 +85,9 @@ const coinSlice = createSlice({
         (item) => item.key !== payload.payload
       );
     },
+    pointSender: (state, payload) => {
+      sendPoint(state.point, payload.payload);
+    },
   },
 });
 
@@ -96,6 +101,7 @@ export const {
   onMouseDown,
   onMouseUp,
   removeErasedItem,
+  pointSender,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;
