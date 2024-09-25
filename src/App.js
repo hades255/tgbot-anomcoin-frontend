@@ -20,13 +20,20 @@ function App() {
 
   useEffect(() => {
     const [backButton] = initBackButton();
-    backButton.show();
     backButton.on("click", () => {
       window.history.back();
     });
-
+    const updateBackButtonVisibility = () => {
+      if (window.location.pathname === "/") {
+        backButton.hide();
+      } else {
+        backButton.show();
+      }
+    };
+    updateBackButtonVisibility();
+    window.addEventListener("popstate", updateBackButtonVisibility);
     return () => {
-      backButton.hide();
+      window.removeEventListener("popstate", updateBackButtonVisibility);
     };
   }, []);
 
