@@ -23,10 +23,11 @@ function App() {
 
       if (window.Telegram && window.Telegram.WebApp) {
         window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.setupBackButton();
-        window.Telegram.WebApp.onEvent("back_button_pressed", function () {
-          window.history.back();
-        });
+
+        const backButton = document.createElement("button");
+        backButton.innerText = "Back";
+        backButton.onclick = () => window.history.back();
+        document.body.appendChild(backButton);
 
         const initData = window.Telegram.WebApp.initData;
         setStr(queryStringToObject(initData));
