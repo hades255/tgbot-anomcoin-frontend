@@ -9,7 +9,9 @@ const taskSlice = createSlice({
   },
   reducers: {
     initTask: (state, payload) => {
-      state = { ...state, ...payload.payload };
+      state.reactTwitter = payload.payload.reactTwitter;
+      state.reactTelegram = payload.payload.reactTelegram;
+      state.reactDiscord = payload.payload.reactDiscord;
     },
     updateTask: (state, payload) => {
       payload.payload.forEach((item) => {

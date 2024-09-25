@@ -17,7 +17,9 @@ const coinSlice = createSlice({
   },
   reducers: {
     initCoin: (state, payload) => {
-      state = { ...state, ...payload.payload };
+      state.progress = payload.payload.progress;
+      state.totalprogress = payload.payload.totalprogress;
+      state.countperpage = payload.payload.countperpage;
     },
     setScore: (state, payload) => {
       state.point = Math.round(payload.payload);
