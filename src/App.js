@@ -1,6 +1,7 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
+import { initBackButton } from "@telegram-apps/sdk";
 
 import store from "./redux/store";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -18,27 +19,23 @@ function App() {
   const [str, setStr] = useState(null);
 
   useEffect(() => {
+    const [backButton] = initBackButton();
+    backButton.show();
+    backButton.on("click", () => {
+      window.history.back();
+    });
+
+    return () => {
+      backButton.hide();
+    };
+  }, []);
+
+  useEffect(() => {
     const setTitle = () => {
-      // const title = "Alphanomics";
-
       if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-
-        const backButton = document.createElement("button");
-        backButton.innerText = "Back";
-        backButton.onclick = () => window.history.back();
-        document.body.appendChild(backButton);
-
         const initData = window.Telegram.WebApp.initData;
         setStr(queryStringToObject(initData));
         window.Telegram.WebApp.setHeaderColor("#0f1f39");
-        // window.Telegram.WebApp.MainButton.setText(title);
-        // window.Telegram.WebApp.MainButton.setParams({
-        //   text_color: "#000713",
-        //   color: "#0B1423",
-        // });
-
-        // window.Telegram.WebApp.MainButton.show();
       }
     };
 
