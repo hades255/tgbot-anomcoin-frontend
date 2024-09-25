@@ -3,16 +3,16 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import NavbarItem from "./NavbarItem";
 import { login } from "../../redux/authSlice";
-import { BACKEND_PATH } from "../../constants/config";
+import { initTask } from "../../redux/taskSlice";
+import { initCoin, setScore } from "../../redux/coinSlice";
 import { useAuth } from "../../contexts/AuthContext";
+import { BACKEND_PATH } from "../../constants/config";
+import NavbarItem from "./NavbarItem";
 import HomeIcon from "../../assets/icons/navbar/Home";
 import FriendsIcon from "../../assets/icons/navbar/Friends";
 import TaskIcon from "../../assets/icons/navbar/Task";
 import MineIcon from "../../assets/icons/navbar/Mine";
-import { setScore } from "../../redux/coinSlice";
-import { initTask } from "../../redux/taskSlice";
 
 const Navbar = ({ params }) => {
   const location = useLocation();
@@ -61,14 +61,16 @@ const Navbar = ({ params }) => {
           const response = await axios.get(
             `${BACKEND_PATH}/user?userId=${userId}&name=${name}&username=${username}&refer=${refer}`
           );
-          console.log(response.data)
+          console.log(response.data);
           const point = response.data.point;
           const user = response.data.user;
           const task = response.data.task;
+          const coin = response.data.coin;
           // const bonus = response.data.bonus;
           dispatch(login({ ...user, userId, name, username }));
           dispatch(setScore(point));
           dispatch(initTask(task));
+          dispatch(initCoin(coin));
         } catch (error) {
           console.log(error);
         }

@@ -16,6 +16,9 @@ const coinSlice = createSlice({
     unclicked: true,
   },
   reducers: {
+    initCoin: (state, payload) => {
+      state = { ...state, ...payload.payload };
+    },
     setScore: (state, payload) => {
       state.point = Math.round(payload.payload);
     },
@@ -86,12 +89,13 @@ const coinSlice = createSlice({
       );
     },
     pointSender: (state, payload) => {
-      sendPoint(state.point, payload.payload);
+      sendPoint(state.point, state.progress, payload.payload);
     },
   },
 });
 
 export const {
+  initCoin,
   setScore,
   addScore,
   initSize,
