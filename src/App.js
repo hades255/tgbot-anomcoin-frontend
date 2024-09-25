@@ -22,6 +22,12 @@ function App() {
       // const title = "Alphanomics";
 
       if (window.Telegram && window.Telegram.WebApp) {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.setupBackButton();
+        window.Telegram.WebApp.onEvent("back_button_pressed", function () {
+          window.history.back();
+        });
+
         const initData = window.Telegram.WebApp.initData;
         setStr(queryStringToObject(initData));
         window.Telegram.WebApp.setHeaderColor("#0f1f39");
