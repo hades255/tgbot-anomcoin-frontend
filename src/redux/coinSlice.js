@@ -60,7 +60,7 @@ const coinSlice = createSlice({
       }
     },
     progresscounter: (state) => {
-      if (state.progress < 1000) state.progress++;
+      if (state.progress < state.totalprogress) state.progress++;
     },
     onMouseDown: (state, payload) => {
       state.unclicked = false;
