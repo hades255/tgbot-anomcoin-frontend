@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     //  todo backbutton
-    return;
+    // return;
     const [backButton] = initBackButton();
     backButton.on("click", () => {
       window.history.back();
