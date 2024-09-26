@@ -2,17 +2,17 @@ import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { TASKS } from "../../constants/constants";
 
-const TaskProgressBar = ({ category = "ot" }) => {
+const TaskProgressBar = ({ tab }) => {
   const tasks = useSelector((state) => state.task);
   const percent = useMemo(() => {
     let ct = 0;
     let all = 0;
-    TASKS[category].forEach((item) => {
+    TASKS[["daily", "ot", "special"][tab]].forEach((item) => {
       all++;
       if (tasks[item]) ct++;
     });
     return all === 0 ? 0 : ct / all;
-  }, [tasks, category]);
+  }, [tasks, tab]);
 
   return (
     <div className="my-1 flex justify-between items-center">

@@ -41,11 +41,14 @@ const TabBarItem = ({ tab, item, onClick }) => {
           {item.icon}
         </div>
       )}
-      {count && (
-        <div className="absolute z-[1] -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]">
-          {count}
-        </div>
-      )}
+      <div
+        className={classNames(
+          "absolute z-[1] -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]",
+          { hidden: !count }
+        )}
+      >
+        {count}
+      </div>
       <div
         onClick={handleClick}
         className={classNames(
