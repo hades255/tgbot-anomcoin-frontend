@@ -6,7 +6,6 @@ import { initBackButton } from "@telegram-apps/sdk";
 import store from "./redux/store";
 import { AuthProvider } from "./contexts/AuthContext";
 import { SoundProvider } from "./contexts/SoundContext";
-import { queryStringToObject } from "./helper/func";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
 import Navbar from "./components/navbar";
@@ -21,6 +20,8 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    //  todo backbutton
+    return;
     const [backButton] = initBackButton();
     backButton.on("click", () => {
       window.history.back();
@@ -36,7 +37,6 @@ function App() {
 
     updateBackButtonVisibility();
 
-    // Listen for location changes
     return () => {
       backButton.hide();
     };
@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       const initData = window.Telegram.WebApp.initData;
-      setStr(queryStringToObject(initData));
+      setStr(initData);
       window.Telegram.WebApp.setHeaderColor("#0f1f39");
     }
   }, []);
@@ -70,7 +70,7 @@ function App() {
                 element={
                   <>
                     <Home />
-                    <Navbar params={str} />
+                    {str && <Navbar params={str} />}
                   </>
                 }
               />

@@ -9,10 +9,8 @@ import { initCoin, setScore } from "../../redux/coinSlice";
 import { useAuth } from "../../contexts/AuthContext";
 import { BACKEND_PATH } from "../../constants/config";
 import NavbarItem from "./NavbarItem";
-import HomeIcon from "../../assets/icons/navbar/Home";
-import FriendsIcon from "../../assets/icons/navbar/Friends";
-import TaskIcon from "../../assets/icons/navbar/Task";
-import MineIcon from "../../assets/icons/navbar/Mine";
+import { queryStringToObject } from "../../helper/func";
+import { navbarItems } from "../../constants/constants";
 
 const Navbar = ({ params }) => {
   const location = useLocation();
@@ -20,40 +18,21 @@ const Navbar = ({ params }) => {
   const { isAuthenticated } = useAuth();
   const [active, setActive] = useState("/");
 
-  const navbar = useMemo(() => {
-    return [
-      {
-        icon: <HomeIcon width={50} height={50} color={"custom"} />,
-        url: "/",
-      },
-      {
-        icon: <FriendsIcon width={50} height={50} color={"custom"} />,
-        url: "/leaderboard",
-      },
-      {
-        icon: <TaskIcon width={50} height={50} color={"custom"} />,
-        url: "/tasks",
-      },
-      {
-        icon: <MineIcon width={50} height={50} color={"custom"} />,
-        url: "/me",
-      },
-    ];
-  }, []);
-
   const queryParams = useMemo(
     () => new URLSearchParams(location.search),
     [location]
   );
 
+  const params_ = useMemo(() => queryStringToObject(params), [params]);
+
   useEffect(() => {
-    if (isAuthenticated || !params || !params.user) return;
-    const userId = params.user.id;
-    const username = params.user.username;
-    const name = params.user.first_name + " " + params.user.last_name;
+    if (isAuthenticated || !params || !params_.user) return;
+    const userId = params_.user.id;
+    const username = params_.user.username;
+    const name = params_.user.first_name + " " + params_.user.last_name;
     let refer = queryParams.get("refer");
-    if (params.start_param) {
-      refer = params.start_param.toString().substring(9);
+    if (params_.start_param) {
+      refer = params_.start_param.toString().substring(9);
     }
     if (userId) {
       (async () => {
@@ -76,7 +55,7 @@ const Navbar = ({ params }) => {
         }
       })();
     }
-  }, [queryParams, params, dispatch, isAuthenticated]);
+  }, [queryParams, params, params_, dispatch, isAuthenticated]);
 
   useEffect(() => {
     setActive(location.pathname);
@@ -86,7 +65,7 @@ const Navbar = ({ params }) => {
     <>
       <div className="w-full fixed bottom-0 mx-auto z-30">
         <div className="flex justify-center h-36 bg-[#0007] px-3 pt-5 gap-3">
-          {navbar.map((item, index) => (
+          {navbarItems.map((item, index) => (
             <NavbarItem {...item} key={index} active={active === item.url} />
           ))}
         </div>

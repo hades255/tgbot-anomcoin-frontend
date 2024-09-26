@@ -3,9 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const taskSlice = createSlice({
   name: "task",
   initialState: {
-    reactTwitter: false,
-    reactTelegram: false,
-    reactDiscord: false,
+    reactTwitter: false, //  daily
+    reactTelegram: false, //  daily
+    reactDiscord: false, //  daily
+    taskAnnouncementRTPost: false,
+    taskYesKeeper: false,
+    taskYesUUniverseRTPost: false,
+    taskYesUniverseRTPost_: false,
   },
   reducers: {
     initTask: (state, payload) => {

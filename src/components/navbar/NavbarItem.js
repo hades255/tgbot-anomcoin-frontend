@@ -4,7 +4,7 @@ import useSound from "use-sound";
 import buttonSfx from "../../assets/audios/button.mp3";
 import { usePlaySound } from "../../contexts/SoundContext";
 
-const NavbarItem = ({ title, icon, url, active }) => {
+const NavbarItem = ({ icon, url, active }) => {
   const navigate = useNavigate();
   const { sound } = usePlaySound();
   const [playButtonSfx] = useSound(buttonSfx, { soundEnabled: sound });

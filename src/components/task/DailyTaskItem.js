@@ -46,8 +46,8 @@ const DailyTaskItem = ({ task }) => {
         <div className="flex items-center">
           <div className="w-10 mr-4">{task.icon}</div>
           <div className="flex flex-col">
-            <span className="text-white text-[16px] font-sf-pro-text">
-              React 😘 on the post
+            <span className="text-white text-[14px] font-sf-pro-text">
+              {task.title}
             </span>
             <div className="flex items-center">
               <span className="text-white text-[16px] font-sf-pro-text">

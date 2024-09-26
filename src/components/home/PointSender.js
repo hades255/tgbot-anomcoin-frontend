@@ -10,12 +10,12 @@ const PointSender = () => {
   useEffect(() => {
     if (userId === "") return;
     const timerFunc = () => {
-      setTimeout(() => {
-        timerFunc();
-      }, 5000);
       dispatch(pointSender(userId));
     };
-    timerFunc();
+    const timer = setInterval(() => {
+      timerFunc();
+    }, 5000);
+    return () => clearInterval(timer);
   }, [dispatch, userId]);
 
   return <></>;
