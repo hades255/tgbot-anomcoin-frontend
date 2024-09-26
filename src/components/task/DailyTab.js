@@ -24,10 +24,10 @@ const DailyTab = () => {
         <span className="text-white text-[16px] font-sf-pro-text min-w-12">
           20%
         </span>
-        <div className="w-[310px] h-[18px] rounded-[20px] bg-white flex justify-start items-center px-[2px]">
+        <div className="w-[294px] h-[18px] rounded-[20px] bg-white flex justify-start items-center px-[2px]">
           <div
             className="bg-time-progress-bar h-[16px] rounded-[20px]"
-            style={{ width: (20 / 100) * 306 }}
+            style={{ width: (20 / 100) * 290 }}
           ></div>
         </div>
       </div>

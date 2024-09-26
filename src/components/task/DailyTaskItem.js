@@ -11,7 +11,7 @@ import RightArrowCircleIcon from "../../assets/icons/task/RightArrowCircle";
 import RightArrowCircleGlowIcon from "../../assets/icons/task/RightArrowCircleGlow";
 import { setScore } from "../../redux/coinSlice";
 
-const DailyTaskItem = ({ task }) => {
+const DailyTaskItem = ({ task, category = "daily" }) => {
   const dispatch = useDispatch();
   const { userId } = useAuth();
   const taskStatus = useSelector((state) => state.task[task.id]);
@@ -20,7 +20,7 @@ const DailyTaskItem = ({ task }) => {
     (async () => {
       try {
         const response = await axios.post(
-          `${BACKEND_PATH}/task/dailytask?userId=${userId}`,
+          `${BACKEND_PATH}/task/${category}task?userId=${userId}`,
           {
             [task.id]: true,
           }
@@ -38,7 +38,7 @@ const DailyTaskItem = ({ task }) => {
     <>
       <div
         className={classNames(
-          "my-2 rounded pl-5 pr-2 pt-3 py-1 flex justify-between items-center",
+          "my-2 rounded pl-5 pr-2 pt-3 pb-1 flex justify-between items-center",
           task.bgColor,
           task.shadow
         )}

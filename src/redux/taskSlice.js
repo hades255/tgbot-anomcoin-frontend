@@ -8,7 +8,7 @@ const taskSlice = createSlice({
     reactDiscord: false, //  daily
     taskAnnouncementRTPost: false,
     taskYesKeeper: false,
-    taskYesUUniverseRTPost: false,
+    taskYesUniverseRTPost: false,
     taskYesUniverseRTPost_: false,
   },
   reducers: {
@@ -16,6 +16,12 @@ const taskSlice = createSlice({
       state.reactTwitter = payload.payload.reactTwitter;
       state.reactTelegram = payload.payload.reactTelegram;
       state.reactDiscord = payload.payload.reactDiscord;
+    },
+    initOTTask: (state, payload) => {
+      state.taskAnnouncementRTPost = payload.payload.taskAnnouncementRTPost;
+      state.taskYesKeeper = payload.payload.taskYesKeeper;
+      state.taskYesUniverseRTPost = payload.payload.taskYesUniverseRTPost;
+      state.taskYesUniverseRTPost_ = payload.payload.taskYesUniverseRTPost_;
     },
     updateTask: (state, payload) => {
       payload.payload.forEach((item) => {
@@ -25,5 +31,5 @@ const taskSlice = createSlice({
   },
 });
 
-export const { initTask, updateTask } = taskSlice.actions;
+export const { initTask, initOTTask, updateTask } = taskSlice.actions;
 export default taskSlice.reducer;

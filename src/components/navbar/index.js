@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { login } from "../../redux/authSlice";
-import { initTask } from "../../redux/taskSlice";
+import { initOTTask, initTask } from "../../redux/taskSlice";
 import { initCoin, setScore } from "../../redux/coinSlice";
 import { useAuth } from "../../contexts/AuthContext";
 import { BACKEND_PATH } from "../../constants/config";
@@ -45,10 +45,12 @@ const Navbar = ({ params }) => {
           const user = response.data.user;
           const task = response.data.task;
           const coin = response.data.coin;
+          const otTasks = response.data.otTasks;
           // const bonus = response.data.bonus;
           dispatch(login({ ...user, userId, name, username }));
           dispatch(setScore(point));
           dispatch(initTask(task));
+          dispatch(initOTTask(otTasks));
           dispatch(initCoin(coin));
         } catch (error) {
           console.log(error);

@@ -84,7 +84,7 @@ export const normalTasks = [
     shadow: "shadow-[0_6px_0px_#007A29,0_12px_1px_#0000001A]",
   },
   {
-    id: "taskYesUUniverseRTPost",
+    id: "taskYesUniverseRTPost",
     title: "YesUniverse - RT Post",
     bonus: 10000,
     icon: <UTVIcon />,
