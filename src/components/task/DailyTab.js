@@ -2,6 +2,7 @@ import React from "react";
 import AnomIcon from "../../assets/icons/Anom";
 import { dailyTasks } from "../../constants/constants";
 import DailyTaskItem from "./DailyTaskItem";
+import TaskProgressBar from "./TaskProgressBar";
 
 const DailyTab = () => {
   return (
@@ -20,17 +21,7 @@ const DailyTab = () => {
           </button>
         </div>
       </div>
-      <div className="my-1 flex justify-between items-center">
-        <span className="text-white text-[16px] font-sf-pro-text min-w-12">
-          20%
-        </span>
-        <div className="w-[294px] h-[18px] rounded-[20px] bg-white flex justify-start items-center px-[2px]">
-          <div
-            className="bg-time-progress-bar h-[16px] rounded-[20px]"
-            style={{ width: (20 / 100) * 290 }}
-          ></div>
-        </div>
-      </div>
+      <TaskProgressBar category="daily" />
       <div className="text-white text-[10px] font-sf-pro-text py-1">
         Tips: Consistently completing daily task will trigger level-ups.
       </div>

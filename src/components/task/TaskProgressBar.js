@@ -1,0 +1,32 @@
+import React, { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { TASKS } from "../../constants/constants";
+
+const TaskProgressBar = ({ category = "ot" }) => {
+  const tasks = useSelector((state) => state.task);
+  const percent = useMemo(() => {
+    let ct = 0;
+    let all = 0;
+    TASKS[category].forEach((item) => {
+      all++;
+      if (tasks[item]) ct++;
+    });
+    return all === 0 ? 0 : ct / all;
+  }, [tasks, category]);
+
+  return (
+    <div className="my-1 flex justify-between items-center">
+      <span className="text-white text-[16px] font-sf-pro-text min-w-12">
+        {Math.round(percent * 100)}%
+      </span>
+      <div className="w-[294px] h-[18px] rounded-[20px] bg-white flex justify-start items-center px-[2px]">
+        <div
+          className="bg-time-progress-bar h-[16px] rounded-[20px]"
+          style={{ width: percent * 290 }}
+        ></div>
+      </div>
+    </div>
+  );
+};
+
+export default TaskProgressBar;

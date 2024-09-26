@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
+import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { taskTabItems } from "../../constants/constants";
+import { TASKS, taskTabItems } from "../../constants/constants";
 
 const TabBar = ({ tab, onClick }) => {
   const handleClick = useCallback((param) => onClick(param), [onClick]);
@@ -22,6 +23,15 @@ const TabBar = ({ tab, onClick }) => {
 };
 
 const TabBarItem = ({ tab, item, onClick }) => {
+  const tasks = useSelector((state) => state.task);
+  const count = useMemo(() => {
+    let ct = 0;
+    TASKS[["daily", "ot", "special"][item.tab]].forEach((task) => {
+      if (!tasks[task]) ct++;
+    });
+    return ct;
+  }, [tasks, item]);
+
   const handleClick = useCallback(() => onClick(item.tab), [item, onClick]);
 
   return (
@@ -31,13 +41,15 @@ const TabBarItem = ({ tab, item, onClick }) => {
           {item.icon}
         </div>
       )}
-      <div className="absolute z-[1] -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]">
-        3
-      </div>
+      {count && (
+        <div className="absolute z-[1] -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]">
+          {count}
+        </div>
+      )}
       <div
         onClick={handleClick}
         className={classNames(
-          "w-full rounded-t-xl flex justify-center items-center z-0 pb-1",
+          "cursor-pointer w-full rounded-t-xl flex justify-center items-center z-0 pb-1",
           {
             "h-[60px] bg-task-active-tab": tab === item.tab,
             "h-[52px] bg-[#28426C]": tab !== item.tab,

@@ -129,3 +129,14 @@ export const taskTabItems = [
     content: <p className="text-white text-[16px] font-sf-pro-text">Special</p>,
   },
 ];
+
+export const TASKS = {
+  daily: ["reactTwitter", "reactTelegram", "reactDiscord"],
+  ot: [
+    "taskAnnouncementRTPost",
+    "taskYesKeeper",
+    "taskYesUniverseRTPost",
+    "taskYesUniverseRTPost_",
+  ],
+  special: [],
+};
