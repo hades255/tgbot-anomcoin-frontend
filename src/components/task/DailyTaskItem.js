@@ -32,7 +32,7 @@ const DailyTaskItem = ({ task, category = "daily" }) => {
         console.log(error);
       }
     })();
-  }, [dispatch, task, taskStatus, userId]);
+  }, [dispatch, task, taskStatus, userId, category]);
 
   return (
     <>
