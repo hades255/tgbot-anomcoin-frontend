@@ -30,14 +30,18 @@ const Frens = () => {
         </p>
         <div className="w-full border-2 border-white rounded-[20px] flex flex-col bg-telegram-btn shadow-[0_6px_0px_#0090FF] py-3">
           <div className="flex justify-end">
-            <div className="bg-[#00000080] flex items-center pl-[6px] pr-3 rounded-s-[14px]">
+            <a
+              className="cursor-pointer bg-[#00000080] flex items-center pl-[6px] pr-3 rounded-s-[14px]"
+              target="_blank"
+              href="#"
+            >
               <span className="text-black bg-white rounded-[10px] pl-[1px] font-sf-pro-text w-[19px] h-[19px] flex justify-center items-center text-xs mr-1">
                 ?
               </span>
               <span className="text-white font-sf-pro-text flex pt-[1px]">
                 Rules
               </span>
-            </div>
+            </a>
           </div>
           <div className="px-4 flex flex-col">
             <div className="mb-4 flex">
@@ -87,10 +91,10 @@ const Frens = () => {
               <div className="w-12 min-w-12 h-12 min-h-12 bg-[#D9D9D9] rounded mr-3"></div>
               <div className="flex flex-col">
                 <div className="flex items-center text-white font-sf-pro-text font-bold text-lg">
-                  invite 1 friend
+                  invite 10 friend
                 </div>
                 <div className="flex items-center text-[#FFE484] font-sf-pro-text font-bold text-lg">
-                  + 50,000
+                  + 500,000
                 </div>
               </div>
             </div>

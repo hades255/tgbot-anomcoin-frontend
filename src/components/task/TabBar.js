@@ -52,7 +52,7 @@ const TabBarItem = ({ tab, item, onClick }) => {
       <div
         onClick={handleClick}
         className={classNames(
-          "cursor-pointer w-full rounded-t-xl flex justify-center items-center z-0 pb-1",
+          "cursor-pointer w-full rounded-t-xl flex justify-center items-center z-0 pb-1 transition-all",
           {
             "h-[60px] bg-task-active-tab": tab === item.tab,
             "h-[52px] bg-[#28426C]": tab !== item.tab,

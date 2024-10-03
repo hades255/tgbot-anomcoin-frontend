@@ -21,7 +21,7 @@ const TaskProgressBar = ({ tab }) => {
       </span>
       <div className="w-[294px] h-[18px] rounded-[20px] bg-white flex justify-start items-center px-[2px]">
         <div
-          className="bg-time-progress-bar h-[16px] rounded-[20px]"
+          className="bg-time-progress-bar h-[16px] rounded-[20px] transition-all"
           style={{ width: percent * 290 }}
         ></div>
       </div>

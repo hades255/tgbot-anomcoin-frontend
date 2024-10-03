@@ -71,7 +71,7 @@ const TabItem = ({ tab, active, title, onClick }) => {
   return (
     <div
       className={classNames(
-        "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer",
+        "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer transition-all",
         { "px-8 bg-white": active, "px-3 text-white": !active }
       )}
       onClick={handleClickTab}

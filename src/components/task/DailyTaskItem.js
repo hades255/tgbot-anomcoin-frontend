@@ -59,7 +59,7 @@ const DailyTaskItem = ({ task, category = "daily" }) => {
         </div>
         <div
           onClick={handleClick}
-          className="w-16 flex justify-center items-center cursor-pointer"
+          className="w-16 h-[60px] flex justify-center items-center cursor-pointer"
         >
           {taskStatus ? <RightArrowCircleIcon /> : <RightArrowCircleGlowIcon />}
         </div>
