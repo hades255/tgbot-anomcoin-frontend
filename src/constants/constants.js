@@ -13,15 +13,15 @@ import UTVIcon from "../assets/icons/task/UTV";
 export const navbarItems = [
   {
     icon: <HomeIcon width={50} height={50} color={"custom"} />,
-    url: "/",
+    url: "/tasks",
   },
   {
     icon: <FriendsIcon width={50} height={50} color={"custom"} />,
-    url: "/leaderboard",
+    url: "/frens",
   },
   {
     icon: <TaskIcon width={50} height={50} color={"custom"} />,
-    url: "/tasks",
+    url: "/build",
   },
   {
     icon: <MineIcon width={50} height={50} color={"custom"} />,

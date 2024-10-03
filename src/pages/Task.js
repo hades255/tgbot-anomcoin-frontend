@@ -8,7 +8,7 @@ import TaskProgressBar from "../components/task/TaskProgressBar";
 import CompleteTaskClaimBtn from "../components/task/CompleteTaskClaimBtn";
 
 const Task = () => {
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
 
   const handleClickTab = useCallback((param) => setTab(param), []);
 

@@ -40,7 +40,7 @@ const coinSlice = createSlice({
         state.coins = [...state.coins, newCoin(state.width, state.height, 7)];
     },
     earnCoin: (state, payload) => {
-      if (state.unclicked) return;
+      // if (state.unclicked) return;
       let remaining = [];
       let diff = [];
       for (let item of state.coins) {

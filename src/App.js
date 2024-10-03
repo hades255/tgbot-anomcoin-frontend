@@ -8,7 +8,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { SoundProvider } from "./contexts/SoundContext";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
-import Navbar from "./components/navbar";
 import CoinHelper from "./helper/coin";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -69,8 +68,8 @@ function App() {
                 path="/"
                 element={
                   <>
-                    <Home />
-                    {str && <Navbar params={str} />}
+                    {str && <Home params={str} />}
+                    {!str && <Home params={null} />}
                   </>
                 }
               />
