@@ -1,5 +1,4 @@
 import React from "react";
-import UserIcon from "../../assets/icons/User";
 import AnomIcon from "../../assets/icons/Anom";
 import { useAuth } from "../../contexts/AuthContext";
 import UserAvatar from "./UserAvatar";
@@ -16,11 +15,7 @@ const Profile = () => {
           <div className="flex">
             <div className="bg-profile-image-border min-w-[50px] w-[50px] h-[50px] flex justify-center items-center rounded-lg mr-3">
               <div className="bg-profile-image w-12 h-12 flex justify-center items-center rounded-[7px] overflow-hidden">
-                {avatar ? (
-                  <UserAvatar avatar={avatar} />
-                ) : (
-                  <UserIcon width={56} height={49} color={"custom"} />
-                )}
+                <UserAvatar avatar={avatar} />
               </div>
             </div>
             <div className="flex flex-col">
