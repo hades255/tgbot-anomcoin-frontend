@@ -44,6 +44,12 @@ body {
     sans-serif, comicneue-bold, comicneue-light, comic-sans-ms, sf-pro-text;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.body {
+  background-color: black;
+  margin: 0;
   background-image: url("assets/imgs/shutter_1802686768@2x 1.png");
   background-size: cover;
   background-position: bottom;

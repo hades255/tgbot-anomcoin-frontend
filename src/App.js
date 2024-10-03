@@ -12,6 +12,7 @@ import CoinHelper from "./helper/coin";
 
 const Home = lazy(() => import("./pages/Home"));
 const Task = lazy(() => import("./pages/Task"));
+const Frens = lazy(() => import("./pages/Frens"));
 
 function App() {
   const [str, setStr] = useState(null);
@@ -20,7 +21,7 @@ function App() {
 
   useEffect(() => {
     //  todo backbutton
-    // return;
+    return;
     const [backButton] = initBackButton();
     backButton.on("click", () => {
       window.history.back();
@@ -74,6 +75,7 @@ function App() {
                 }
               />
               <Route path="/tasks" element={<Task />} />
+              <Route path="/frens" element={<Frens />} />
             </Routes>
           </Suspense>
         </SoundProvider>

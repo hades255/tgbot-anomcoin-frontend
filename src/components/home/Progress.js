@@ -17,7 +17,7 @@ const Progress = () => {
           ></div>
         </div>
         <div className="-ml-9">
-          <AnomGreyIcon width={74} height={80} />
+          <AnomGreyIcon width={66} height={72} />
         </div>
       </div>
       <div className="flex gap-3">

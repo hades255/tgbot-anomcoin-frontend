@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <div className="fixed top-0 left-0 body w-screen h-screen -z-50"></div>
     <Router>
       <App />
     </Router>
