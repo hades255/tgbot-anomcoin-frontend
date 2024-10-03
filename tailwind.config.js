@@ -19,10 +19,12 @@ module.exports = {
         "utv-btn": "linear-gradient(to bottom, #F93C3C, #A10000)",
         "jewel-btn": "linear-gradient(to bottom, #87E1FF, #00A193)",
         "task-active-tab": "linear-gradient(to bottom, #9AC9FF, #0072F8)",
-        "task-item-icon-bg": "linear-gradient(to bottom right, #FBFBFC, #DBDDE8)",
+        "task-item-icon-bg":
+          "linear-gradient(to bottom right, #FBFBFC, #DBDDE8)",
         "task-item-medal": "linear-gradient(to bottom right, #6D4200, #573400)",
         "task-item-jewel": "linear-gradient(to bottom right, #000000, #003FC6)",
-        "task-claim": "radial-gradient(farthest-corner at 95px -10px, #99D6FF 0%, #14A1FF 100%)",
+        "task-claim":
+          "radial-gradient(farthest-corner at 95px -10px, #99D6FF 0%, #14A1FF 100%)",
       },
       boxShadow: {
         "navbar-item": "inset 0 0 12px 0 #003B8F",
@@ -32,6 +34,40 @@ module.exports = {
         "comicneue-bold": ["comicneue-bold"],
         "comic-sans-ms": ["comic-sans-ms"],
         "sf-pro-text": ["sf-pro-text"],
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        slideOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+        slideUpIn: {
+          "0%": { transform: "translateY(100%)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        slideUpOut: {
+          "0%": { transform: "translateY(0)", opacity: 1 },
+          "100%": { transform: "translateY(100%)", opacity: 0 },
+        },
+        slideDownIn: {
+          "0%": { transform: "translateY(0)", opacity: 0 },
+          "100%": { transform: "translateY(100%)", opacity: 1 },
+        },
+        slideDownOut: {
+          "0%": { transform: "translateY(100%)", opacity: 1 },
+          "100%": { transform: "translateY(0)", opacity: 0 },
+        },
+      },
+      animation: {
+        slideIn: "slideIn 0.3s ease-out forwards",
+        slideOut: "slideOut 0.3s ease-out forwards",
+        slideUpIn: "slideUpIn 0.3s ease-out forwards",
+        slideUpOut: "slideUpOut 0.3s ease-out forwards",
+        slideDownIn: "slideDownIn 0.3s ease-out forwards",
+        slideDownOut: "slideDownOut 0.3s ease-out forwards",
       },
     },
   },

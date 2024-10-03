@@ -27,7 +27,7 @@ const TabBarItem = ({ tab, item, onClick }) => {
   const count = useMemo(() => {
     let ct = 0;
     TASKS[["daily", "ot", "special"][item.tab]].forEach((task) => {
-      if (!tasks[task]) ct++;
+      if (!tasks[task].claim) ct++;
     });
     return ct;
   }, [tasks, item]);
@@ -42,14 +42,6 @@ const TabBarItem = ({ tab, item, onClick }) => {
         </div>
       )}
       <div
-        className={classNames(
-          "absolute z-[1] -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]",
-          { hidden: !count }
-        )}
-      >
-        {count}
-      </div>
-      <div
         onClick={handleClick}
         className={classNames(
           "cursor-pointer w-full rounded-t-xl flex justify-center items-center z-0 pb-1 transition-all",
@@ -60,6 +52,14 @@ const TabBarItem = ({ tab, item, onClick }) => {
         )}
       >
         {item.content}
+      </div>
+      <div
+        className={classNames(
+          "absolute -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]",
+          { hidden: !count }
+        )}
+      >
+        {count}
       </div>
     </div>
   );

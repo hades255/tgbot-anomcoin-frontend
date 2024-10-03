@@ -10,7 +10,7 @@ const CompleteTaskClaimBtn = ({ tab }) => {
     let all = 0;
     TASKS[["daily", "ot", "special"][tab]].forEach((item) => {
       all++;
-      if (tasks[item]) ct++;
+      if (tasks[item].claim) ct++;
     });
     return all === 0 ? 0 : ct / all;
   }, [tasks, tab]);

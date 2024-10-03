@@ -25,7 +25,7 @@ const Task = () => {
           <div className="my-1 flex justify-between items-center">
             <div className="flex items-center">
               <span className="text-white text-[12px] font-sf-pro-text">
-                Complete ALl Daily Task:
+                Complete ALL Daily Task:
               </span>
               <AnomIcon width={35} height={35} />
               <span className="text-white text-[12px] font-sf-pro-text">

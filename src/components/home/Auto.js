@@ -132,7 +132,7 @@ const Auto = ({ auto }) => {
       window.removeEventListener("resize", setCanvasSize);
       cancelAnimationFrame(animationRef.current);
     };
-  }, [dispatch]);
+  }, [dispatch, auto]);
 
   return (
     <canvas

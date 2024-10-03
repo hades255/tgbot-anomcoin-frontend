@@ -1,10 +1,10 @@
 import React from "react";
 
-const UTVIcon = () => {
+const UTVIcon = ({ width = 40, height = 42 }) => {
   return (
     <svg
-      width="40"
-      height="42"
+      width={width}
+      height={height}
       viewBox="0 0 40 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
