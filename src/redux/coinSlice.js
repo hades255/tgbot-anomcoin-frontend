@@ -59,6 +59,26 @@ const coinSlice = createSlice({
         state.point += earned;
       }
     },
+    autoCatcherMove: (state, payload) => {
+      // if (state.unclicked) return;
+      let remaining = [];
+      let diff = [];
+      for (let item of state.coins) {
+        if (
+          Math.abs(payload.payload.x - 50 - item.x) > 60 ||
+          Math.abs(payload.payload.y - 40 - item.y) > 60
+        )
+          remaining.push(item);
+        else diff.push(item);
+      }
+      const earned = diff.length;
+      if (earned) {
+        state.coins = remaining;
+        state.erased = [...state.erased, ...diff];
+        state.progress -= earned;
+        state.point += earned;
+      }
+    },
     progresscounter: (state) => {
       if (state.progress < state.totalprogress) state.progress++;
     },
@@ -108,6 +128,7 @@ export const {
   onMouseUp,
   removeErasedItem,
   pointSender,
+  autoCatcherMove,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

@@ -15,6 +15,14 @@ const Progress = () => {
             className="bg-time-progress-bar h-[16px] rounded-[20px]"
             style={{ width: (progress / totalprogress) * 148 }}
           ></div>
+          <div
+            className="flex justify-center"
+            style={{
+              width: ((totalprogress - progress) / totalprogress) * 148,
+            }}
+          >
+            {progress}
+          </div>
         </div>
         <div className="-ml-9">
           <AnomGreyIcon width={66} height={72} />
