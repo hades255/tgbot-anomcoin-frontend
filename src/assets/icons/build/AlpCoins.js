@@ -1,10 +1,10 @@
 import React from "react";
 
-const AlpCoinsIcon = ({ width, height }) => {
+const AlpCoinsIcon = ({ width=30, height=29 }) => {
   return (
     <svg
-      width="30"
-      height="29"
+    width={width}
+    height={height}
       viewBox="0 0 30 29"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

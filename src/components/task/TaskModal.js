@@ -47,7 +47,7 @@ const TaskModal = ({ task, status, onClose, show }) => {
             ""
           )
         }
-        className={task.bgColor}
+        className={`${task.bgColor} rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
       >
         {show && (
           <div className="my-1 flex flex-col">
