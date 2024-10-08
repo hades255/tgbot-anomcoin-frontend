@@ -25,6 +25,8 @@ module.exports = {
         "task-item-jewel": "linear-gradient(to bottom right, #000000, #003FC6)",
         "task-claim":
           "radial-gradient(farthest-corner at 95px -10px, #99D6FF 0%, #14A1FF 100%)",
+        "frens-invite-one": "linear-gradient(to bottom, #5361F8, #2436FD)",
+        "frens-all-toggle": "linear-gradient(to right, #04C1FF, #0062FF)",
       },
       boxShadow: {
         "navbar-item": "inset 0 0 12px 0 #003B8F",

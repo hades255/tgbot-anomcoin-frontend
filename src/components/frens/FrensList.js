@@ -33,7 +33,7 @@ const FrensList = () => {
   return (
     <div className="mx-8 my-2 flex flex-col">
       <div className="flex justify-between">
-        <div className="rounded-[18px] h-9 bg-telegram-btn flex items-center p-[3px]">
+        <div className="bg-[#1A2B47] rounded-[18px] h-9 flex items-center p-[3px]">
           <TabItem
             active={tab === 0}
             tab={0}
@@ -71,8 +71,8 @@ const TabItem = ({ tab, active, title, onClick }) => {
   return (
     <div
       className={classNames(
-        "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer transition-all",
-        { "px-8 bg-white": active, "px-3 text-white": !active }
+        "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer px-3 transition-all",
+        { "text-white bg-frens-all-toggle": active, "text-[#A8ADB7] bg-transparent": !active }
       )}
       onClick={handleClickTab}
     >
