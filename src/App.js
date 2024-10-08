@@ -11,6 +11,8 @@ import "./App.css";
 import CoinHelper from "./helper/coin";
 
 const Home = lazy(() => import("./pages/Home"));
+const Build = lazy(() => import("./pages/Build"));
+const Me = lazy(() => import("./pages/Me"));
 const Task = lazy(() => import("./pages/Task"));
 const Frens = lazy(() => import("./pages/Frens"));
 
@@ -76,6 +78,8 @@ function App() {
               />
               <Route path="/tasks" element={<Task />} />
               <Route path="/frens" element={<Frens />} />
+              <Route path="/build" element={<Build />} />
+              <Route path="/me" element={<Me />} />
             </Routes>
           </Suspense>
         </SoundProvider>
