@@ -27,7 +27,6 @@ module.exports = {
           "radial-gradient(farthest-corner at 105% -10px, #99D6FF 0%, #14A1FF 100%)",
         "frens-invite-one": "linear-gradient(to bottom, #5361F8, #2436FD)",
         "frens-all-toggle": "linear-gradient(to right, #04C1FF, #0062FF)",
-          "radial-gradient(farthest-corner at 105% -10px, #99D6FF 0%, #14A1FF 100%)",
         "build-item": "linear-gradient(to top, #011A47, #005B97)",
         "modal-close": "radial-gradient(circle at top right, #FF999B, #FF1418, #FF0000)",
       },

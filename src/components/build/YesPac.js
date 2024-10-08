@@ -104,6 +104,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
           "mx-7 bg-telegram-btn rounded-[20px] shadow-xl w-full border-2"
         }
         showClose={level === 0}
+        blur={false}
       >
         {show && (
           <div className="px-2 flex flex-col">
