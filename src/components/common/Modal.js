@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useCallback } from "react";
 
-const Modal = ({ show, onClose, title, children, className }) => {
+const Modal = ({ show, onClose, title, children, className, showClose }) => {
   const handleClickBlur = useCallback(() => onClose(false), [onClose]);
 
   const handleClickBody = useCallback((e) => e.stopPropagation(), []);
@@ -10,7 +10,7 @@ const Modal = ({ show, onClose, title, children, className }) => {
     show && (
       <div
         className={classNames(
-          `fixed inset-0 flex justify-center bg-[#0000005A] z-40 px-1 items-end`,
+          `fixed inset-0 flex justify-center items-end bg-[#0000005A] z-40 px-1`,
           {
             "animate-slideIn": show,
             "animate-slideOut": !show,
@@ -20,7 +20,6 @@ const Modal = ({ show, onClose, title, children, className }) => {
       >
         <div
           className={classNames(
-            "rounded-t-[20px] shadow-xl w-full border-2 border-b-0",
             {
               "animate-slideUpIn": show,
               "animate-slideUpOut": !show,
@@ -36,6 +35,11 @@ const Modal = ({ show, onClose, title, children, className }) => {
           </div>
           <div className="px-4">{children}</div>
         </div>
+        {showClose && (
+          <div className="flex justify-center items-cente h-20">
+            <div className="w-12 h-12 rounded-[24px] bg-modal-close flex justify-center items-center text-white text-bold text-xl cursor-pointer">X</div>
+          </div>
+        )}
       </div>
     )
   );
