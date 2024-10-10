@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import AnomIcon from "../../assets/icons/Anom";
 import { useAuth } from "../../contexts/AuthContext";
 import UserAvatar from "./UserAvatar";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const router = useNavigate();
   const { username, avatar } = useAuth();
   const { point } = useSelector((state) => state.coin);
+
+  const handleClickProfile = useCallback(() => router("/profile"), [router]);
 
   return (
     <div className="bg-home-profile w-full min-h-20 rounded flex justify-center items-center p-[3px]">
       <div className="w-full h-full bg-[#000000EF] px-2 py-[11px]">
-        <div className="flex justify-between">
+        <div className="flex justify-between" onClick={handleClickProfile}>
           <div className="flex">
             <div className="bg-profile-image-border min-w-[50px] w-[50px] h-[50px] flex justify-center items-center rounded-lg mr-3">
               <div className="bg-profile-image w-12 h-12 flex justify-center items-center rounded-[7px] overflow-hidden">

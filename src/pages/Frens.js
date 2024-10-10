@@ -25,7 +25,7 @@ const Frens = () => {
           Extra bonus
         </p>
         <div className="px-8 pb-2 flex overflow-x-visible overflow-y-hidden gap-3">
-          <div className="w-[calc(100vw_-_64px)] min-w-[calc(100vw_-_64px)] rounded-[20px] flex justify-between bg-frens-invite-one shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] py-2 px-6">
+          <div className="w-[calc(100vw_-_64px)] min-w-[calc(100vw_-_64px)] rounded-[20px] flex justify-between bg-discord-btn shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] py-2 px-6">
             <div className="flex items-center">
               <div className="w-12 min-w-12 h-12 min-h-12 rounded mr-3 flex justify-center items-center">
                 <UsersIcon />
@@ -46,7 +46,7 @@ const Frens = () => {
               </div>
             </div>
           </div>
-          <div className="w-[calc(100vw_-_64px)] min-w-[calc(100vw_-_64px)] rounded-[20px] flex justify-between bg-frens-invite-one shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] py-2 px-6">
+          <div className="w-[calc(100vw_-_64px)] min-w-[calc(100vw_-_64px)] rounded-[20px] flex justify-between bg-discord-btn shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] py-2 px-6">
             <div className="flex items-center">
               <div className="w-12 min-w-12 h-12 min-h-12 rounded mr-3 flex justify-center items-center">
                 <UsersIcon />

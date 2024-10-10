@@ -1,10 +1,10 @@
 import React from "react";
 
-const GiftIcon = ({ width, height }) => {
+const GiftIcon = ({ width = 148, height = 137 }) => {
   return (
     <svg
-      width="148"
-      height="137"
+      width={width}
+      height={height}
       viewBox="0 0 148 137"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

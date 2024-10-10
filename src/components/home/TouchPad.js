@@ -12,6 +12,7 @@ import CoinGround from "./CoinGround";
 import ExpireGround from "./ExpireGround";
 import PointSender from "./PointSender";
 import Auto from "./Auto";
+import DailyBooster from "./DailyBooster";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
@@ -96,12 +97,13 @@ const TouchPad = () => {
         <div
           onClick={handleClickAuto}
           className={classNames(
-            "z-10 absolute bottom-0 right-0 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
+            "z-10 absolute bottom-0 right-8 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
             { "bg-white": !auto, "bg-blue-400": auto }
           )}
         >
           A
         </div>
+        <DailyBooster />
       </div>
       <div
         className="w-screen h-screen fixed top-0 left-0"

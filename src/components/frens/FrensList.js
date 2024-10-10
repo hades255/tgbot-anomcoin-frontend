@@ -65,14 +65,18 @@ const FrensList = () => {
 
 export default FrensList;
 
-const TabItem = ({ tab, active, title, onClick }) => {
+export const TabItem = ({ tab, active, title, onClick, className = "" }) => {
   const handleClickTab = useCallback(() => onClick(tab), [onClick, tab]);
 
   return (
     <div
       className={classNames(
         "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer px-3 transition-all",
-        { "text-white bg-frens-all-toggle": active, "text-[#A8ADB7] bg-transparent": !active }
+        {
+          "text-white bg-frens-all-toggle": active,
+          "text-[#A8ADB7] bg-transparent": !active,
+        },
+        className
       )}
       onClick={handleClickTab}
     >
