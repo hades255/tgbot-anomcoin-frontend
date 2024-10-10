@@ -74,7 +74,7 @@ const YesPac = () => {
 export default YesPac;
 
 const YesPacModal = ({ booster, level, onClose, show }) => {
-  const handleClickStart = useCallback(() => {}, [booster]);
+  const handleClickStart = useCallback(() => {}, []);
 
   return (
     <>

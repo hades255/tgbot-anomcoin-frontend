@@ -4,8 +4,7 @@ import Modal from "../common/Modal";
 import AnomIcon from "../../assets/icons/Anom";
 
 const BoosterModal = ({ booster, level, onClose, show }) => {
-
-  const handleClickStart = useCallback(() => {}, [booster]);
+  const handleClickStart = useCallback(() => {}, []);
 
   return (
     <>

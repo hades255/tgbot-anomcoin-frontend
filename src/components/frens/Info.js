@@ -21,7 +21,7 @@ const Info = () => {
             <a
               className="cursor-pointer bg-[#00000080] flex items-center pl-[6px] pr-3 rounded-s-[14px]"
               target="_blank"
-              href="#"
+              href="/"
             >
               <span className="text-black bg-white rounded-[10px] pl-[1px] font-sf-pro-text w-[19px] h-[19px] flex justify-center items-center text-xs mr-1">
                 ?
