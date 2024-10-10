@@ -108,7 +108,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
             <div className="mb-1 mx-4 flex justify-center font-sf-pro-text text-white text-[14px] text-center">
               Own a mining pet to help you get alpcoin automatically
             </div>
-            <div className="border-2 rounded-xl px-4 py-2 bg-[#10B3E8] flex flex-col">
+            <div className="border-2 rounded-xl px-4 py-1 bg-[#10B3E8] flex flex-col">
               <p className="text-[9px] text-white font-sf-pro-text text-center">
                 lv1:
               </p>
@@ -147,14 +147,14 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
               </p>
             </div>
             {booster.coin && (
-              <div className="mt-2 mb-1 flex justify-center items-center">
+              <div className="my-1 flex justify-center items-center">
                 <AnomIcon width={48} height={48} />
                 <span className="font-sf-pro-text text-white text-[24px] font-bold">
                   {formatNumber(booster.coin)} / Lel {level}
                 </span>
               </div>
             )}
-            <div className="mx-2 mb-6 flex justify-center">
+            <div className="mx-2 mb-4 flex justify-center">
               <button
                 onClick={handleClickStart}
                 className="w-full border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[22px] h-[44px] bg-task-claim  shadow-[0_4px_2px_#0000001A,0_4px_2px_#0090FF,0_8px_4px_#00000040] font-sf-pro-text text-white text-[20px] font-bold"
