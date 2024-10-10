@@ -2,6 +2,8 @@ import React, { useCallback, useState } from "react";
 import classNames from "classnames";
 import Modal from "../common/Modal";
 import GiftIcon from "../../assets/icons/invite/Gift";
+import ChestIcon from "../../assets/icons/Chest";
+import FullRecovery from "../../assets/icons/FullRecovery";
 
 const DailyBooster = () => {
   const [show, setShow] = useState(false);
@@ -47,26 +49,36 @@ const BoosterModal = ({ onClose, show }) => {
         blur={false}
       >
         {show && (
-          <div className="p-2 flex flex-col">
-            <div className="flex gap-2 my-4">
-              <div className="h-[74px] bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] w-full flex items-end relative pb-1">
-                <div className="w-full flex flex-col">
-                  <span className="text-center font-sf-pro-text text-[14px] text-white">
-                    Chest
-                  </span>
-                  <span className="text-center font-sf-pro-text text-[12px] text-white">
-                    3/3 Available
-                  </span>
+          <div className="p-2 pt-0 flex flex-col">
+            <div className="flex gap-2 mb-4">
+              <div className="h-24 w-full flex items-end relative">
+                <div className="h-[74px] w-full bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] flex items-end pb-1">
+                  <div className="w-full flex flex-col">
+                    <span className="text-center font-sf-pro-text text-[14px] text-white">
+                      Chest
+                    </span>
+                    <span className="text-center font-sf-pro-text text-[12px] text-white">
+                      3/3 Available
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute top-0 w-full flex justify-center">
+                  <ChestIcon />
                 </div>
               </div>
-              <div className="h-[74px] bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] w-full flex items-end relative pb-1">
-                <div className="w-full flex flex-col">
-                  <span className="text-center font-sf-pro-text text-[14px] text-white">
-                    Full Recovery
-                  </span>
-                  <span className="text-center font-sf-pro-text text-[12px] text-white">
-                    3/3 Available
-                  </span>
+              <div className="h-24 w-full flex items-end relative">
+                <div className="h-[74px] w-full bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] flex items-end pb-1">
+                  <div className="w-full flex flex-col">
+                    <span className="text-center font-sf-pro-text text-[14px] text-white">
+                      Full Recovery
+                    </span>
+                    <span className="text-center font-sf-pro-text text-[12px] text-white">
+                      3/3 Available
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute top-0 w-full flex justify-center">
+                  <FullRecovery />
                 </div>
               </div>
             </div>
@@ -82,11 +94,15 @@ const BoosterModal = ({ onClose, show }) => {
                     Claim Bonus Pack
                   </div>
                   <div className="flex items-center">
-                    <div className="w-[30px] h-[30px] rounded-[4px] bg-task-item-icon-bg mr-2"></div>
+                    <div className="w-[30px] h-[30px] rounded-[4px] bg-task-item-icon-bg mr-2 flex justify-center items-center">
+                      <ChestIcon width={22} height={22} />
+                    </div>
                     <span className="font-sf-pro-text text-[14px] text-white mr-6">
                       +12
                     </span>
-                    <div className="w-[30px] h-[30px] rounded-[4px] bg-task-item-icon-bg mr-2"></div>
+                    <div className="w-[30px] h-[30px] rounded-[4px] bg-task-item-icon-bg mr-2 flex justify-center items-center">
+                      <FullRecovery width={22} height={22} />
+                    </div>
                     <span className="font-sf-pro-text text-[14px] text-white">
                       +6
                     </span>
@@ -94,12 +110,7 @@ const BoosterModal = ({ onClose, show }) => {
                 </div>
               </div>
               <div className="my-2 h-[29px] rounded-[4px] bg-black flex justify-center items-center">
-                <img
-                  src="/icons/star.png"
-                  alt="star"
-                  width={20}
-                  className="mr-2"
-                />
+                ⭐
                 <span className="text-center font-sf-pro-text text-[12px] text-white">
                   9 stars
                 </span>
