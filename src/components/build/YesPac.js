@@ -105,7 +105,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
       >
         {show && (
           <div className="px-2 flex flex-col">
-            <div className="mt-1 mb-3 mx-4 flex justify-center font-sf-pro-text text-white text-[14px] text-center">
+            <div className="mt-1 mb-1 mx-4 flex justify-center font-sf-pro-text text-white text-[14px] text-center">
               Own a mining pet to help you get alpcoin automatically
             </div>
             <div className="border-2 rounded-xl px-4 py-2 bg-[#10B3E8] flex flex-col">
@@ -147,7 +147,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
               </p>
             </div>
             {booster.coin && (
-              <div className="my-4 flex justify-center items-center">
+              <div className="mt-2 mb-1 flex justify-center items-center">
                 <AnomIcon width={48} height={48} />
                 <span className="font-sf-pro-text text-white text-[24px] font-bold">
                   {formatNumber(booster.coin)} / Lel {level}
