@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import AnomIcon from "../../assets/icons/Anom";
 import Doll3Icon from "../../assets/icons/task/Doll3";
-import { useDispatch } from "react-redux";
 import Modal from "../common/Modal";
 import { formatNumber } from "../../helper/func";
 import BoosterModal from "./BoosterModal";
@@ -75,9 +74,7 @@ const YesPac = () => {
 export default YesPac;
 
 const YesPacModal = ({ booster, level, onClose, show }) => {
-  const dispatch = useDispatch();
-
-  const handleClickStart = useCallback(() => {}, [dispatch, booster]);
+  const handleClickStart = useCallback(() => {}, [booster]);
 
   return (
     <>

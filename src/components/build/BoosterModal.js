@@ -1,13 +1,11 @@
 import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
 import { formatNumber } from "../../helper/func";
 import Modal from "../common/Modal";
 import AnomIcon from "../../assets/icons/Anom";
 
 const BoosterModal = ({ booster, level, onClose, show }) => {
-  const dispatch = useDispatch();
 
-  const handleClickStart = useCallback(() => {}, [dispatch, booster]);
+  const handleClickStart = useCallback(() => {}, [booster]);
 
   return (
     <>
