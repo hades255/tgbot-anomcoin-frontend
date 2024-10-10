@@ -47,7 +47,7 @@ const Modal = ({
             </div>
           </div>
           {showClose && (
-            <div className="flex justify-center items-center h-18 mb-4">
+            <div className="flex justify-center items-center h-20 mb-4">
               <div
                 onClick={handleClickBlur}
                 className="w-12 h-[46px] rounded-[24px] bg-modal-close flex justify-center items-center text-white font-bold text-xl cursor-pointer shadow-[0_2px_2px_#0000001A,0_4px_0px_#ad2119] border-t-[1px] border-b-[1px] border-[#ff4346]"
