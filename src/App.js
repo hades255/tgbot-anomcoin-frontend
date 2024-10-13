@@ -16,6 +16,8 @@ const Build = lazy(() => import("./pages/Build"));
 const Me = lazy(() => import("./pages/Me"));
 const Task = lazy(() => import("./pages/Task"));
 const Frens = lazy(() => import("./pages/Frens"));
+const Squad = lazy(() => import("./pages/Squad"));
+const SquadHome = lazy(() => import("./pages/SquadHome"));
 
 function App() {
   const [str, setStr] = useState(null);
@@ -24,7 +26,7 @@ function App() {
 
   useEffect(() => {
     //  todo backbutton
-    // return;
+
     const [backButton] = initBackButton();
     backButton.on("click", () => {
       window.history.back();
@@ -82,6 +84,8 @@ function App() {
               <Route path="/frens" element={<Frens />} />
               <Route path="/build" element={<Build />} />
               <Route path="/me" element={<Me />} />
+              <Route path="/squad" element={<Squad />} />
+              <Route path="/squadhome" element={<SquadHome />} />
             </Routes>
           </Suspense>
         </SoundProvider>
