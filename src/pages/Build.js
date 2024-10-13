@@ -1,8 +1,10 @@
 import React from "react";
 import Boosters from "../components/build/Boosters";
 import RocketIcon from "../assets/icons/build/Rocket";
+import { useSelector } from "react-redux";
 
 const Bulid = () => {
+  const { point } = useSelector((state) => state.coin);
   return (
     <>
       <div className="flex flex-col mb-28">
@@ -13,7 +15,7 @@ const Bulid = () => {
         </div>
         <div className="flex justify-center">
           <span className="pt-2 text-white font-sf-pro-text text-[32px] font-bold">
-            0
+            {point.toLocaleString()}
           </span>
         </div>
         <div className="flex justify-center">

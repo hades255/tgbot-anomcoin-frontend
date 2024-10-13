@@ -14,7 +14,7 @@ const coinSlice = createSlice({
     /** receive from the server */
     progress: 500,
     totalprogress: 500,
-    countperpage: 100,
+    countperpage: 60,
     multiValue: 0,
     coinLimit: 0,
     fillRate: 0,
