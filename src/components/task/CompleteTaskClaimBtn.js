@@ -34,7 +34,7 @@ const CompleteTaskClaimBtn = ({ tab }) => {
       console.log(serverurl);
       (async () => {
         try {
-          const response = await axios.post(serverurl, {
+          await axios.post(serverurl, {
             task: { taskClaim: true },
             point: 10000,
           });

@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import classNames from "classnames";
+import ClaimBoosterPanel from "./ClaimBooster";
 import Modal from "../common/Modal";
 import GiftIcon from "../../assets/icons/invite/Gift";
 import ChestIcon from "../../assets/icons/Chest";
@@ -50,38 +51,7 @@ const BoosterModal = ({ onClose, show }) => {
       >
         {show && (
           <div className="p-2 pt-0 flex flex-col">
-            <div className="flex gap-2 mb-4">
-              <div className="h-24 w-full flex items-end relative">
-                <div className="h-[74px] w-full bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] flex items-end pb-1">
-                  <div className="w-full flex flex-col">
-                    <span className="text-center font-sf-pro-text text-[14px] text-white">
-                      Chest
-                    </span>
-                    <span className="text-center font-sf-pro-text text-[12px] text-white">
-                      3/3 Available
-                    </span>
-                  </div>
-                </div>
-                <div className="absolute top-0 w-full flex justify-center">
-                  <ChestIcon />
-                </div>
-              </div>
-              <div className="h-24 w-full flex items-end relative">
-                <div className="h-[74px] w-full bg-build-item shadow-[0px_12px_4px_0px_#00000040,0px_6px_0px_0px_#001233] rounded-[4px] flex items-end pb-1">
-                  <div className="w-full flex flex-col">
-                    <span className="text-center font-sf-pro-text text-[14px] text-white">
-                      Full Recovery
-                    </span>
-                    <span className="text-center font-sf-pro-text text-[12px] text-white">
-                      3/3 Available
-                    </span>
-                  </div>
-                </div>
-                <div className="absolute top-0 w-full flex justify-center">
-                  <FullRecovery />
-                </div>
-              </div>
-            </div>
+            <ClaimBoosterPanel onClose={onClose} />
             <div className="mb-4 rounded-[4px] bg-medal-btn shadow-[0_6px_0px_#CB7C06,0_12px_4px_#00000040] p-4 flex flex-col">
               <div className="flex items-center">
                 <div className="w-[66px] h-[66px] rounded-[4px] bg-task-item-icon-bg p-1 mr-6">

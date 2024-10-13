@@ -23,7 +23,7 @@ const TouchPad = () => {
       dispatch(
         initSize({
           width: window.innerWidth - 32,
-          height: window.innerHeight - 352,
+          height: window.innerHeight - 336,
         })
       );
     };
@@ -86,7 +86,7 @@ const TouchPad = () => {
 
   return (
     <div className="pt-44 px-2">
-      <div className="h-[calc(100vh_-_332px)] w-full relative">
+      <div className="h-[calc(100vh_-_316px)] w-full relative">
         <CoinGround />
         <ExpireGround />
         {auto && (

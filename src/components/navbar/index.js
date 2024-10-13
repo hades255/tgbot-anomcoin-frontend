@@ -66,7 +66,7 @@ const Navbar = ({ params }) => {
   return (
     <>
       <div className="w-full fixed bottom-0 mx-auto z-30">
-        <div className="flex justify-center h-36 bg-[#0007] px-3 pt-5 gap-3">
+        <div className="flex justify-center h-32 bg-[#0007] px-3 pt-5 gap-3">
           {navbarItems.map((item, index) => (
             <NavbarItem {...item} key={index} active={active === item.url} />
           ))}
