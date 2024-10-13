@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeErasedItem } from "../../redux/coinSlice";
 
-const ExpireItem = ({ coin }) => {
+const ExpireItem = ({ coin, multiValue }) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
@@ -32,7 +32,7 @@ const ExpireItem = ({ coin }) => {
       style={{ position: "absolute", left: coin.x + 25, top: coin.y + 20 }}
     >
       <span className="text-white text-[32px] font-comicneue-bold text-shadow-expire-item">
-        +1
+        +{multiValue + 1}
       </span>
     </div>
   );

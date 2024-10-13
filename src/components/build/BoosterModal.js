@@ -1,10 +1,38 @@
 import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { formatNumber } from "../../helper/func";
 import Modal from "../common/Modal";
+import { BACKEND_PATH } from "../../constants/config";
+import { useAuth } from "../../contexts/AuthContext";
 import AnomIcon from "../../assets/icons/Anom";
+import { setScore, upgradeBooster } from "../../redux/coinSlice";
 
 const BoosterModal = ({ booster, level, onClose, show }) => {
-  const handleClickStart = useCallback(() => {}, []);
+  const { userId } = useAuth();
+  const { point } = useSelector((state) => state.coin);
+  const dispatch = useDispatch();
+
+  const handleClickStart = useCallback(() => {
+    (async () => {
+      try {
+        const response = await axios.post(
+          `${BACKEND_PATH}/user/build?userId=${userId}`,
+          { point: 10000, boosterKey: booster.id }
+        );
+        dispatch(
+          upgradeBooster({
+            boosterKey: response.data.boosterKey,
+            boost: response.data.boost,
+          })
+        );
+        dispatch(setScore(response.data.point));
+        onClose();
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [onClose, booster, userId, dispatch]);
 
   return (
     <>
@@ -42,12 +70,13 @@ const BoosterModal = ({ booster, level, onClose, show }) => {
               <div className="my-1 flex justify-center items-center">
                 <AnomIcon width={48} height={48} />
                 <span className="font-sf-pro-text text-white text-[24px] font-bold">
-                  {formatNumber(booster.coin)} / Lel {level}
+                  {formatNumber(booster.coin)} / Lel {level + 1}
                 </span>
               </div>
             )}
             <div className="mx-2 mt-4 my-10 flex justify-center">
               <button
+                disabled={point < 10000}
                 onClick={handleClickStart}
                 className="w-full border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[22px] h-[44px] bg-task-claim  shadow-[0_4px_2px_#0000001A,0_4px_2px_#0090FF,0_8px_4px_#00000040] font-sf-pro-text text-white text-[20px] font-bold"
               >

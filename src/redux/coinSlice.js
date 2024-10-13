@@ -10,16 +10,26 @@ const coinSlice = createSlice({
     erased: [],
     width: 0,
     height: 0,
+    unclicked: true,
+    /** receive from the server */
     progress: 500,
     totalprogress: 500,
     countperpage: 100,
-    unclicked: true,
+    multiValue: 0,
+    coinLimit: 0,
+    fillRate: 0,
+    yesPac: 0,
+    /** */
   },
   reducers: {
     initCoin: (state, payload) => {
       state.progress = payload.payload.progress;
       state.totalprogress = payload.payload.totalprogress;
       state.countperpage = payload.payload.countperpage;
+      state.multiValue = payload.payload.multiValue;
+      state.coinLimit = payload.payload.coinLimit;
+      state.fillRate = payload.payload.fillRate;
+      state.yesPac = payload.payload.yesPac;
     },
     setScore: (state, payload) => {
       state.point = Math.round(payload.payload);
@@ -35,7 +45,7 @@ const coinSlice = createSlice({
       if (state.width === 0 || state.height === 0) return;
       if (
         state.coins.length <= state.countperpage &&
-        state.coins.length < state.progress
+        state.coins.length * (1 + state.multiValue) < state.progress
       )
         state.coins = [...state.coins, newCoin(state.width, state.height, 7)];
     },
@@ -51,7 +61,7 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
@@ -71,16 +81,13 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
         state.progress -= earned;
         state.point += earned;
       }
-    },
-    progresscounter: (state) => {
-      if (state.progress < state.totalprogress) state.progress++;
     },
     onMouseDown: (state, payload) => {
       state.unclicked = false;
@@ -94,7 +101,7 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
@@ -110,8 +117,18 @@ const coinSlice = createSlice({
         (item) => item.key !== payload.payload
       );
     },
+    fullRecovery: (state) => {
+      state.progress = state.totalprogress;
+    },
+    progresscounter: (state) => {
+      if (state.progress < state.totalprogress)
+        state.progress += 1 + state.fillRate;
+    },
     pointSender: (state, payload) => {
       sendPoint(state.point, state.progress, payload.payload);
+    },
+    upgradeBooster: (state, payload) => {
+      state[payload.payload.boosterKey] = payload.payload.boost;
     },
   },
 });
@@ -129,6 +146,8 @@ export const {
   removeErasedItem,
   pointSender,
   autoCatcherMove,
+  fullRecovery,
+  upgradeBooster,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

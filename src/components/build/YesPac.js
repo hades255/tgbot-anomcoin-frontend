@@ -4,9 +4,14 @@ import Doll3Icon from "../../assets/icons/task/Doll3";
 import Modal from "../common/Modal";
 import { formatNumber } from "../../helper/func";
 import BoosterModal from "./BoosterModal";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { BACKEND_PATH } from "../../constants/config";
+import { useAuth } from "../../contexts/AuthContext";
+import { setScore, upgradeBooster } from "../../redux/coinSlice";
 
 const YesPac = () => {
-  const level = 0;
+  const level = useSelector((state) => state.coin.yesPac);
   const booster = useMemo(
     () => ({
       id: "yesPac",
@@ -32,7 +37,7 @@ const YesPac = () => {
         onClick={handleClick}
       >
         <div className="flex items-center">
-          <div className="w-10 min-w-10 h-10 min-h-10 bg-[#D9D9D9] rounded mr-3 flex justify-center items-center">
+          <div className="w-10 min-w-10 h-10 min-h-10 bg-white rounded mr-3 flex justify-center items-center">
             <Doll3Icon />
           </div>
           <div className="flex flex-col">
@@ -41,14 +46,27 @@ const YesPac = () => {
             </div>
             <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
               <AnomIcon />
-              200 / Lel 1
+              200 / Lel {level + 1}
             </div>
           </div>
         </div>
         <div className="w-20 h-[60px] flex justify-center items-center">
-          <button className="w-20 h-7 bg-task-claim rounded-lg text-white text-xs font-sf-pro-text font-semibold border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] shadow-[0_4px_0px_#0090FF]">
-            Buy
-          </button>
+          {level === 0 ? (
+            <button className="w-20 h-7 bg-task-claim rounded-lg text-white text-xs font-sf-pro-text font-semibold border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] shadow-[0_4px_0px_#0090FF]">
+              Buy
+            </button>
+          ) : (
+            <div className="flex flex-col">
+              <div className="flex justify-center mb-2">
+                <button className="w-12 h-5 bg-task-claim rounded-lg text-white text-xs font-sf-pro-text font-semibold border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] shadow-[0_4px_0px_#0090FF]">
+                  On
+                </button>
+              </div>
+              <div className="flex justify-center text-black text-xs font-sf-pro-text font-semibold border px-2 bg-[#FFFF00]">
+                Level Up
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {show &&
@@ -57,14 +75,14 @@ const YesPac = () => {
             show={show}
             booster={booster}
             onClose={handleClose}
-            level={0}
+            level={level}
           />
         ) : (
           <BoosterModal
             show={show}
             booster={booster}
             onClose={handleClose}
-            level={0}
+            level={level}
           />
         ))}
     </>
@@ -74,7 +92,30 @@ const YesPac = () => {
 export default YesPac;
 
 const YesPacModal = ({ booster, level, onClose, show }) => {
-  const handleClickStart = useCallback(() => {}, []);
+  const { userId } = useAuth();
+  const { point } = useSelector((state) => state.coin);
+  const dispatch = useDispatch();
+
+  const handleClickStart = useCallback(() => {
+    (async () => {
+      try {
+        const response = await axios.post(
+          `${BACKEND_PATH}/user/build?userId=${userId}`,
+          { point: 10000, boosterKey: booster.id }
+        );
+        dispatch(
+          upgradeBooster({
+            boosterKey: response.data.boosterKey,
+            boost: response.data.boost,
+          })
+        );
+        dispatch(setScore(response.data.point));
+        onClose();
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [onClose, booster, userId, dispatch]);
 
   return (
     <>
@@ -156,6 +197,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
             )}
             <div className="mx-2 mb-4 flex justify-center">
               <button
+                disabled={point < 10000}
                 onClick={handleClickStart}
                 className="w-full border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[22px] h-[44px] bg-task-claim  shadow-[0_4px_2px_#0000001A,0_4px_2px_#0090FF,0_8px_4px_#00000040] font-sf-pro-text text-white text-[20px] font-bold"
               >

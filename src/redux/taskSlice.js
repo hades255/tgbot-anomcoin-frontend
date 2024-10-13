@@ -7,6 +7,8 @@ const taskSlice = createSlice({
     reactTelegram: { start: false, check: false, claim: false }, //  daily
     reactDiscord: { start: false, check: false, claim: false }, //  daily
     dailyClaim: { start: false, check: false, claim: false }, //  daily
+    boostChest: 3,
+    boostRecovery: 3,
     taskAnnouncementRTPost: { start: false, check: false, claim: false },
     taskYesKeeper: { start: false, check: false, claim: false },
     taskYesUniverseRTPost: { start: false, check: false, claim: false },
@@ -19,6 +21,8 @@ const taskSlice = createSlice({
       state.reactTelegram.claim = payload.payload.reactTelegram;
       state.reactDiscord.claim = payload.payload.reactDiscord;
       state.dailyClaim = payload.payload.dailyClaim;
+      state.boostChest = payload.payload.boostChest;
+      state.boostRecovery = payload.payload.boostRecovery;
     },
     initOTTask: (state, payload) => {
       state.taskAnnouncementRTPost.claim =
@@ -33,8 +37,12 @@ const taskSlice = createSlice({
       state[payload.payload.key][payload.payload.subkey] =
         payload.payload.value;
     },
+    updateBoost: (state, payload) => {
+      state[payload.payload.key] = payload.payload.value;
+    },
   },
 });
 
-export const { initTask, initOTTask, updateTask } = taskSlice.actions;
+export const { initTask, initOTTask, updateTask, updateBoost } =
+  taskSlice.actions;
 export default taskSlice.reducer;
