@@ -24,7 +24,6 @@ export default Boosters;
 const BoosterItem = ({ booster }) => {
   const [show, setShow] = useState(false);
   const level = useSelector((state) => state.coin[booster.id]);
-  console.log(level)
 
   const handleClick = useCallback(() => setShow(true), []);
 

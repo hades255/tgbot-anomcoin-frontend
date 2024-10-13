@@ -45,7 +45,7 @@ const coinSlice = createSlice({
       if (state.width === 0 || state.height === 0) return;
       if (
         state.coins.length <= state.countperpage &&
-        state.coins.length * state.multiValue < state.progress
+        state.coins.length * (1 + state.multiValue) < state.progress
       )
         state.coins = [...state.coins, newCoin(state.width, state.height, 7)];
     },

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   earnCoin,
   initSize,
@@ -16,6 +16,7 @@ import DailyBooster from "./DailyBooster";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
+  const { yesPac } = useSelector((state) => state.coin);
   const [auto, setAuto] = useState(false);
 
   useEffect(() => {
@@ -82,7 +83,10 @@ const TouchPad = () => {
 
   const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
-  const handleClickAuto = useCallback(() => setAuto(!auto), [auto]);
+  const handleClickAuto = useCallback(() => {
+    if (yesPac === 0) setAuto(false);
+    else setAuto(!auto);
+  }, [auto, yesPac]);
 
   return (
     <div className="pt-44 px-2">
@@ -98,7 +102,7 @@ const TouchPad = () => {
           onClick={handleClickAuto}
           className={classNames(
             "z-10 absolute bottom-0 right-8 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
-            { "bg-white": !auto, "bg-blue-400": auto }
+            { "bg-white": !auto, "bg-blue-400": auto, "bg-black": yesPac === 0 }
           )}
         >
           A
