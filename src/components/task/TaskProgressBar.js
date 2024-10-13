@@ -6,9 +6,8 @@ const TaskProgressBar = ({ tab }) => {
   const tasks = useSelector((state) => state.task);
   const percent = useMemo(() => {
     let ct = 0;
-    let all = 0;
+    const all = TASKS[["daily", "ot", "special"][tab]].length || 0;
     TASKS[["daily", "ot", "special"][tab]].forEach((item) => {
-      all++;
       if (tasks[item].claim) ct++;
     });
     return all === 0 ? 0 : ct / all;

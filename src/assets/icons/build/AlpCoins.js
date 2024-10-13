@@ -1,10 +1,10 @@
 import React from "react";
 
-const AlpCoinsIcon = ({ width=30, height=29 }) => {
+const AlpCoinsIcon = ({ width = 30, height = 29 }) => {
   return (
     <svg
-    width={width}
-    height={height}
+      width={width}
+      height={height}
       viewBox="0 0 30 29"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       />
       <mask
         id="mask0_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="12"
         y="13"
@@ -61,7 +61,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
         d="M20.6603 19.6739C25.2807 19.6739 29.0263 17.0722 29.0263 13.8628C29.0263 10.6534 25.2807 8.0517 20.6603 8.0517C16.0399 8.0517 12.2943 10.6534 12.2943 13.8628C12.2943 17.0722 16.0399 19.6739 20.6603 19.6739Z"
         fill="url(#paint8_linear_0_1)"
       />
-      <g style={{ "mix-blend-mode": "multiply" }} opacity="0.2">
+      <g style={{ mixBlendMode: "multiply" }} opacity="0.2">
         <path
           d="M20.6602 18.3855C24.6054 18.3855 27.8037 16.2624 27.8037 13.6434C27.8037 11.0243 24.6054 8.90121 20.6602 8.90121C16.715 8.90121 13.5168 11.0243 13.5168 13.6434C13.5168 16.2624 16.715 18.3855 20.6602 18.3855Z"
           fill="#001D5B"
@@ -69,7 +69,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       </g>
       <mask
         id="mask1_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="13"
         y="8"
@@ -114,7 +114,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       />
       <mask
         id="mask2_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="1"
         y="20"
@@ -160,7 +160,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
         d="M9.53105 26.3178C14.179 26.2951 17.9341 23.6598 17.9183 20.4316C17.9025 17.2033 14.1218 14.6047 9.47382 14.6274C4.82588 14.6501 1.0708 17.2855 1.0866 20.5137C1.1024 23.7419 4.88311 26.3405 9.53105 26.3178Z"
         fill="url(#paint17_linear_0_1)"
       />
-      <g style={{ "mix-blend-mode": "multiply" }} opacity="0.2">
+      <g style={{ mixBlendMode: "multiply" }} opacity="0.2">
         <path
           d="M9.52477 25.0224C13.4934 25.0031 16.7001 22.8516 16.6872 20.2169C16.6743 17.5822 13.4467 15.4621 9.47807 15.4815C5.50944 15.5008 2.30269 17.6523 2.31559 20.287C2.32849 22.9217 5.55615 25.0418 9.52477 25.0224Z"
           fill="#001D5B"
@@ -168,7 +168,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       </g>
       <mask
         id="mask3_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="2"
         y="15"
@@ -213,7 +213,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       />
       <mask
         id="mask4_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="2"
         y="5"
@@ -259,7 +259,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
         d="M12.0729 13.7836C16.4122 12.1993 19.0346 8.47159 17.9303 5.45748C16.8259 2.44337 12.4129 1.28426 8.07362 2.86854C3.73431 4.45281 1.11189 8.18054 2.21626 11.1946C3.32064 14.2088 7.73361 15.3679 12.0729 13.7836Z"
         fill="url(#paint26_linear_0_1)"
       />
-      <g style={{ "mix-blend-mode": "multiply" }} opacity="0.2">
+      <g style={{ mixBlendMode: "multiply" }} opacity="0.2">
         <path
           d="M11.6298 12.574C15.3349 11.2213 17.608 8.13069 16.7068 5.67103C15.8055 3.21137 12.0713 2.31404 8.36614 3.66679C4.66098 5.01954 2.38794 8.11011 3.28916 10.5698C4.19039 13.0294 7.92461 13.9268 11.6298 12.574Z"
           fill="#001D5B"
@@ -267,7 +267,7 @@ const AlpCoinsIcon = ({ width=30, height=29 }) => {
       </g>
       <mask
         id="mask5_0_1"
-        style={{ "mask-type": "luminance" }}
+        style={{ maskType: "luminance" }}
         maskUnits="userSpaceOnUse"
         x="3"
         y="3"

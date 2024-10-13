@@ -11,7 +11,7 @@ const CoinHelper = () => {
     };
     const cointimer = setInterval(() => {
       cointimerFunc();
-    }, 100);
+    }, 50);
     const progresstimerFunc = () => {
       dispatch(progresscounter());
     };

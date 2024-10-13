@@ -35,7 +35,8 @@ const DailyTaskItem = ({ task, category = "daily" }) => {
         (async () => {
           try {
             const response = await axios.post(serverurl, {
-              [param]: true,
+              task: { [param]: true },
+              point: 10000,
             });
             if (response.data && response.data.data)
               dispatch(setScore(response.data.data));

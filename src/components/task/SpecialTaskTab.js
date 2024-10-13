@@ -10,7 +10,7 @@ const SpecialTaskTab = () => {
           Yes Headlines
         </div>
         {dailyTasks.map((item) => (
-          <DailyTaskItem key={item.id} task={item} />
+          <DailyTaskItem key={item.id} task={item} category="special" />
         ))}
         <div className="text-white text-[16px] font-sf-pro-text pt-2">
           Yes Questing
