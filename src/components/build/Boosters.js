@@ -4,15 +4,14 @@ import RightArrowCircleGlowIcon from "../../assets/icons/task/RightArrowCircleGl
 import { BOOSTERS } from "../../constants/constants";
 import BoosterModal from "./BoosterModal";
 import YesPac from "./YesPac";
+import { useSelector } from "react-redux";
 
 const Boosters = () => {
   return (
     <>
       <div className="px-8 flex flex-col gap-3">
         {BOOSTERS.map((item) => (
-          <BoosterItem key={item.id} booster={item}>
-            <RightArrowCircleGlowIcon />
-          </BoosterItem>
+          <BoosterItem key={item.id} booster={item} />
         ))}
         <YesPac />
       </div>
@@ -22,8 +21,10 @@ const Boosters = () => {
 
 export default Boosters;
 
-const BoosterItem = ({ booster, children }) => {
+const BoosterItem = ({ booster }) => {
   const [show, setShow] = useState(false);
+  const level = useSelector((state) => state.coin[booster.id]);
+  console.log(level)
 
   const handleClick = useCallback(() => setShow(true), []);
 
@@ -36,7 +37,7 @@ const BoosterItem = ({ booster, children }) => {
         onClick={handleClick}
       >
         <div className="flex items-center">
-          <div className="w-10 min-w-10 h-10 min-h-10 bg-[#D9D9D9] rounded mr-3 flex justify-center items-center">
+          <div className="w-10 min-w-10 h-10 min-h-10 bg-white rounded mr-3 flex justify-center items-center">
             {booster.icon && booster.icon()}
           </div>
           <div className="flex flex-col">
@@ -45,12 +46,12 @@ const BoosterItem = ({ booster, children }) => {
             </div>
             <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
               <AnomIcon />
-              {booster.coin} / Lel 1
+              {booster.coin} / Lel {level + 1}
             </div>
           </div>
         </div>
         <div className="w-20 h-[60px] flex justify-center items-center">
-          {children}
+          <RightArrowCircleGlowIcon />
         </div>
       </div>
       {show && (
@@ -58,7 +59,7 @@ const BoosterItem = ({ booster, children }) => {
           show={show}
           booster={booster}
           onClose={handleClose}
-          level={0}
+          level={level}
         />
       )}
     </>

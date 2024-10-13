@@ -203,8 +203,8 @@ export const BOOSTERS = [
     subcontent: "increase total coin Limit +1 for the next level",
   },
   {
-    id: "fullRate",
-    title: "Full Rate",
+    id: "fillRate",
+    title: "Fill Rate",
     icon: (width, height) => <LighteningIcon width={width} height={height} />,
     coin: 200,
     subcontent: "increase coin fill speed +1/sec for each level",

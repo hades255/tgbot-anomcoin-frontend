@@ -1,10 +1,10 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import { initBackButton } from "@telegram-apps/sdk";
 
 import store from "./redux/store";
-import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { SoundProvider } from "./contexts/SoundContext";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";

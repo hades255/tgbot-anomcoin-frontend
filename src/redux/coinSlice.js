@@ -45,7 +45,7 @@ const coinSlice = createSlice({
       if (state.width === 0 || state.height === 0) return;
       if (
         state.coins.length <= state.countperpage &&
-        state.coins.length < state.progress
+        state.coins.length * state.multiValue < state.progress
       )
         state.coins = [...state.coins, newCoin(state.width, state.height, 7)];
     },
@@ -61,12 +61,12 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
         state.progress -= earned;
-        state.point += earned + state.multiValue;
+        state.point += earned;
       }
     },
     autoCatcherMove: (state, payload) => {
@@ -81,12 +81,12 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
         state.progress -= earned;
-        state.point += earned + state.multiValue;
+        state.point += earned;
       }
     },
     onMouseDown: (state, payload) => {
@@ -101,12 +101,12 @@ const coinSlice = createSlice({
           remaining.push(item);
         else diff.push(item);
       }
-      const earned = diff.length;
+      const earned = diff.length * (1 + state.multiValue);
       if (earned) {
         state.coins = remaining;
         state.erased = [...state.erased, ...diff];
         state.progress -= earned;
-        state.point += earned + state.multiValue;
+        state.point += earned;
       }
     },
     onMouseUp: (state) => {
@@ -127,6 +127,9 @@ const coinSlice = createSlice({
     pointSender: (state, payload) => {
       sendPoint(state.point, state.progress, payload.payload);
     },
+    upgradeBooster: (state, payload) => {
+      state[payload.payload.boosterKey] = payload.payload.boost;
+    },
   },
 });
 
@@ -144,6 +147,7 @@ export const {
   pointSender,
   autoCatcherMove,
   fullRecovery,
+  upgradeBooster,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

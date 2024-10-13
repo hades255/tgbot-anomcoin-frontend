@@ -32,7 +32,7 @@ const YesPac = () => {
         onClick={handleClick}
       >
         <div className="flex items-center">
-          <div className="w-10 min-w-10 h-10 min-h-10 bg-[#D9D9D9] rounded mr-3 flex justify-center items-center">
+          <div className="w-10 min-w-10 h-10 min-h-10 bg-white rounded mr-3 flex justify-center items-center">
             <Doll3Icon />
           </div>
           <div className="flex flex-col">
