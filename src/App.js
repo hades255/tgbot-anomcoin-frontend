@@ -1,10 +1,10 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { Route, Routes, useLocation,  } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import { initBackButton } from "@telegram-apps/sdk";
 
 import store from "./redux/store";
-import { AuthProvider,  } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { SoundProvider } from "./contexts/SoundContext";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     //  todo backbutton
-    return;
+    // return;
     const [backButton] = initBackButton();
     backButton.on("click", () => {
       window.history.back();
