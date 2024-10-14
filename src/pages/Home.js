@@ -4,7 +4,7 @@ import Progress from "../components/home/Progress";
 import TouchPad from "../components/home/TouchPad";
 import Navbar from "../components/navbar";
 
-const Home = ({params}) => {
+const Home = ({ params }) => {
   return (
     <>
       <div>
