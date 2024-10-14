@@ -6,14 +6,15 @@ const taskSlice = createSlice({
     reactTwitter: { start: false, check: false, claim: false }, //  daily
     reactTelegram: { start: false, check: false, claim: false }, //  daily
     reactDiscord: { start: false, check: false, claim: false }, //  daily
-    dailyClaim: { start: false, check: false, claim: false }, //  daily
+    dailyClaim: false, //  daily
     boostChest: 3,
     boostRecovery: 3,
     taskAnnouncementRTPost: { start: false, check: false, claim: false },
     taskYesKeeper: { start: false, check: false, claim: false },
     taskYesUniverseRTPost: { start: false, check: false, claim: false },
     taskYesUniverseRTPost_: { start: false, check: false, claim: false },
-    taskClaim: { start: false, check: false, claim: false },
+    taskClaim: false,
+    specialClaim: false,
   },
   reducers: {
     initTask: (state, payload) => {
@@ -32,6 +33,7 @@ const taskSlice = createSlice({
       state.taskYesUniverseRTPost_.claim =
         payload.payload.taskYesUniverseRTPost_;
       state.taskClaim = payload.payload.taskClaim;
+      state.specialClaim = payload.payload.specialClaim;
     },
     updateTask: (state, payload) => {
       state[payload.payload.key][payload.payload.subkey] =

@@ -1,16 +1,21 @@
 import React, { useCallback, useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TASKS } from "../../constants/constants";
 import classNames from "classnames";
 import { useAuth } from "../../contexts/AuthContext";
 import { BACKEND_PATH } from "../../constants/config";
 import axios from "axios";
+import { setScore } from "../../redux/coinSlice";
 
 const CompleteTaskClaimBtn = ({ tab }) => {
+  const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task);
-  const taskClaim = useSelector((state) => state.task.taskClaim);
-
   const { userId } = useAuth();
+
+  const taskClaim = useMemo(
+    () => ["dailyClaim", "taskClaim", "specialClaim"][tab],
+    [tab]
+  );
 
   const percent = useMemo(() => {
     let ct = 0;
@@ -34,24 +39,23 @@ const CompleteTaskClaimBtn = ({ tab }) => {
       console.log(serverurl);
       (async () => {
         try {
-          await axios.post(serverurl, {
-            task: { taskClaim: true },
-            point: 10000,
+          const response = await axios.post(serverurl, {
+            task: { [taskClaim]: true },
+            point: 50000,
           });
-          // if (response.data && response.data.data)
-          // dispatch(setScore(response.data.data));
-          // dispatch(updateTask({ key: param, subkey: "claim", value: true }));
+          if (response.data && response.data.data)
+            dispatch(setScore(response.data.data));
         } catch (error) {
           console.log(error);
         }
       })();
     }
-  }, [percent, serverurl]);
+  }, [percent, serverurl, dispatch, taskClaim]);
 
   return (
     <>
       <button
-        disabled={percent !== 1 || taskClaim}
+        disabled={percent !== 1 || tasks[taskClaim]}
         onClick={handleClick}
         className={classNames(
           "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-[91px] h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text",

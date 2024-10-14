@@ -4,13 +4,17 @@ import { useSelector } from "react-redux";
 import LeafIcon from "../../assets/icons/Leaf";
 import AnomGreyIcon from "../../assets/icons/AnomGrey";
 import GreenEnergyIcon from "../../assets/icons/GreenEnergy";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Progress = () => {
-  const { progress, totalprogress } = useSelector((state) => state.coin);
   const navigate = useNavigate();
+
+  const { squad } = useAuth();
+  const { progress, totalprogress } = useSelector((state) => state.coin);
+
   const handleClick = useCallback(() => {
-    navigate("/squad");
-  }, [navigate]);
+    navigate(squad ? "/squadhome" : "/squad");
+  }, [navigate, squad]);
 
   return (
     <div className="flex items-center justify-between mt-1">
