@@ -20,6 +20,7 @@ const coinSlice = createSlice({
     fillRate: 0,
     yesPac: 0,
     /** */
+    airdrop: false,
   },
   reducers: {
     initCoin: (state, payload) => {
@@ -109,6 +110,10 @@ const coinSlice = createSlice({
         state.point += earned;
       }
     },
+    earnAirdrop: (state, payload) => {
+      state.point += payload.payload.length * (1 + state.multiValue) * 2;
+      state.erased = [...state.erased, ...payload.payload];
+    },
     onMouseUp: (state) => {
       state.unclicked = true;
     },
@@ -130,6 +135,12 @@ const coinSlice = createSlice({
     upgradeBooster: (state, payload) => {
       state[payload.payload.boosterKey] = payload.payload.boost;
     },
+    startAirdrop: (state) => {
+      state.airdrop = true;
+    },
+    stopAirdrop: (state) => {
+      state.airdrop = false;
+    },
   },
 });
 
@@ -148,6 +159,9 @@ export const {
   autoCatcherMove,
   fullRecovery,
   upgradeBooster,
+  earnAirdrop,
+  startAirdrop,
+  stopAirdrop,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

@@ -29,10 +29,14 @@ const ExpireItem = ({ coin, multiValue }) => {
       className={`no-select ${
         visible ? "expireitem-hidden" : "expireitem-visible"
       }`}
-      style={{ position: "absolute", left: coin.x + 25, top: coin.y + 20 }}
+      style={{
+        position: "absolute",
+        left: coin.x + 25,
+        top: coin.type === "airdrop" ? coin.y + 40 : coin.y + 192,
+      }}
     >
       <span className="text-white text-[32px] font-comicneue-bold text-shadow-expire-item">
-        +{multiValue + 1}
+        +{coin.type === "airdrop" ? (multiValue + 1) * 2 : multiValue + 1}
       </span>
     </div>
   );

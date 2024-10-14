@@ -50,7 +50,7 @@ body {
 .body {
   background-color: black;
   margin: 0;
-  background-image: url("assets/imgs/shutter_1802686768@2x 1.png");
+  background-image: url("assets/imgs/background.png");
   background-size: cover;
   background-position: bottom;
   transition: background-image 0.5s ease-in-out;

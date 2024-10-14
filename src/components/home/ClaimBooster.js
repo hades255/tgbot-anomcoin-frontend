@@ -7,7 +7,7 @@ import { updateBoost } from "../../redux/taskSlice";
 import { BACKEND_PATH } from "../../constants/config";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
-import { fullRecovery } from "../../redux/coinSlice";
+import { fullRecovery, startAirdrop, stopAirdrop } from "../../redux/coinSlice";
 
 const ClaimBooster = ({ title, icon, remain, onClose, taskKey }) => {
   const dispatch = useDispatch();
@@ -25,6 +25,12 @@ const ClaimBooster = ({ title, icon, remain, onClose, taskKey }) => {
           );
           dispatch(updateBoost({ key: taskKey, value: response.data.count }));
           if (taskKey === "boostRecovery") dispatch(fullRecovery());
+          else if (taskKey === "boostChest") {
+            dispatch(startAirdrop());
+            setTimeout(() => {
+              dispatch(stopAirdrop());
+            }, 10000);
+          }
           onClose();
         } catch (error) {
           console.log(error);

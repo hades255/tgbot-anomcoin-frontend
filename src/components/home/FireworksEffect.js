@@ -25,7 +25,7 @@ const FireworksEffect = () => {
       y: null,
     };
 
-    canvas.addEventListener("mousemove", (event) => {
+    window.addEventListener("mousemove", (event) => {
       mouse.x = event.x - rect.left;
       mouse.y = event.y - rect.top;
       for (let i = 0; i < 8; i++) {
@@ -33,7 +33,7 @@ const FireworksEffect = () => {
       }
     });
 
-    canvas.addEventListener("touchmove", (event) => {
+    window.addEventListener("touchmove", (event) => {
       mouse.x = event.touches[0].clientX - rect.left;
       mouse.y = event.touches[0].clientY - rect.top;
       for (let i = 0; i < 8; i++) {
@@ -95,10 +95,16 @@ const FireworksEffect = () => {
 
     return () => {
       window.removeEventListener("resize", setCanvasSize);
+      window.removeEventListener("mousemove", () => {});
+      window.removeEventListener("touchmove", () => {});
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ display: "block" }} />;
+  return (
+    <div className="w-screen h-screen fixed top-0 left-0">
+      <canvas ref={canvasRef} style={{ display: "block" }} />
+    </div>
+  );
 };
 
 export default FireworksEffect;

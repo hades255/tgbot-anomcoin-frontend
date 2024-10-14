@@ -13,10 +13,12 @@ import ExpireGround from "./ExpireGround";
 import PointSender from "./PointSender";
 import Auto from "./Auto";
 import DailyBooster from "./DailyBooster";
+import AirDrop from "./airdrop";
+import Background from "./airdrop/Background";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
-  const { yesPac } = useSelector((state) => state.coin);
+  const { yesPac, airdrop } = useSelector((state) => state.coin);
   const [auto, setAuto] = useState(false);
 
   useEffect(() => {
@@ -89,39 +91,50 @@ const TouchPad = () => {
   }, [auto, yesPac]);
 
   return (
-    <div className="pt-44 px-2">
-      <div className="h-[calc(100vh_-_316px)] w-full relative">
-        <CoinGround />
-        <ExpireGround />
-        {auto && (
-          <div className="w-full h-full">
-            <Auto auto={auto} />
+    <>
+      {airdrop && <Background />}
+      <FireworksEffect />
+      {!airdrop && (
+        <>
+          <div className="pt-44 px-2">
+            <div className="h-[calc(100vh_-_316px)] w-full relative">
+              <CoinGround />
+              {auto && (
+                <div className="w-full h-full">
+                  <Auto auto={auto} />
+                </div>
+              )}
+              <div
+                onClick={handleClickAuto}
+                className={classNames(
+                  "z-10 absolute bottom-0 right-8 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
+                  {
+                    "bg-white": !auto,
+                    "bg-blue-400": auto,
+                    "bg-black": yesPac === 0,
+                  }
+                )}
+              >
+                A
+              </div>
+              <DailyBooster />
+            </div>
           </div>
-        )}
-        <div
-          onClick={handleClickAuto}
-          className={classNames(
-            "z-10 absolute bottom-0 right-8 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
-            { "bg-white": !auto, "bg-blue-400": auto, "bg-black": yesPac === 0 }
-          )}
-        >
-          A
-        </div>
-        <DailyBooster />
-      </div>
-      <div
-        className="w-screen h-screen fixed top-0 left-0"
-        onMouseMove={handleMouseMove}
-        // onMouseDown={handleMouseDown}
-        // onMouseUp={handleMouseUp}
-        onTouchMove={handleTouchMove}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <FireworksEffect />
-      </div>
+          <div
+            className="w-screen h-screen fixed top-0 left-0"
+            onMouseMove={handleMouseMove}
+            // onMouseDown={handleMouseDown}
+            // onMouseUp={handleMouseUp}
+            onTouchMove={handleTouchMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          />
+        </>
+      )}
+      <ExpireGround />
+      {airdrop && <AirDrop />}
       <PointSender />
-    </div>
+    </>
   );
 };
 
