@@ -1,18 +1,44 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
 import AnomIcon from "../assets/icons/Anom";
 import RightArrowCircleIcon from "../assets/icons/task/RightArrowCircle";
 import Modal from "../components/common/Modal";
 import UsersIcon from "../assets/icons/invite/Users";
-
+import axios from "axios";
+import { BACKEND_PATH } from "../constants/config";
 const Squad = () => {
   const [show, setShow] = useState(false);
   const [showSquad, setShowSquad] = useState(false);
-
-  const handleClick = useCallback(() => {
+  const [squad, setSquad] = useState([]);
+  const [newsquad, setNewsquad] = useState("");
+  const handleClick = useCallback((id) => {
     setShow(true);
   }, []);
-
+  const OnSquadData = (id) => {
+    (async () => {
+      try {
+        const response = await axios.get(`${BACKEND_PATH}/squad/${id}`);
+        console.log(response);
+        setShow(true);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+  const OnJoinSquad = useCallback(() => {
+    (async () => {
+      try {
+        const response = await axios.post(`${BACKEND_PATH}/squad/`, {
+          name: newsquad,
+          url: newsquad,
+        });
+        getSquads();
+        setShowSquad(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [newsquad, setShowSquad]);
   const handleClickSquad = useCallback(() => {
     setShowSquad(true);
   }, []);
@@ -24,7 +50,25 @@ const Squad = () => {
   const handleClose = useCallback(() => {
     setShow(false);
   }, []);
+  const getSquads = useCallback(() => {
+    (async () => {
+      try {
+        const response = await axios.get(`${BACKEND_PATH}/squad/`);
+        console.log(response.data);
+        setSquad(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
+  useEffect(() => {
+    getSquads();
+  }, [getSquads]);
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setNewsquad(event.target.value);
+  };
   return (
     <>
       <div className="flex flex-col mb-28">
@@ -71,45 +115,29 @@ const Squad = () => {
         </div>
         <div className="flex mx-8 mt-3">
           <div className="w-full h-full border-2 border-white rounded-[20px] flex flex-col bg-telegram-btn shadow-[0_6px_0px_#0090FF]">
-            <div
-              className={classNames(
-                "my-2 rounded pl-5 pr-2 flex justify-between items-center cursor-pointer"
-              )}
-              onClick={handleClick}
-            >
-              <div className="flex items-center">
-                <div className="flex flex-col">
+            {squad &&
+              squad.map((item) => (
+                <div
+                  className={classNames(
+                    "my-2 rounded pl-5 pr-2 flex justify-between items-center cursor-pointer"
+                  )}
+                  onClick={() => OnSquadData(item._id)}
+                >
                   <div className="flex items-center">
-                    <AnomIcon width={35} height={35} />
-                    <span className="text-white text-[16px] font-sf-pro-text">
-                      Yescoin
-                    </span>
+                    <div className="flex flex-col">
+                      <div className="flex items-center">
+                        <AnomIcon width={35} height={35} />
+                        <span className="text-white text-[16px] font-sf-pro-text">
+                          {item.name}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-16 h-[30px] flex justify-center items-center">
+                    <RightArrowCircleIcon />
                   </div>
                 </div>
-              </div>
-              <div className="w-16 h-[30px] flex justify-center items-center">
-                <RightArrowCircleIcon />
-              </div>
-            </div>
-            <div
-              className={classNames(
-                "my-2 rounded pl-5 pr-2 flex justify-between items-center cursor-pointer"
-              )}
-            >
-              <div className="flex items-center">
-                <div className="flex flex-col">
-                  <div className="flex items-center">
-                    <AnomIcon width={35} height={35} />
-                    <span className="text-white text-[16px] font-sf-pro-text">
-                      Yescoin
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="w-16 h-[30px] flex justify-center items-center">
-                <RightArrowCircleIcon />
-              </div>
-            </div>
+              ))}
           </div>
         </div>
         <Modal
@@ -134,13 +162,13 @@ const Squad = () => {
           {show && (
             <div className="my-1 flex flex-col text-white">
               <div className=" my-4 flex flex-row justify-center items-center">
-                <div className="flex flex-col mx-3 justify-center items-center">
+                <div className="w-1/2 flex flex-col mx-3 justify-center items-center">
                   <AnomIcon width={35} height={35} />
                   <span className="font-sf-pro-text text-white text-sm">
                     Diamond
                   </span>
                 </div>
-                <div className="flex flex-col mx-3 justify-center items-center">
+                <div className="w-1/2 flex flex-col mx-3 justify-center items-center">
                   <AnomIcon width={35} height={35} />
                   <span className="font-sf-pro-text text-white text-sm">
                     Calculating
@@ -148,16 +176,16 @@ const Squad = () => {
                 </div>
               </div>
               <div className=" my-4 flex flex-row justify-center items-center">
-                <div className="flex flex-col mx-3 justify-center items-center">
+                <div className="flex w-1/2 flex-col mx-3 justify-center items-center">
                   <AnomIcon width={35} height={35} />
                   <span className="font-sf-pro-text text-white text-sm">
-                    Diamond
+                    Users
                   </span>
                 </div>
-                <div className="flex flex-col mx-3 justify-center items-center">
+                <div className="flex w-1/2 flex-col mx-3 justify-center items-center">
                   <AnomIcon width={35} height={35} />
                   <span className="font-sf-pro-text text-white text-sm">
-                    Calculating
+                    Community
                   </span>
                 </div>
               </div>
@@ -199,10 +227,16 @@ const Squad = () => {
                 <input
                   className="w-full px-2 py-1 rounded text-xs text-black"
                   placeholder="eg. t.me/theYescoin or @theYescoin"
+                  type="text"
+                  value={newsquad}
+                  onChange={handleChange}
                 />
               </div>
               <div className="px-6">
-                <div className="mt-3 mb-5 w-full h-10 rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF,0_8px_4px_#00000040] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3">
+                <div
+                  className="mt-3 mb-5 w-full h-10 rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF,0_8px_4px_#00000040] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
+                  onClick={OnJoinSquad}
+                >
                   Join
                 </div>
               </div>
