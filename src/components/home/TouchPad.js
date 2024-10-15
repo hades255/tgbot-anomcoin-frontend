@@ -14,7 +14,7 @@ import PointSender from "./PointSender";
 import Auto from "./Auto";
 import DailyBooster from "./DailyBooster";
 import AirDrop from "./airdrop";
-import Background from "./airdrop/Background";
+import ChestBox from "./airdrop/ChestBox";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
@@ -92,7 +92,6 @@ const TouchPad = () => {
 
   return (
     <>
-      {airdrop && <Background />}
       <FireworksEffect />
       {!airdrop && (
         <>
@@ -129,10 +128,11 @@ const TouchPad = () => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           />
+          <ChestBox />
         </>
       )}
-      <ExpireGround />
       {airdrop && <AirDrop />}
+      <ExpireGround />
       <PointSender />
     </>
   );

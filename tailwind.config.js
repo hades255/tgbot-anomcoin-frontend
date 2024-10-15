@@ -41,6 +41,16 @@ module.exports = {
         "sf-pro-text": ["sf-pro-text"],
       },
       keyframes: {
+        chestboxvibrate: {
+          "0%, 100%": { transform: "translate(0)" },
+          "50%": { transform: "translate(-2px, 0px)" },
+        },
+        airdropvibrate: {
+          "0%, 100%": { transform: "translate(0)" },
+          "25%": { transform: "translate(-4px, 0px)" },
+          "50%": { transform: "translate(0px, -4px)" },
+          "75%": { transform: "translate(-4px, 0px)" },
+        },
         slideIn: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
@@ -67,6 +77,8 @@ module.exports = {
         },
       },
       animation: {
+        chestboxvibrate: "chestboxvibrate 0.2s infinite",
+        airdropvibrate: "airdropvibrate 0.1s infinite",
         slideIn: "slideIn 0.3s ease-out forwards",
         slideOut: "slideOut 0.3s ease-out forwards",
         slideUpIn: "slideUpIn 0.3s ease-out forwards",

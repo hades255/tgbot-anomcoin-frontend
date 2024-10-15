@@ -21,6 +21,7 @@ const coinSlice = createSlice({
     yesPac: 0,
     /** */
     airdrop: false,
+    chestbox: null,
   },
   reducers: {
     initCoin: (state, payload) => {
@@ -132,6 +133,16 @@ const coinSlice = createSlice({
     pointSender: (state, payload) => {
       sendPoint(state.point, state.progress, payload.payload);
     },
+    appearChestBox: (state) => {
+      if (state.airdrop) return;
+      state.chestbox = {
+        x: Math.round(Math.random() * (state.width - 80)),
+        y: Math.round(Math.random() * (state.height - 60)),
+      };
+    },
+    disappearChestBox: (state) => {
+      state.chestbox = null;
+    },
     upgradeBooster: (state, payload) => {
       state[payload.payload.boosterKey] = payload.payload.boost;
     },
@@ -162,6 +173,8 @@ export const {
   earnAirdrop,
   startAirdrop,
   stopAirdrop,
+  appearChestBox,
+  disappearChestBox,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;

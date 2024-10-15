@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useDispatch } from "react-redux";
-import { earnAirdrop } from "../../../redux/coinSlice";
+import { earnAirdrop, stopAirdrop } from "../../../redux/coinSlice";
 
 const CoinAirdrop = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,12 @@ const CoinAirdrop = () => {
 
   const img = useMemo(() => new Image(), []);
   img.src = "/Alpcoin.png";
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(stopAirdrop());
+    }, 10000);
+  }, [dispatch]);
 
   const generateCoins = () => {
     const newCoins = [];
