@@ -13,7 +13,7 @@ const ChestBox = () => {
     const timeout = setTimeout(() => {
       dispatch(disappearChestBox());
       dispatch(startAirdrop());
-    }, 1000);
+    }, 500);
     setHoverTimeout(timeout);
   }, [dispatch]);
 

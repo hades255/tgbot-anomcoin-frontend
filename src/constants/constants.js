@@ -210,3 +210,12 @@ export const BOOSTERS = [
     subcontent: "increase coin fill speed +1/sec for each level",
   },
 ];
+
+/**
+ * 
+ 200  500   1k 3k 8k  19k 47k 117k 292k   729k
+ 200      
+ 200  
+ 500k 400k 800k 2M
+ * 
+ */

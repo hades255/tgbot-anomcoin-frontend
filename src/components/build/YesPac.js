@@ -191,7 +191,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
               <div className="my-1 flex justify-center items-center">
                 <AnomIcon width={48} height={48} />
                 <span className="font-sf-pro-text text-white text-[24px] font-bold">
-                  {formatNumber(booster.coin)} / Lel {level}
+                  {formatNumber(booster.coin)} / Lel {level + 1}
                 </span>
               </div>
             )}

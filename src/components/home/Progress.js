@@ -12,9 +12,13 @@ const Progress = () => {
   const { squad } = useAuth();
   const { progress, totalprogress } = useSelector((state) => state.coin);
 
-  const handleClick = useCallback(() => {
+  const handleClickSquad = useCallback(() => {
     navigate(squad ? "/squadhome" : "/squad");
   }, [navigate, squad]);
+
+  const handleClickTask = useCallback(() => {
+    navigate("/tasks");
+  }, [navigate]);
 
   return (
     <div className="flex items-center justify-between mt-1">
@@ -34,20 +38,23 @@ const Progress = () => {
           </div>
         </div>
         <div className="-ml-9">
-          <AnomGreyIcon width={66} height={72} onclick={handleClick} />
+          <AnomGreyIcon width={66} height={72} />
         </div>
       </div>
       <div className="flex gap-3">
         <div className="flex justify-center items-center h-[59px] w-[59px] hover:cursor-pointer bg-navbar-item rounded shadow-navbar-item">
           <div
             className="flex justify-center items-center h-[55px] w-[55px] bg-[#00040C] rounded"
-            onClick={handleClick}
+            onClick={handleClickSquad}
           >
             <GreenEnergyIcon width={39} height={45} />
           </div>
         </div>
         <div className="flex justify-center items-center h-[59px] w-[59px] hover:cursor-pointer bg-navbar-item rounded shadow-navbar-item">
-          <div className="flex justify-center items-center h-[55px] w-[55px] bg-[#00040C] rounded">
+          <div
+            className="flex justify-center items-center h-[55px] w-[55px] bg-[#00040C] rounded"
+            onClick={handleClickTask}
+          >
             <LeafIcon width={39} height={45} />
           </div>
         </div>

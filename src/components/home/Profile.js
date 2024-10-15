@@ -23,7 +23,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-[14px] text-white font-comicneue-bold">
+              <span className="text-[14px] text-white font-comicneue-bold overflow-hidden text-nowrap">
                 LVL 1 - 10X BOOST
               </span>
               <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden">
@@ -31,13 +31,11 @@ const Profile = () => {
               </button>
             </div>
           </div>
-          <div>
-            <div className="flex items-center">
-              <AnomIcon width={56} height={56} />
-              <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20">
-                {point.toLocaleString()}
-              </span>
-            </div>
+          <div className="flex items-center">
+            <AnomIcon width={56} height={56} />
+            <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20 whitespace-normal break-words">
+              {point.toLocaleString()}
+            </span>
           </div>
         </div>
       </div>

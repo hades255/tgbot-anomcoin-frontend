@@ -28,7 +28,7 @@ const FireworksEffect = () => {
     window.addEventListener("mousemove", (event) => {
       mouse.x = event.x - rect.left;
       mouse.y = event.y - rect.top;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 4; i++) {
         particlesArray.push(new Particle());
       }
     });
@@ -36,7 +36,7 @@ const FireworksEffect = () => {
     window.addEventListener("touchmove", (event) => {
       mouse.x = event.touches[0].clientX - rect.left;
       mouse.y = event.touches[0].clientY - rect.top;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 4; i++) {
         particlesArray.push(new Particle());
       }
     });
@@ -45,7 +45,7 @@ const FireworksEffect = () => {
       constructor() {
         this.x = mouse.x;
         this.y = mouse.y;
-        this.size = Math.random() * 10 + 3;
+        this.size = Math.random() * 8 + 3;
         this.speedX = Math.random() * 3 - 1.5;
         this.speedY = Math.random() * 3 - 1.5;
         this.color = colors[Math.floor(Math.random() * colors.length)];

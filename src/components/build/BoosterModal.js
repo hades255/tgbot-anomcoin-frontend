@@ -6,7 +6,7 @@ import Modal from "../common/Modal";
 import { BACKEND_PATH } from "../../constants/config";
 import { useAuth } from "../../contexts/AuthContext";
 import AnomIcon from "../../assets/icons/Anom";
-import { setScore, upgradeBooster } from "../../redux/coinSlice";
+import { initCoin, setScore } from "../../redux/coinSlice";
 
 const BoosterModal = ({ booster, level, onClose, show }) => {
   const { userId } = useAuth();
@@ -20,12 +20,7 @@ const BoosterModal = ({ booster, level, onClose, show }) => {
           `${BACKEND_PATH}/user/build?userId=${userId}`,
           { point: 10000, boosterKey: booster.id }
         );
-        dispatch(
-          upgradeBooster({
-            boosterKey: response.data.boosterKey,
-            boost: response.data.boost,
-          })
-        );
+        dispatch(initCoin(response.data.coin));
         dispatch(setScore(response.data.point));
         onClose();
       } catch (error) {

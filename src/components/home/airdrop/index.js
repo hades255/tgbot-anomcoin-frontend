@@ -170,6 +170,7 @@ const CoinAirdrop = () => {
 
   return (
     <>
+      <div className="fixed top-0 left-0 body w-screen h-screen -z-50"></div>
       <div className="w-screen h-screen fixed top-0 left-0">
         <canvas
           ref={canvasRef}
