@@ -34,12 +34,14 @@ const Squad = () => {
 
   return (
     <>
-      <div className="flex flex-col mb-28">
+      <div className="flex flex-col mb-8">
         <div className="mt-6 flex justify-center">
           <AnomIcon width={60} height={60} />
         </div>
         <div className="my-3 flex justify-center">
-          <span className="text-white font-sf-pro-text text-sm ">Yescoin</span>
+          <span className="text-white font-sf-pro-text text-sm ">
+            {squad_ && squad_.squad.name}
+          </span>
         </div>
         <div className="mx-8 my-2 flex justify-center flex-col text-white gap-2">
           <div className="flex justify-center items-center flex-row gap-2">
@@ -56,7 +58,9 @@ const Squad = () => {
                 <AnomIcon width={60} height={60} />
               </div>
               <div className="flex justify-center  flex-col text-lg ">
-                {squad_ && squad_.totalPoint ? squad_.totalPoint : "Calculating..."}
+                {squad_ && squad_.totalPoint
+                  ? squad_.totalPoint
+                  : "Calculating..."}
               </div>
             </div>
           </div>

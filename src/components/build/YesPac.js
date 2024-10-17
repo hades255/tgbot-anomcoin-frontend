@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import AnomIcon from "../../assets/icons/Anom";
 import Doll3Icon from "../../assets/icons/task/Doll3";
 import Modal from "../common/Modal";
-import { formatNumber } from "../../helper/func";
+import { formatNumber, yespacCoin } from "../../helper/func";
 import BoosterModal from "./BoosterModal";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -17,7 +17,7 @@ const YesPac = () => {
       id: "yesPac",
       title: "YesPac",
       icon: () => <Doll3Icon />,
-      coin: 200,
+      coin: yespacCoin,
       subcontent:
         "upgrade to lvl1-extend offline reward duration to 1 hours Auto collect if don't play for 10 min, max work duration is 1 hours",
     }),
@@ -46,7 +46,7 @@ const YesPac = () => {
             </div>
             <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
               <AnomIcon />
-              200 / Lel {level + 1}
+              {formatNumber(yespacCoin(level))} / Lel {level + 1}
             </div>
           </div>
         </div>
@@ -187,17 +187,15 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
                 Earn an extra 30% offline mining bonus * 7 days
               </p>
             </div>
-            {booster.coin && (
-              <div className="my-1 flex justify-center items-center">
-                <AnomIcon width={48} height={48} />
-                <span className="font-sf-pro-text text-white text-[24px] font-bold">
-                  {formatNumber(booster.coin)} / Lel {level + 1}
-                </span>
-              </div>
-            )}
+            <div className="my-1 flex justify-center items-center">
+              <AnomIcon width={48} height={48} />
+              <span className="font-sf-pro-text text-white text-[24px] font-bold">
+                {formatNumber(yespacCoin(level))} / Lel {level + 1}
+              </span>
+            </div>
             <div className="mx-2 mb-4 flex justify-center">
               <button
-                disabled={point < 10000}
+                disabled={point < yespacCoin(level)}
                 onClick={handleClickStart}
                 className="w-full border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[22px] h-[44px] bg-task-claim  shadow-[0_4px_2px_#0000001A,0_4px_2px_#0090FF,0_8px_4px_#00000040] font-sf-pro-text text-white text-[20px] font-bold"
               >

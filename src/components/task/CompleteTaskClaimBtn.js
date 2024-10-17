@@ -60,11 +60,9 @@ const CompleteTaskClaimBtn = ({ tab }) => {
         disabled={percent !== 1 || tasks[taskClaim]}
         onClick={handleClick}
         className={classNames(
-          "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-[91px] h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text",
+          "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-[91px] h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text text-[#4b6c96]",
           {
             "text-white": percent === 1 && !tasks[taskClaim],
-            "text-[#4b6c96]": percent !== 1,
-            "text-[#4b6c96]": tasks[taskClaim],
           }
         )}
       >

@@ -13,9 +13,17 @@ const CoinAirdrop = () => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const [coins, setCoins] = useState([]);
+  const [imgload, setImgload] = useState(false);
 
-  const img = useMemo(() => new Image(), []);
-  img.src = "/Alpcoin.png";
+  const img = useMemo(() => {
+    let newImg = new Image();
+    newImg.src = "/Alpcoin.png";
+    newImg.onload = () => {
+      console.log("image loaded");
+      setImgload(true);
+    };
+    return newImg;
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,7 +36,7 @@ const CoinAirdrop = () => {
     for (let i = 0; i < 120; i++) {
       newCoins.push({
         x: Math.random() * 280 + 50,
-        y: -(Math.random() * 1200),
+        y: -(Math.random() * 1800),
         radius: 40,
       });
     }
@@ -41,10 +49,10 @@ const CoinAirdrop = () => {
       setCoins((prevCoins) =>
         prevCoins.map((coin) => ({
           ...coin,
-          y: coin.y + 5,
+          y: coin.y + 7,
         }))
       );
-    }, 20);
+    }, 15);
 
     return () => clearInterval(interval);
   }, []);
@@ -72,20 +80,20 @@ const CoinAirdrop = () => {
     const ctx = canvas.getContext("2d");
 
     const drawCoins = () => {
-      img.onload = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        coins.forEach((coin) => {
-          ctx.drawImage(img, coin.x - 60, coin.y - 60, 120, 120);
-        });
-      };
+      // img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      coins.forEach((coin) => {
+        ctx.drawImage(img, coin.x - 60, coin.y - 60, 120, 120);
+      });
+      // };
       animationRef.current = requestAnimationFrame(drawCoins);
     };
 
-    drawCoins();
+    if (imgload) drawCoins();
     return () => {
       cancelAnimationFrame(animationRef.current);
     };
-  }, [img, coins]);
+  }, [img, coins, imgload]);
 
   const handleMouseMove = useCallback(
     (e) => {

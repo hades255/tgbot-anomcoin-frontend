@@ -18,7 +18,7 @@ const BoosterModal = ({ booster, level, onClose, show }) => {
       try {
         const response = await axios.post(
           `${BACKEND_PATH}/user/build?userId=${userId}`,
-          { point: 10000, boosterKey: booster.id }
+          { point: booster.coin(level), boosterKey: booster.id }
         );
         dispatch(initCoin(response.data.coin));
         dispatch(setScore(response.data.point));
@@ -65,13 +65,13 @@ const BoosterModal = ({ booster, level, onClose, show }) => {
               <div className="my-1 flex justify-center items-center">
                 <AnomIcon width={48} height={48} />
                 <span className="font-sf-pro-text text-white text-[24px] font-bold">
-                  {formatNumber(booster.coin)} / Lel {level + 1}
+                  {formatNumber(booster.coin(level))} / Lel {level + 1}
                 </span>
               </div>
             )}
             <div className="mx-2 mt-4 my-10 flex justify-center">
               <button
-                disabled={point < 10000}
+                disabled={point < booster.coin(level)}
                 onClick={handleClickStart}
                 className="w-full border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[22px] h-[44px] bg-task-claim  shadow-[0_4px_2px_#0000001A,0_4px_2px_#0090FF,0_8px_4px_#00000040] font-sf-pro-text text-white text-[20px] font-bold"
               >

@@ -12,6 +12,7 @@ import UTVIcon from "../assets/icons/task/UTV";
 import AlpCoinsIcon from "../assets/icons/build/AlpCoins";
 import CoinsIcon from "../assets/icons/build/Coins";
 import LighteningIcon from "../assets/icons/build/Lightening";
+import { boosterCoin } from "../helper/func";
 
 export const navbarItems = [
   {
@@ -192,30 +193,26 @@ export const BOOSTERS = [
     id: "multiValue",
     title: "Multi value",
     icon: (width, height) => <AlpCoinsIcon width={width} height={height} />,
-    coin: 200,
+    coin: boosterCoin,
     subcontent: "amount value per coin +1 each level",
   },
   {
     id: "coinLimit",
     title: "Coin Limit",
     icon: (width, height) => <CoinsIcon width={width} height={height} />,
-    coin: 200,
+    coin: boosterCoin,
     subcontent: "increase total coin Limit +1 for the next level",
   },
   {
     id: "fillRate",
     title: "Fill Rate",
     icon: (width, height) => <LighteningIcon width={width} height={height} />,
-    coin: 200,
+    coin: boosterCoin,
     subcontent: "increase coin fill speed +1/sec for each level",
   },
 ];
 
 /**
- * 
- 200  500   1k 3k 8k  19k 47k 117k 292k   729k
- 200      
- 200  
- 500k 400k 800k 2M
- * 
+ * 100k 1m  10m 30m
+ * 100m 1b  10b 100b
  */

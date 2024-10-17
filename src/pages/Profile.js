@@ -107,43 +107,45 @@ const ProfilePad = ({ miner, rank }) => {
         </div>
         <div className="flex flex-col h-[calc(100vh_-_340px)] overflow-scroll">
           {users.map((user) => (
-            <UserItem key={user._id} user={user} />
+            <UserItem key={user._id} user={user} daily={tab === 0} />
           ))}
         </div>
       </div>
-      {/* {user && ( */}
-      <div className="absolute w-full left-0 -bottom-2">
-        <div className="flex items-center justify-between my-1 bg-discord-btn shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[20px] h-[66px] px-[26px]">
-          <div className="flex items-center">
-            <div className="mr-4 w-10 flex justify-center font-sf-pro-text text-white text-[14px]">
-              23293
-            </div>
-            <div className="w-[56px] h-[52px] bg-profile-image-border rounded-lg flex justify-center items-center mr-4 p-[1px]">
-              <div className="bg-profile-item w-full h-full rounded-lg flex justify-center items-center">
-                <AnomIcon width={48} height={48} />
+      {/* {user && !users.find((item) => item._id === user._id) && ( */}
+      {user && (
+        <div className="absolute w-full left-0 -bottom-2">
+          <div className="flex items-center justify-between my-1 bg-discord-btn shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-[20px] h-[66px] px-[26px]">
+            <div className="flex items-center">
+              <div className="mr-4 w-10 flex justify-center font-sf-pro-text text-white text-[14px]">
+                23293
+              </div>
+              <div className="w-[56px] h-[52px] bg-profile-image-border rounded-lg flex justify-center items-center mr-4 p-[1px]">
+                <div className="bg-profile-item w-full h-full rounded-lg flex justify-center items-center">
+                  <UserAvatar avatar={user.avatar} />
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="font-sf-pro-text text-white text-[14px]">
+                  {user.name}
+                </div>
+                <div className="flex items-center">
+                  <AnomIcon />
+                  <span className="font-sf-pro-text text-white text-[14px]">
+                    {tab === 0 ? user.dailyPoint : user.weeklyPoint}
+                  </span>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col">
-              <div className="font-sf-pro-text text-white text-[14px]">
-                Dany_Riley
-              </div>
-              <div className="flex items-center">
-                <AnomIcon />
-                <span className="font-sf-pro-text text-white text-[14px]">
-                  213123
-                </span>
-              </div>
-            </div>
+            <div className="font-sf-pro-text text-white text-[14px]">You</div>
           </div>
-          <div className="font-sf-pro-text text-white text-[14px]">You</div>
         </div>
-      </div>
+      )}
       {/* )} */}
     </div>
   );
 };
 
-export const UserItem = ({ user }) => {
+export const UserItem = ({ user, daily = true }) => {
   return (
     <div className="flex items-center my-1">
       <div className="mr-4 w-10 flex justify-center">
@@ -161,7 +163,7 @@ export const UserItem = ({ user }) => {
         <div className="flex items-center">
           <AnomIcon />
           <span className="font-sf-pro-text text-white text-[14px]">
-            {user.point}
+            {daily ? user.dailyPoint : user.weeklyPoint}
           </span>
         </div>
       </div>

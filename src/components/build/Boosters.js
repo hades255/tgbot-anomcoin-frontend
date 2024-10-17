@@ -5,6 +5,7 @@ import { BOOSTERS } from "../../constants/constants";
 import BoosterModal from "./BoosterModal";
 import YesPac from "./YesPac";
 import { useSelector } from "react-redux";
+import { formatNumber } from "../../helper/func";
 
 const Boosters = () => {
   return (
@@ -45,7 +46,7 @@ const BoosterItem = ({ booster }) => {
             </div>
             <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
               <AnomIcon />
-              {booster.coin} / Lel {level + 1}
+              {formatNumber(booster.coin(level))} / Lel {level + 1}
             </div>
           </div>
         </div>
