@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@icons/*": ["./src/assets/icons/*"],
+      "@audios/*": ["./src/assets/audios/*"],
+      "@imgs/*": ["./src/assets/imgs/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@helper/*": ["./src/helper/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@common/*": ["./src/components/common/*"],
+      "@navbar/*": ["./src/components/navbar/*"],
+      "@build/*": ["./src/components/build/*"],
+      "@frens/*": ["./src/components/frens/*"],
+      "@home/*": ["./src/components/home/*"],
+      "@task/*": ["./src/components/task/*"]
+    }
+  },
+  "include": ["src"]
+}

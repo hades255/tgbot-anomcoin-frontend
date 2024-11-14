@@ -36,7 +36,7 @@ const CoinAirdrop = () => {
     for (let i = 0; i < 120; i++) {
       newCoins.push({
         x: Math.random() * 280 + 50,
-        y: -(Math.random() * 1800),
+        y: -400 - Math.random() * 1800,
         radius: 40,
       });
     }

@@ -25,26 +25,28 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    //  todo backbutton
-    // return;
-    const [backButton] = initBackButton();
-    backButton.on("click", () => {
-      window.history.back();
-    });
+    try {
+      const [backButton] = initBackButton();
+      backButton.on("click", () => {
+        window.history.back();
+      });
 
-    const updateBackButtonVisibility = () => {
-      if (location.pathname === "/") {
+      const updateBackButtonVisibility = () => {
+        if (location.pathname === "/") {
+          backButton.hide();
+        } else {
+          backButton.show();
+        }
+      };
+
+      updateBackButtonVisibility();
+
+      return () => {
         backButton.hide();
-      } else {
-        backButton.show();
-      }
-    };
-
-    updateBackButtonVisibility();
-
-    return () => {
-      backButton.hide();
-    };
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }, [location]);
 
   useEffect(() => {

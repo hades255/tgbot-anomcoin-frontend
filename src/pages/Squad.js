@@ -198,9 +198,13 @@ const CreateSquadModal = ({ show, onClose }) => {
     setNewsquad(value);
   };
 
-  const handleJoin = useCallback(() => {
-    onClose(newsquad);
-  }, [newsquad, onClose]);
+  const handleJoin = useCallback(
+    (e) => {
+      e.preventDefault();
+      onClose(newsquad);
+    },
+    [newsquad, onClose]
+  );
 
   return (
     <Modal
@@ -208,44 +212,44 @@ const CreateSquadModal = ({ show, onClose }) => {
       onClose={onClose}
       title={
         show && (
-          <div className="mt-10 mx-8 flex flex-col">
-            <div className="flex justify-center">
-              <AnomIcon width={35} height={35} />
-            </div>
+          <div className="mt-10 mx-8 flex justify-center">
+            <AnomIcon width={35} height={35} />
           </div>
         )
       }
       className={`mx-7 h-1/2 bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
     >
       {show && (
-        <div className="my-1 flex flex-col text-white">
-          <div className="my-4 flex flex-col justify-center items-center">
-            <div className="flex flex-col mx-3 text-center justify-center items-center text-lg font-bold font-sf-pro-text">
-              Create or join squad
+        <form method="POST" onSubmit={handleJoin}>
+          <div className="my-1 flex flex-col text-white">
+            <div className="my-4 flex flex-col justify-center items-center">
+              <div className="flex flex-col mx-3 text-center justify-center items-center text-lg font-bold font-sf-pro-text">
+                Create or join squad
+              </div>
+              <div className="flex flex-col mx-3 text-center justify-center items-center text-sm font-sf-pro-text">
+                Just enter the public group or channel link below and click join
+                to automatically join or create a squad
+              </div>
             </div>
-            <div className="flex flex-col mx-3 text-center justify-center items-center text-sm font-sf-pro-text">
-              Just enter the public group or channel link below and click join
-              to automatically join or create a squad
+            <div className="my-4 px-7 flex flex-row justify-center items-center">
+              <input
+                className="w-full px-2 py-1 rounded text-xs text-black"
+                placeholder="eg. t.me/theYescoin or @theYescoin"
+                type="text"
+                value={newsquad}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="px-6">
+              <button
+                className="mt-3 mb-5 w-full h-10 rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF,0_8px_4px_#00000040] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
+                type="submit"
+              >
+                Join
+              </button>
             </div>
           </div>
-          <div className="my-4 px-7 flex flex-row justify-center items-center">
-            <input
-              className="w-full px-2 py-1 rounded text-xs text-black"
-              placeholder="eg. t.me/theYescoin or @theYescoin"
-              type="text"
-              value={newsquad}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="px-6">
-            <div
-              className="mt-3 mb-5 w-full h-10 rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF,0_8px_4px_#00000040] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
-              onClick={handleJoin}
-            >
-              Join
-            </div>
-          </div>
-        </div>
+        </form>
       )}
     </Modal>
   );
