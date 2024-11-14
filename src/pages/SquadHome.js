@@ -29,8 +29,10 @@ const Squad = () => {
           console.log(error);
         }
       })();
+    } else {
+      navigate("/");
     }
-  }, [squad]);
+  }, [squad, navigate]);
 
   const handleLeave = useCallback(async () => {
     try {
