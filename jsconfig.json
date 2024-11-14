@@ -15,6 +15,7 @@
       "@build/*": ["./src/components/build/*"],
       "@frens/*": ["./src/components/frens/*"],
       "@home/*": ["./src/components/home/*"],
+      "@profile/*": ["./src/components/profile/*"],
       "@task/*": ["./src/components/task/*"]
     }
   },

@@ -7,9 +7,10 @@ import { BACKEND_PATH } from "@constants/config";
 import { useAuth } from "@contexts/AuthContext";
 import { updateUser } from "@redux/authSlice";
 import Modal from "@common/Modal";
-import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
 import UsersIcon from "@icons/invite/Users";
 import AnomIcon from "@icons/Anom";
+import AnomGreyIcon from "@icons/AnomGrey";
+import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
 
 const Squad = () => {
   const router = useNavigate();
@@ -23,50 +24,44 @@ const Squad = () => {
     setShowSquadCreate(true);
   }, []);
 
-  const getSquads = useCallback(() => {
-    (async () => {
-      try {
-        const response = await axios.get(`${BACKEND_PATH}/squad/`);
-        setSquad(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+  const getSquads = useCallback(async () => {
+    try {
+      const response = await axios.get(`${BACKEND_PATH}/squad/`);
+      setSquad(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const joinSquad = useCallback(
-    (squad) => {
-      if (squad) {
-        (async () => {
-          try {
-            await axios.post(`${BACKEND_PATH}/squad/${squad}`, { userId });
-            dispatch(updateUser([{ key: "squad", value: squad }]));
-            router("/squadhome");
-          } catch (error) {
-            console.log(error);
-          }
-        })();
+    async (squad) => {
+      try {
+        if (squad) {
+          await axios.post(`${BACKEND_PATH}/squad/${squad}`, { userId });
+          dispatch(updateUser([{ key: "squad", value: squad }]));
+          router("/squadhome");
+        }
+      } catch (error) {
+        console.log(error);
       }
     },
     [userId, router, dispatch]
   );
 
   const handleCloseCreateSquad = useCallback(
-    (url) => {
-      if (url) {
-        (async () => {
-          try {
-            const response = await axios.post(`${BACKEND_PATH}/squad/`, {
-              userId,
-              url,
-            });
-            setShowSquadCreate(false);
-            joinSquad(response.data._id);
-          } catch (error) {
-            console.log(error);
-          }
-        })();
-      } else setShowSquadCreate(false);
+    async (url) => {
+      try {
+        if (url) {
+          const response = await axios.post(`${BACKEND_PATH}/squad/`, {
+            userId,
+            url,
+          });
+          setShowSquadCreate(false);
+          joinSquad(response.data._id);
+        } else setShowSquadCreate(false);
+      } catch (error) {
+        console.log(error);
+      }
     },
     [userId, joinSquad]
   );
@@ -77,8 +72,8 @@ const Squad = () => {
 
   const handleCloseSquadModal = useCallback(
     (id) => {
-      setShowSquad("");
       joinSquad(id);
+      setShowSquad("");
     },
     [joinSquad]
   );
@@ -212,8 +207,8 @@ const CreateSquadModal = ({ show, onClose }) => {
       onClose={onClose}
       title={
         show && (
-          <div className="mt-10 mx-8 flex justify-center">
-            <AnomIcon width={35} height={35} />
+          <div className="mt-4 mx-8 flex justify-center">
+            <AnomIcon width={80} height={80} />
           </div>
         )
       }
@@ -221,8 +216,8 @@ const CreateSquadModal = ({ show, onClose }) => {
     >
       {show && (
         <form method="POST" onSubmit={handleJoin}>
-          <div className="my-1 flex flex-col text-white">
-            <div className="my-4 flex flex-col justify-center items-center">
+          <div className="mb-1 flex flex-col text-white">
+            <div className="mb-4 flex flex-col justify-center items-center">
               <div className="flex flex-col mx-3 text-center justify-center items-center text-lg font-bold font-sf-pro-text">
                 Create or join squad
               </div>
@@ -256,21 +251,27 @@ const CreateSquadModal = ({ show, onClose }) => {
 };
 
 const SquadModal = ({ show, onClose, squadid }) => {
+  const navigate = useNavigate();
+  const { squad: mySquadId } = useAuth();
   const [squad, setSquad] = useState(null);
+  const [count, setCount] = useState(null);
+  const [totalPoint, setTotalPoint] = useState(null);
 
   const handleClose = useCallback(() => onClose(), [onClose]);
 
   const handleJoin = useCallback(() => {
-    onClose(squadid);
-  }, [squadid, onClose]);
+    if (mySquadId === squadid) navigate("/squadhome");
+    else onClose(squadid);
+  }, [squadid, onClose, mySquadId, navigate]);
 
   useEffect(() => {
     if (squadid) {
       (async () => {
         try {
           const response = await axios.get(`${BACKEND_PATH}/squad/${squadid}`);
-          console.log(response);
-          setSquad(response.data);
+          setSquad(response.data.squad);
+          setCount(response.data.count);
+          setTotalPoint(response.data.totalPoint);
         } catch (error) {
           console.log(error);
         }
@@ -284,55 +285,57 @@ const SquadModal = ({ show, onClose, squadid }) => {
       onClose={handleClose}
       title={
         show && (
-          <div className="mt-10 mx-8 flex flex-col">
+          <div className="mt-4 mx-8 flex flex-col">
             <div className="flex justify-center">
-              <AnomIcon width={35} height={35} />
+              <AnomIcon width={80} height={80} />
             </div>
-            <div className="mt-6 flex justify-center">
+            <div className="flex justify-center">
               <span className="font-sf-pro-text text-white text-sm">
-                Yescoin
+                {squad?.name}
               </span>
             </div>
           </div>
         )
       }
-      className={`mx-7 h-1/2  bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
+      className={`mx-7 pb-8 h-1/2  bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
     >
       {show && (
-        <div className="my-1 flex flex-col text-white">
-          <div className=" my-4 flex flex-row justify-center items-center">
-            <div className="w-1/2 flex flex-col mx-3 justify-center items-center">
-              <AnomIcon width={35} height={35} />
+        <div className="mt-2 flex flex-col gap-4 text-white">
+          <div className="flex flex-row justify-center items-center">
+            <div className="w-1/2 flex flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
+              <AnomGreyIcon width={35} height={35} />
               <span className="font-sf-pro-text text-white text-sm">
                 Diamond
               </span>
             </div>
-            <div className="w-1/2 flex flex-col mx-3 justify-center items-center">
+            <div className="w-1/2 flex flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
               <AnomIcon width={35} height={35} />
               <span className="font-sf-pro-text text-white text-sm">
-                Calculating
+                {totalPoint ? totalPoint : "Calculating"}
               </span>
             </div>
           </div>
-          <div className=" my-4 flex flex-row justify-center items-center">
-            <div className="flex w-1/2 flex-col mx-3 justify-center items-center">
-              <AnomIcon width={35} height={35} />
-              <span className="font-sf-pro-text text-white text-sm">Users</span>
+          <div className="flex flex-row justify-center items-center">
+            <div className="flex w-1/2 flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
+              <UsersIcon width={35} height={35} />
+              <span className="font-sf-pro-text text-white text-sm">
+                {count ? count : "Calculating"}
+              </span>
             </div>
-            <div className="flex w-1/2 flex-col mx-3 justify-center items-center">
-              <AnomIcon width={35} height={35} />
+            <div className="flex w-1/2 flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
+              <AnomGreyIcon width={35} height={35} />
               <span className="font-sf-pro-text text-white text-sm">
                 Community
               </span>
             </div>
           </div>
           <div className="px-6">
-            <div
+            <button
               onClick={handleJoin}
-              className="my-3 w-full h-full rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
+              className="w-full h-full rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
             >
               Join
-            </div>
+            </button>
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import clsx from "clsx";
 import { TabItem } from "@frens/FrensList";
@@ -8,35 +8,47 @@ import { BACKEND_PATH } from "@constants/config";
 import AnomGreyIcon from "@icons/AnomGrey";
 import UsersIcon from "@icons/invite/Users";
 import AnomIcon from "@icons/Anom";
-import { UserItem } from "./Profile";
+import UserItem from "@profile/UserItem";
+import { useDispatch } from "react-redux";
+import { updateUser } from "@redux/authSlice";
 
 const Squad = () => {
   const navigate = useNavigate();
-  const { squad } = useAuth();
+  const dispatch = useDispatch();
+  const { squad, userId } = useAuth();
 
   const [squad_, setSquad_] = useState(null);
-
-  const handleClickAllSquad = useCallback(() => navigate("/squad"), [navigate]);
 
   useEffect(() => {
     if (squad) {
       (async () => {
         try {
           const response = await axios.get(`${BACKEND_PATH}/squad/${squad}`);
-          console.log(response);
           setSquad_(response.data);
         } catch (error) {
           console.log(error);
         }
       })();
+    } else {
+      navigate("/");
     }
-  }, [squad]);
+  }, [squad, navigate]);
+
+  const handleLeave = useCallback(async () => {
+    try {
+      await axios.post(`${BACKEND_PATH}/squad/leave`, { userId });
+      dispatch(updateUser([{ key: "squad", value: "" }]));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }, [navigate, userId, dispatch]);
 
   return (
     <>
       <div className="flex flex-col mb-8">
         <div className="mt-6 flex justify-center">
-          <AnomIcon width={60} height={60} />
+          <AnomIcon width={80} height={80} />
         </div>
         <div className="my-3 flex justify-center">
           <span className="text-white font-sf-pro-text text-sm ">
@@ -45,7 +57,7 @@ const Squad = () => {
         </div>
         <div className="mx-8 my-2 flex justify-center flex-col text-white gap-2">
           <div className="flex justify-center items-center flex-row gap-2">
-            <div className="w-full flex justify-center items-center flex-col border">
+            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
               <div className="h-16 flex items-center justify-center">
                 <AnomGreyIcon width={60} height={60} />
               </div>
@@ -53,7 +65,7 @@ const Squad = () => {
                 Diamond
               </div>
             </div>
-            <div className="w-full flex justify-center items-center flex-col border">
+            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
               <div className="h-16 flex items-center justify-center">
                 <AnomIcon width={60} height={60} />
               </div>
@@ -65,7 +77,7 @@ const Squad = () => {
             </div>
           </div>
           <div className="flex justify-center items-center flex-row gap-2">
-            <div className="w-full flex justify-center items-center flex-col border">
+            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
               <div className="h-16 flex items-center justify-center">
                 <UsersIcon width={40} height={40} />
               </div>
@@ -73,7 +85,7 @@ const Squad = () => {
                 {squad_ && squad_.count ? squad_.count : "Calculating..."}
               </div>
             </div>
-            <div className="w-full flex justify-center items-center flex-col border">
+            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
               <div className="h-16 flex items-center justify-center">
                 <AnomGreyIcon width={60} height={60} />
               </div>
@@ -84,28 +96,30 @@ const Squad = () => {
           </div>
         </div>
         <div className="mx-8 my-2 flex justify-around flex-row text-white gap-2">
-          <button
+          <Link
+            to={"/frens"}
             className={clsx(
-              "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
+              "flex justify-center items-center border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_4px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >
             Invite friend
-          </button>
+          </Link>
           <button
+            onClick={handleLeave}
             className={clsx(
-              "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
+              "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_4px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >
             Leave Squad
           </button>
-          <button
-            onClick={handleClickAllSquad}
+          <Link
+            to={"/squad"}
             className={clsx(
-              "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
+              "flex justify-center items-center border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_4px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >
             All Squad
-          </button>
+          </Link>
         </div>
         <div className="flex justify-center px-8 mt-3">
           <ProfilePad />
