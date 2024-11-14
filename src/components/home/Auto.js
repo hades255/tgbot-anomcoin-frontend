@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { autoCatcherMove } from "@redux/coinSlice";
 
 const Auto = ({ auto }) => {
+  console.log(auto)
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
