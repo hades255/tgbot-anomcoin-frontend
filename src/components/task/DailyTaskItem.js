@@ -1,15 +1,15 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import classNames from "classnames";
-import { updateTask } from "../../redux/taskSlice";
-import { useAuth } from "../../contexts/AuthContext";
-import { formatNumber } from "../../helper/func";
-import { BACKEND_PATH } from "../../constants/config";
-import AnomIcon from "../../assets/icons/Anom";
-import RightArrowCircleIcon from "../../assets/icons/task/RightArrowCircle";
-import RightArrowCircleGlowIcon from "../../assets/icons/task/RightArrowCircleGlow";
-import { setScore } from "../../redux/coinSlice";
+import clsx from "clsx";
+import { BACKEND_PATH } from "@constants/config";
+import { formatNumber } from "@helper/func";
+import { useAuth } from "@contexts/AuthContext";
+import { updateTask } from "@redux/taskSlice";
+import { setScore } from "@redux/coinSlice";
+import AnomIcon from "@icons/Anom";
+import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
+import RightArrowCircleGlowIcon from "@icons/task/RightArrowCircleGlow";
 import TaskModal from "./TaskModal";
 
 const DailyTaskItem = ({ task, category = "daily" }) => {
@@ -54,7 +54,7 @@ const DailyTaskItem = ({ task, category = "daily" }) => {
   return (
     <>
       <div
-        className={classNames(
+        className={clsx(
           "my-2 rounded pl-5 pr-2 pt-3 pb-1 flex justify-between items-center cursor-pointer",
           task.bgColor,
           task.shadow

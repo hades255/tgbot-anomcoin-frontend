@@ -1,14 +1,14 @@
 import React, { useCallback, useMemo, useState } from "react";
-import AnomIcon from "../../assets/icons/Anom";
-import Doll3Icon from "../../assets/icons/task/Doll3";
-import Modal from "../common/Modal";
-import { formatNumber, yespacCoin } from "../../helper/func";
-import BoosterModal from "./BoosterModal";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { BACKEND_PATH } from "../../constants/config";
-import { useAuth } from "../../contexts/AuthContext";
-import { setScore, upgradeBooster } from "../../redux/coinSlice";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import { formatNumber, yespacCoin } from "@helper/func";
+import { setScore, upgradeBooster } from "@redux/coinSlice";
+import Modal from "@common/Modal";
+import AnomIcon from "@icons/Anom";
+import Doll3Icon from "@icons/task/Doll3";
+import BoosterModal from "./BoosterModal";
 
 const YesPac = () => {
   const level = useSelector((state) => state.coin.yesPac);

@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import classNames from "classnames";
-import { BACKEND_PATH } from "../../constants/config";
-import { useAuth } from "../../contexts/AuthContext";
-import FrenItem from "./FrenItem";
 import axios from "axios";
+import clsx from "clsx";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import FrenItem from "./FrenItem";
 
 const FrensList = () => {
   const { userId } = useAuth();
@@ -70,7 +70,7 @@ export const TabItem = ({ tab, active, title, onClick, className = "" }) => {
 
   return (
     <div
-      className={classNames(
+      className={clsx(
         "h-full rounded-[15px] font-sf-pro-text text-xs flex items-center cursor-pointer px-3 transition-all",
         {
           "text-white bg-frens-all-toggle": active,

@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
-import AnomIcon from "../../assets/icons/Anom";
-import RightArrowCircleGlowIcon from "../../assets/icons/task/RightArrowCircleGlow";
-import { BOOSTERS } from "../../constants/constants";
+import { useSelector } from "react-redux";
+import AnomIcon from "@icons/Anom";
+import RightArrowCircleGlowIcon from "@icons/task/RightArrowCircleGlow";
+import { BOOSTERS } from "@constants/constants";
+import { formatNumber } from "@helper/func";
 import BoosterModal from "./BoosterModal";
 import YesPac from "./YesPac";
-import { useSelector } from "react-redux";
-import { formatNumber } from "../../helper/func";
 
 const Boosters = () => {
   return (

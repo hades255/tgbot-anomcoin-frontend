@@ -1,5 +1,5 @@
 import React from "react";
-import UserIcon from "../../assets/icons/User";
+import UserIcon from "@icons/User";
 
 const UserAvatar = ({ avatar, width = 48, height = 48, className = "" }) => {
   return (

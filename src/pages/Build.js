@@ -1,7 +1,7 @@
 import React from "react";
-import Boosters from "../components/build/Boosters";
-import RocketIcon from "../assets/icons/build/Rocket";
 import { useSelector } from "react-redux";
+import Boosters from "@build/Boosters";
+import RocketIcon from "@icons/build/Rocket";
 
 const Bulid = () => {
   const { point } = useSelector((state) => state.coin);

@@ -34,23 +34,23 @@ export const boosterCoin = (level) => {
   switch (level) {
     case 0:
       return 200;
-    case 0:
+    case 1:
       return 500;
-    case 0:
+    case 2:
       return 1000;
-    case 0:
+    case 3:
       return 3000;
-    case 0:
+    case 4:
       return 8000;
-    case 0:
+    case 5:
       return 19000;
-    case 0:
+    case 6:
       return 47000;
-    case 0:
+    case 7:
       return 117000;
-    case 0:
+    case 8:
       return 292000;
-    case 0:
+    case 9:
       return 729000;
     default:
       return 1000000;
@@ -61,11 +61,11 @@ export const yespacCoin = (level) => {
   switch (level) {
     case 0:
       return 500000;
-    case 0:
+    case 1:
       return 400000;
-    case 0:
+    case 2:
       return 800000;
-    case 0:
+    case 3:
       return 2000000;
     default:
       return 2000000;

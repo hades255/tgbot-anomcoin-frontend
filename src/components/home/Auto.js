@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { autoCatcherMove } from "../../redux/coinSlice";
+import { autoCatcherMove } from "@redux/coinSlice";
 
 const Auto = ({ auto }) => {
   const dispatch = useDispatch();

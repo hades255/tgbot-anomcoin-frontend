@@ -1,18 +1,18 @@
-import DiscordIcon from "../assets/icons/task/Discord";
-import TelegramIcon from "../assets/icons/task/Telegram";
-import TwitterIcon from "../assets/icons/task/Twitter";
-import DollIcon from "../assets/icons/task/Doll";
-import Doll1Icon from "../assets/icons/task/Doll1";
-import Doll2Icon from "../assets/icons/task/Doll2";
-import HomeIcon from "../assets/icons/navbar/Home";
-import FriendsIcon from "../assets/icons/navbar/Friends";
-import TaskIcon from "../assets/icons/navbar/Task";
-import MineIcon from "../assets/icons/navbar/Mine";
-import UTVIcon from "../assets/icons/task/UTV";
-import AlpCoinsIcon from "../assets/icons/build/AlpCoins";
-import CoinsIcon from "../assets/icons/build/Coins";
-import LighteningIcon from "../assets/icons/build/Lightening";
-import { boosterCoin } from "../helper/func";
+import DiscordIcon from "@icons/task/Discord";
+import TelegramIcon from "@icons/task/Telegram";
+import TwitterIcon from "@icons/task/Twitter";
+import DollIcon from "@icons/task/Doll";
+import Doll1Icon from "@icons/task/Doll1";
+import Doll2Icon from "@icons/task/Doll2";
+import HomeIcon from "@icons/navbar/Home";
+import FriendsIcon from "@icons/navbar/Friends";
+import TaskIcon from "@icons/navbar/Task";
+import MineIcon from "@icons/navbar/Mine";
+import UTVIcon from "@icons/task/UTV";
+import AlpCoinsIcon from "@icons/build/AlpCoins";
+import CoinsIcon from "@icons/build/Coins";
+import LighteningIcon from "@icons/build/Lightening";
+import { boosterCoin } from "@helper/func";
 
 export const navbarItems = [
   {

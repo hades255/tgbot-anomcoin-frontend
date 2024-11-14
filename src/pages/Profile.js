@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { TabItem } from "../components/frens/FrensList";
-import AnomGreyIcon from "../assets/icons/AnomGrey";
-import AnomIcon from "../assets/icons/Anom";
-import LeftArrowCircleFillIcon from "../assets/icons/task/LeftArrowCircleFill";
-import RightArrowCircleFillIcon from "../assets/icons/task/RightArrowCircleFill";
-import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
-import { BACKEND_PATH } from "../constants/config";
-import UserAvatar from "../components/home/UserAvatar";
+import { useAuth } from "@contexts/AuthContext";
+import { BACKEND_PATH } from "@constants/config";
+import UserAvatar from "@home/UserAvatar";
+import { TabItem } from "@frens/FrensList";
+import AnomGreyIcon from "@icons/AnomGrey";
+import AnomIcon from "@icons/Anom";
+import LeftArrowCircleFillIcon from "@icons/task/LeftArrowCircleFill";
+import RightArrowCircleFillIcon from "@icons/task/RightArrowCircleFill";
 
 const Profile = () => {
   const [tab, setTab] = useState(0);

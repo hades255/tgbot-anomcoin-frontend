@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
-import classNames from "classnames";
-import { TASKS, taskTabItems } from "../../constants/constants";
+import clsx from "clsx";
+import { TASKS, taskTabItems } from "@constants/constants";
 
 const TabBar = ({ tab, onClick }) => {
   const handleClick = useCallback((param) => onClick(param), [onClick]);
@@ -43,7 +43,7 @@ const TabBarItem = ({ tab, item, onClick }) => {
       )}
       <div
         onClick={handleClick}
-        className={classNames(
+        className={clsx(
           "cursor-pointer w-full rounded-t-xl flex justify-center items-center z-0 pb-1 transition-all",
           {
             "h-[60px] bg-task-active-tab": tab === item.tab,
@@ -54,7 +54,7 @@ const TabBarItem = ({ tab, item, onClick }) => {
         {item.content}
       </div>
       <div
-        className={classNames(
+        className={clsx(
           "absolute -top-3 right-0 w-6 h-6 flex justify-center items-center font-sf-pro-text text-white rounded-xl bg-[#F00]",
           { hidden: !count }
         )}

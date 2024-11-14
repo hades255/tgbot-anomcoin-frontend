@@ -1,17 +1,17 @@
 import React from "react";
-import Profile from "../components/home/Profile";
-import Progress from "../components/home/Progress";
-import TouchPad from "../components/home/TouchPad";
-import Navbar from "../components/navbar";
 import { useSelector } from "react-redux";
-import classNames from "classnames";
+import clsx from "clsx";
+import Profile from "@home/Profile";
+import Progress from "@home/Progress";
+import TouchPad from "@home/TouchPad";
+import Navbar from "@navbar";
 
 const Home = ({ params }) => {
   const { airdrop } = useSelector((state) => state.coin);
 
   return (
     <>
-      <div className={classNames({ "animate-airdropvibrate": airdrop })}>
+      <div className={clsx({ "animate-airdropvibrate": airdrop })}>
         <TouchPad />
         <div className="fixed top-0 left-0 w-full p-4 flex flex-col">
           <Profile />

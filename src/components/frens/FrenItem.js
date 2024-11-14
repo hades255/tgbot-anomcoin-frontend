@@ -1,5 +1,5 @@
 import React from "react";
-import UserAvatar from "../home/UserAvatar";
+import UserAvatar from "@home/UserAvatar";
 
 const FrenItem = ({ refer }) => {
   return (

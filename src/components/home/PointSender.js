@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 import { useDispatch } from "react-redux";
-import { appearChestBox, pointSender } from "../../redux/coinSlice";
+import { useAuth } from "@contexts/AuthContext";
+import { appearChestBox, pointSender } from "@redux/coinSlice";
 
 const PointSender = () => {
   const dispatch = useDispatch();

@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
-import classNames from "classnames";
-import axios from "axios";
-import AnomIcon from "../assets/icons/Anom";
-import RightArrowCircleIcon from "../assets/icons/task/RightArrowCircle";
-import Modal from "../components/common/Modal";
-import UsersIcon from "../assets/icons/invite/Users";
-import { BACKEND_PATH } from "../constants/config";
-import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../redux/authSlice";
+import clsx from "clsx";
+import axios from "axios";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import { updateUser } from "@redux/authSlice";
+import Modal from "@common/Modal";
+import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
+import UsersIcon from "@icons/invite/Users";
+import AnomIcon from "@icons/Anom";
 
 const Squad = () => {
   const router = useNavigate();
@@ -169,7 +169,7 @@ const SquadItem = ({ squad, onClick }) => {
 
   return (
     <div
-      className={classNames(
+      className={clsx(
         "my-2 rounded pl-5 pr-2 flex justify-between items-center cursor-pointer"
       )}
       onClick={handleClick}

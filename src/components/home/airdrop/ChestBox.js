@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ChestIcon from "../../../assets/icons/Chest";
-import { disappearChestBox, startAirdrop } from "../../../redux/coinSlice";
+import { disappearChestBox, startAirdrop } from "@redux/coinSlice";
+import ChestIcon from "@icons/Chest";
 
 const ChestBox = () => {
   const dispatch = useDispatch();

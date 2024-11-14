@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
 
 const InviteBtn = () => {
   const { userId } = useAuth();

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BACKEND_PATH } from "../constants/config";
+import { BACKEND_PATH } from "@constants/config";
 
 export const sendPoint = async (point, progress, userId) => {
   if (point === 0 || userId === "") return;

@@ -1,20 +1,20 @@
 import React, { useCallback, useEffect, useState } from "react";
-import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 import {
   earnCoin,
   initSize,
   onMouseDown,
   onMouseUp,
-} from "../../redux/coinSlice";
+} from "@redux/coinSlice";
 import FireworksEffect from "./FireworksEffect";
 import CoinGround from "./CoinGround";
 import ExpireGround from "./ExpireGround";
 import PointSender from "./PointSender";
-import Auto from "./Auto";
 import DailyBooster from "./DailyBooster";
-import AirDrop from "./airdrop";
 import ChestBox from "./airdrop/ChestBox";
+import AirDrop from "./airdrop";
+import Auto from "./Auto";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const TouchPad = () => {
               )}
               <div
                 onClick={handleClickAuto}
-                className={classNames(
+                className={clsx(
                   "z-10 absolute bottom-0 right-8 w-6 h-6 rounded-[12px] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
                   {
                     "bg-white": !auto,

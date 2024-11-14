@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import classNames from "classnames";
-import { TabItem } from "../components/frens/FrensList";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
-import { BACKEND_PATH } from "../constants/config";
+import clsx from "clsx";
+import { TabItem } from "@frens/FrensList";
+import { useAuth } from "@contexts/AuthContext";
+import { BACKEND_PATH } from "@constants/config";
+import AnomGreyIcon from "@icons/AnomGrey";
+import UsersIcon from "@icons/invite/Users";
+import AnomIcon from "@icons/Anom";
 import { UserItem } from "./Profile";
-import AnomGreyIcon from "../assets/icons/AnomGrey";
-import UsersIcon from "../assets/icons/invite/Users";
-import AnomIcon from "../assets/icons/Anom";
 
 const Squad = () => {
   const navigate = useNavigate();
@@ -85,14 +85,14 @@ const Squad = () => {
         </div>
         <div className="mx-8 my-2 flex justify-around flex-row text-white gap-2">
           <button
-            className={classNames(
+            className={clsx(
               "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >
             Invite friend
           </button>
           <button
-            className={classNames(
+            className={clsx(
               "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >
@@ -100,7 +100,7 @@ const Squad = () => {
           </button>
           <button
             onClick={handleClickAllSquad}
-            className={classNames(
+            className={clsx(
               "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-1/3 h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text"
             )}
           >

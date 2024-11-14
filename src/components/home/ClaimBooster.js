@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classNames from "classnames";
-import ChestIcon from "../../assets/icons/Chest";
-import FullRecovery from "../../assets/icons/FullRecovery";
-import { updateBoost } from "../../redux/taskSlice";
-import { BACKEND_PATH } from "../../constants/config";
-import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
-import { fullRecovery, startAirdrop } from "../../redux/coinSlice";
+import clsx from "clsx";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import { updateBoost } from "@redux/taskSlice";
+import { fullRecovery, startAirdrop } from "@redux/coinSlice";
+import FullRecovery from "@icons/FullRecovery";
+import ChestIcon from "@icons/Chest";
 
 const ClaimBooster = ({ title, icon, remain, onClose, taskKey }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const ClaimBooster = ({ title, icon, remain, onClose, taskKey }) => {
   return (
     <>
       <div
-        className={classNames("h-24 w-full flex items-end relative", {
+        className={clsx("h-24 w-full flex items-end relative", {
           "opacity-50": remain === 0,
         })}
         onClick={handleClick}

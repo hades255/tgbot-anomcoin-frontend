@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { coincounter, progresscounter } from "../redux/coinSlice";
+import { coincounter, progresscounter } from "@redux/coinSlice";
 
 const CoinHelper = () => {
   const dispatch = useDispatch();

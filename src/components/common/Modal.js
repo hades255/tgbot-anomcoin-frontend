@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import React, { useCallback } from "react";
+import clsx from "clsx";
 
 const Modal = ({
   show,
@@ -17,7 +17,7 @@ const Modal = ({
   return (
     show && (
       <div
-        className={classNames(
+        className={clsx(
           `fixed inset-0 h-screen flex justify-center items-end bg-[#0000005A] z-40 px-1`,
           {
             "animate-slideIn": show,
@@ -29,7 +29,7 @@ const Modal = ({
         <div className="w-full flex flex-col">
           <div className="flex justify-center">
             <div
-              className={classNames(
+              className={clsx(
                 {
                   "animate-slideUpIn": show,
                   "animate-slideUpOut": !show,

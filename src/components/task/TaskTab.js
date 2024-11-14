@@ -1,5 +1,5 @@
 import React from "react";
-import { normalTasks } from "../../constants/constants";
+import { normalTasks } from "@constants/constants";
 import DailyTaskItem from "./DailyTaskItem";
 
 const TaskTab = () => {

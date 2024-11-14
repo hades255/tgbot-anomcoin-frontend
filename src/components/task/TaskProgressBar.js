@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { TASKS } from "../../constants/constants";
+import { TASKS } from "@constants/constants";
 
 const TaskProgressBar = ({ tab }) => {
   const tasks = useSelector((state) => state.task);

@@ -1,10 +1,10 @@
 import React from "react";
-import InviteBtn from "../components/frens/InviteBtn";
-import FrensList from "../components/frens/FrensList";
-import Info from "../components/frens/Info";
-import UsersIcon from "../assets/icons/invite/Users";
-import RightAngleIcon from "../assets/icons/RightAngle";
-import AnomIcon from "../assets/icons/Anom";
+import InviteBtn from "@frens/InviteBtn";
+import FrensList from "@frens/FrensList";
+import Info from "@frens/Info";
+import UsersIcon from "@icons/invite/Users";
+import RightAngleIcon from "@icons/RightAngle";
+import AnomIcon from "@icons/Anom";
 
 const Frens = () => {
   return (

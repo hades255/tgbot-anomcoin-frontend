@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
-import AnomIcon from "../../assets/icons/Anom";
-import { useAuth } from "../../contexts/AuthContext";
-import UserAvatar from "./UserAvatar";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useAuth } from "@contexts/AuthContext";
+import AnomIcon from "@icons/Anom";
+import UserAvatar from "./UserAvatar";
 
 const Profile = () => {
   const router = useNavigate();

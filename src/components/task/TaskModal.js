@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { formatNumber } from "../../helper/func";
-import Modal from "../common/Modal";
-import AnomIcon from "../../assets/icons/Anom";
-import { updateTask } from "../../redux/taskSlice";
+import { formatNumber } from "@helper/func";
+import { updateTask } from "@redux/taskSlice";
+import Modal from "@common/Modal";
+import AnomIcon from "@icons/Anom";
 
 const TaskModal = ({ task, status, onClose, show }) => {
   const dispatch = useDispatch();

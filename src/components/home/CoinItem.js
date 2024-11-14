@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import DefaultCoin from "../../assets/icons/coins/Default";
-import Coin1Icon from "../../assets/icons/coins/Coin1";
-import Coin2Icon from "../../assets/icons/coins/Coin2";
-import Coin7Icon from "../../assets/icons/coins/Coin7";
-import Coin3Icon from "../../assets/icons/coins/Coin3";
-import Coin4Icon from "../../assets/icons/coins/Coin4";
-import Coin5Icon from "../../assets/icons/coins/Coin5";
-import Coin6Icon from "../../assets/icons/coins/Coin6";
+import DefaultCoin from "@icons/coins/Default";
+import Coin1Icon from "@icons/coins/Coin1";
+import Coin2Icon from "@icons/coins/Coin2";
+import Coin7Icon from "@icons/coins/Coin7";
+import Coin3Icon from "@icons/coins/Coin3";
+import Coin4Icon from "@icons/coins/Coin4";
+import Coin5Icon from "@icons/coins/Coin5";
+import Coin6Icon from "@icons/coins/Coin6";
 import "./CoinItem.css";
 
 const CoinItem = ({ coin }) => {

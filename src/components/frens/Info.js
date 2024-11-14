@@ -1,5 +1,5 @@
 import React from "react";
-import GiftIcon from "../../assets/icons/invite/Gift";
+import GiftIcon from "@icons/invite/Gift";
 
 const Info = () => {
   return (

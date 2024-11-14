@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeErasedItem } from "../../redux/coinSlice";
+import { removeErasedItem } from "@redux/coinSlice";
 
 const ExpireItem = ({ coin, multiValue }) => {
   const dispatch = useDispatch();

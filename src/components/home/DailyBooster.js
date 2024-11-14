@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
+import GiftIcon from "@icons/invite/Gift";
+import ChestIcon from "@icons/Chest";
+import FullRecovery from "@icons/FullRecovery";
 import ClaimBoosterPanel from "./ClaimBooster";
 import Modal from "../common/Modal";
-import GiftIcon from "../../assets/icons/invite/Gift";
-import ChestIcon from "../../assets/icons/Chest";
-import FullRecovery from "../../assets/icons/FullRecovery";
 
 const DailyBooster = () => {
   const [show, setShow] = useState(false);
@@ -17,7 +17,7 @@ const DailyBooster = () => {
     <>
       <div
         onClick={handleClickDailyBooster}
-        className={classNames(
+        className={clsx(
           "z-10 absolute bottom-0 right-0 w-6 h-6 rounded-[12px] bg-white hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
         )}
       >

@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LeafIcon from "../../assets/icons/Leaf";
-import AnomGreyIcon from "../../assets/icons/AnomGrey";
-import GreenEnergyIcon from "../../assets/icons/GreenEnergy";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "@contexts/AuthContext";
+import LeafIcon from "@icons/Leaf";
+import AnomGreyIcon from "@icons/AnomGrey";
+import GreenEnergyIcon from "@icons/GreenEnergy";
 
 const Progress = () => {
   const navigate = useNavigate();

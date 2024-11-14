@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TASKS } from "../../constants/constants";
-import classNames from "classnames";
-import { useAuth } from "../../contexts/AuthContext";
-import { BACKEND_PATH } from "../../constants/config";
 import axios from "axios";
-import { setScore } from "../../redux/coinSlice";
-import { updateBoost } from "../../redux/taskSlice";
+import clsx from "clsx";
+import { TASKS } from "@constants/constants";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import { setScore } from "@redux/coinSlice";
+import { updateBoost } from "@redux/taskSlice";
 
 const CompleteTaskClaimBtn = ({ tab }) => {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const CompleteTaskClaimBtn = ({ tab }) => {
       <button
         disabled={percent !== 1 || tasks[taskClaim]}
         onClick={handleClick}
-        className={classNames(
+        className={clsx(
           "border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] rounded-lg w-[91px] h-[29px] bg-task-claim shadow-[0_2px_0px_#0090FF] text-[12px] font-sf-pro-text text-[#4b6c96]",
           {
             "text-white": percent === 1 && !tasks[taskClaim],

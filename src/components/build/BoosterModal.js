@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { formatNumber } from "../../helper/func";
-import Modal from "../common/Modal";
-import { BACKEND_PATH } from "../../constants/config";
-import { useAuth } from "../../contexts/AuthContext";
-import AnomIcon from "../../assets/icons/Anom";
-import { initCoin, setScore } from "../../redux/coinSlice";
+import { BACKEND_PATH } from "@constants/config";
+import { useAuth } from "@contexts/AuthContext";
+import { formatNumber } from "@helper/func";
+import { initCoin, setScore } from "@redux/coinSlice";
+import Modal from "@common/Modal";
+import AnomIcon from "@icons/Anom";
 
 const BoosterModal = ({ booster, level, onClose, show }) => {
   const { userId } = useAuth();

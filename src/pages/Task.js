@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react";
-import TabBar from "../components/task/TabBar";
-import DailyTab from "../components/task/DailyTab";
-import TaskTab from "../components/task/TaskTab";
-import SpecialTaskTab from "../components/task/SpecialTaskTab";
-import AnomIcon from "../assets/icons/Anom";
-import TaskProgressBar from "../components/task/TaskProgressBar";
-import CompleteTaskClaimBtn from "../components/task/CompleteTaskClaimBtn";
+import TabBar from "@task/TabBar";
+import DailyTab from "@task/DailyTab";
+import TaskTab from "@task/TaskTab";
+import SpecialTaskTab from "@task/SpecialTaskTab";
+import TaskProgressBar from "@task/TaskProgressBar";
+import CompleteTaskClaimBtn from "@task/CompleteTaskClaimBtn";
+import AnomIcon from "@icons/Anom";
 
 const Task = () => {
   const [tab, setTab] = useState(0);

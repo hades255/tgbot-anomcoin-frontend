@@ -2,15 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-
-import { login } from "../../redux/authSlice";
-import { initOTTask, initTask } from "../../redux/taskSlice";
-import { initCoin, setScore } from "../../redux/coinSlice";
-import { useAuth } from "../../contexts/AuthContext";
-import { BACKEND_PATH } from "../../constants/config";
+import { BACKEND_PATH } from "@constants/config";
+import { navbarItems } from "@constants/constants";
+import { queryStringToObject } from "@helper/func";
+import { useAuth } from "@contexts/AuthContext";
+import { login } from "@redux/authSlice";
+import { initCoin, setScore } from "@redux/coinSlice";
+import { initOTTask, initTask } from "@redux/taskSlice";
 import NavbarItem from "./NavbarItem";
-import { queryStringToObject } from "../../helper/func";
-import { navbarItems } from "../../constants/constants";
 
 const Navbar = ({ params }) => {
   const location = useLocation();

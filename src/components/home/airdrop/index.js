@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useDispatch } from "react-redux";
-import { earnAirdrop, stopAirdrop } from "../../../redux/coinSlice";
+import { earnAirdrop, stopAirdrop } from "@redux/coinSlice";
 
 const CoinAirdrop = () => {
   const dispatch = useDispatch();
