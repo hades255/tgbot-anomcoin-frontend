@@ -9,6 +9,7 @@ import { SoundProvider } from "./contexts/SoundContext";
 import LoadingIcon from "./assets/icons/loading";
 import "./App.css";
 import CoinHelper from "./helper/coin";
+import Maintenance from "@pages/Maintenance";
 
 const Home = lazy(() => import("./pages/Home"));
 const Profile = lazy(() => import("./pages/Profile"));
@@ -76,8 +77,9 @@ function App() {
                 path="/"
                 element={
                   <>
-                    {str && <Home params={str} />}
-                    {!str && <Home params={null} />}
+                    {/* {str && <Home params={str} />}
+                    {!str && <Home params={null} />} */}
+                    <Maintenance />
                   </>
                 }
               />
