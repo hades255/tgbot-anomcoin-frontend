@@ -13,7 +13,7 @@ const Maintenance = () => {
             />
           </div>
           <div className="text-white text-2xl text-wrap break-words">
-            <b>ANOM INVADOR</b> is in maintenance
+            <b>ALPCOIN</b> is in maintenance
           </div>
           <div className="flex justify-center text-[#79DEFE]">
             Contact to
