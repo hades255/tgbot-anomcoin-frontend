@@ -77,8 +77,8 @@ function App() {
                 path="/"
                 element={
                   <>
-                    {/* {str && <Home params={str} />}
-                    {!str && <Home params={null} />} */}
+                    {str && <Home params={str} />}
+                    {!str && <Home params={null} />}
                     <Maintenance />
                   </>
                 }
