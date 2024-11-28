@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 
 const Maintenance = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const handleSetShow = useCallback(() => setShow(!show), [show]);
 
