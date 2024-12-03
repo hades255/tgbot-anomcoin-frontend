@@ -13,6 +13,7 @@
       "@common/*": ["./src/components/common/*"],
       "@navbar/*": ["./src/components/navbar/*"],
       "@build/*": ["./src/components/build/*"],
+      "@squad/*": ["./src/components/squad/*"],
       "@frens/*": ["./src/components/frens/*"],
       "@home/*": ["./src/components/home/*"],
       "@profile/*": ["./src/components/profile/*"],

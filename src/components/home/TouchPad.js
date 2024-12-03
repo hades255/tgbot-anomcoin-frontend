@@ -14,7 +14,7 @@ import Auto from "./Auto";
 const TouchPad = () => {
   const dispatch = useDispatch();
   const { yesPac, airdrop } = useSelector((state) => state.coin);
-  const [auto, setAuto] = useState(true);
+  const [auto, setAuto] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {

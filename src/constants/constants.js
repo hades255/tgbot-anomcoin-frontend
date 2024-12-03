@@ -216,3 +216,21 @@ export const BOOSTERS = [
  * 100k 1m  10m 30m
  * 100m 1b  10b 100b
  */
+export const min_maxByPoint = (miner = 0, rank = 0) => {
+  switch (rank) {
+    case 0:
+      return miner === 0 ? [0, 100000] : [0, 100000000];
+    case 1:
+      return miner === 0 ? [100000, 1000000] : [100000000, 1000000000];
+    case 2:
+      return miner === 0 ? [1000000, 10000000] : [1000000000, 10000000000];
+    case 3:
+      return miner === 0 ? [10000000, 30000000] : [10000000000, 100000000000];
+    case 4:
+      return miner === 0
+        ? [30000000, 100000000000]
+        : [100000000000, 10000000000000];
+    default:
+      return [0, 100000000000];
+  }
+};

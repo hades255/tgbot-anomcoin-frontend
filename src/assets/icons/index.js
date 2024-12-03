@@ -1,5 +1,7 @@
 import AnomIcon from "./Anom";
 import AnomGreyIcon from "./AnomGrey";
+import AnomGoldIcon from "./AnomGold";
+import AnomPurpleIcon from "./AnomPurple";
 import ChestIcon from "./Chest";
 import FullRecovery from "./FullRecovery";
 import GreenEnergyIcon from "./GreenEnergy";
@@ -24,4 +26,6 @@ export {
   LoadingIcon,
   RightAngleIcon,
   UserIcon,
+  AnomGoldIcon,
+  AnomPurpleIcon,
 };
