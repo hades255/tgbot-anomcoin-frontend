@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 import { removeErasedItem } from "@redux/coinSlice";
 
 const ExpireItem = ({ coin, multiValue }) => {
@@ -25,20 +26,17 @@ const ExpireItem = ({ coin, multiValue }) => {
   }, [coin, dispatch]);
 
   return (
-    <div
-      className={`no-select ${
+    <motion.div
+      className={`absolute no-select text-white text-[32px] font-comicneue-bold text-shadow-expire-item ${
         visible ? "expireitem-visible" : "expireitem-hidden"
       }`}
       style={{
-        position: "absolute",
         left: coin.x + 25,
         top: coin.type === "airdrop" ? coin.y + 40 : coin.y + 192,
       }}
     >
-      <span className="text-white text-[32px] font-comicneue-bold text-shadow-expire-item">
-        +{coin.type === "airdrop" ? (multiValue + 1) * 2 : multiValue + 1}
-      </span>
-    </div>
+      +{coin.type === "airdrop" ? (multiValue + 1) * 2 : multiValue + 1}
+    </motion.div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import DefaultCoin from "@icons/coins/Default";
 import Coin1Icon from "@icons/coins/Coin1";
 import Coin2Icon from "@icons/coins/Coin2";
@@ -22,7 +23,7 @@ const CoinItem = ({ coin }) => {
   }, []);
 
   return (
-    <div
+    <motion.div
       className={visible ? "coinitem-visible" : "coinitem-hidden"}
       style={{ position: "absolute", left: coin.x, top: coin.y }}
     >
@@ -34,7 +35,7 @@ const CoinItem = ({ coin }) => {
       {coin.type === 5 && <Coin5Icon />}
       {coin.type === 6 && <Coin6Icon />}
       {coin.type === 7 && <Coin7Icon />}
-    </div>
+    </motion.div>
   );
 };
 

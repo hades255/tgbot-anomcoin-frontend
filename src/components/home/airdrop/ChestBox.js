@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
 import { disappearChestBox, startAirdrop } from "@redux/coinSlice";
 import ChestIcon from "@icons/Chest";
 
@@ -19,8 +20,8 @@ const ChestBox = () => {
 
   return (
     chestbox && (
-      <div
-        className={`w-11 h-11 transition-transform transform hover:scale-105 hover:animate-chestboxvibrate hover:cursor-pointer`}
+      <motion.div
+        className={`z-10 w-11 h-11 transition-transform transform hover:scale-105 hover:animate-chestboxvibrate hover:cursor-pointer`}
         onMouseEnter={handleMouseEnter}
         style={{
           position: "absolute",
@@ -29,7 +30,7 @@ const ChestBox = () => {
         }}
       >
         <ChestIcon width={48} height={48} />
-      </div>
+      </motion.div>
     )
   );
 };
