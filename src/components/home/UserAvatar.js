@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import UserIcon from "@icons/User";
+import clsx from "clsx";
 
 const UserAvatar = ({ avatar, width = 48, height = 48, className = "" }) => {
+  const [loading, setLoading] = useState(true);
+
+  const handleImageLoad = useCallback(() => setLoading(false), []);
+
   return (
     <>
-      {avatar ? (
+      {avatar && (
         <img
           alt="user"
           src={avatar}
           width={width}
           height={height}
-          className={className}
+          className={clsx(className, { hidden: loading })}
+          onLoad={handleImageLoad}
         />
-      ) : (
-        <UserIcon width={width} height={height} color={"custom"} />
       )}
+      {loading && <UserIcon width={width} height={height} color={"custom"} />}
     </>
   );
 };
