@@ -18,7 +18,7 @@ const FireworksEffect = () => {
 
     const ctx = canvas.getContext("2d");
     let particlesArray = [];
-    const colors = ["#58A9E8", "#FFFFFF"];
+    const colors = ["#58A9E8", "#13A0FF"];
 
     const mouse = {
       x: null,
@@ -28,7 +28,7 @@ const FireworksEffect = () => {
     window.addEventListener("mousemove", (event) => {
       mouse.x = event.x - rect.left;
       mouse.y = event.y - rect.top;
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 2; i++) {
         particlesArray.push(new Particle());
       }
     });
@@ -36,7 +36,7 @@ const FireworksEffect = () => {
     window.addEventListener("touchmove", (event) => {
       mouse.x = event.touches[0].clientX - rect.left;
       mouse.y = event.touches[0].clientY - rect.top;
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 2; i++) {
         particlesArray.push(new Particle());
       }
     });
@@ -45,9 +45,9 @@ const FireworksEffect = () => {
       constructor() {
         this.x = mouse.x;
         this.y = mouse.y;
-        this.size = Math.random() * 8 + 3;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
+        this.size = Math.random() * 6 + 5;
+        this.speedX = Math.random() * 6 - 3;
+        this.speedY = Math.random() * 6 - 3;
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
       update() {
@@ -64,7 +64,7 @@ const FireworksEffect = () => {
           this.y,
           this.size
         );
-        gradient.addColorStop(0, "#3377FF");
+        gradient.addColorStop(0, "#FFF");
         gradient.addColorStop(1, this.color);
 
         ctx.fillStyle = gradient;

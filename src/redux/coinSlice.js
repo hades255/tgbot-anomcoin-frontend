@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { newCoin } from "../helper/func";
-import { sendPoint } from "../helper/apis";
+import { sendPoint } from "@helper/apis";
+import { newCoin } from "@helper/func";
 
 const coinSlice = createSlice({
   name: "coin",
@@ -57,8 +57,8 @@ const coinSlice = createSlice({
       let diff = [];
       for (let item of state.coins) {
         if (
-          Math.abs(payload.payload.x - 42 - item.x) > 50 ||
-          Math.abs(payload.payload.y - 32 - item.y) > 40
+          Math.abs(payload.payload.x - 42 - item.x) > 60 ||
+          Math.abs(payload.payload.y - 32 - item.y) > 50
         )
           remaining.push(item);
         else diff.push(item);
@@ -77,8 +77,8 @@ const coinSlice = createSlice({
       let diff = [];
       for (let item of state.coins) {
         if (
-          Math.abs(payload.payload.x - 50 - item.x) > 60 ||
-          Math.abs(payload.payload.y - 40 - item.y) > 60
+          Math.abs(payload.payload.x - 50 - item.x) > 80 ||
+          Math.abs(payload.payload.y - 40 - item.y) > 70
         )
           remaining.push(item);
         else diff.push(item);

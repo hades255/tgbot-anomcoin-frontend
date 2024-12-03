@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { BACKEND_PATH } from "@constants/config";
 import { useAuth } from "@contexts/AuthContext";
 import { updateBoost } from "@redux/taskSlice";
-import { fullRecovery, startAirdrop } from "@redux/coinSlice";
+import { appearChestBox, fullRecovery } from "@redux/coinSlice";
 import FullRecovery from "@icons/FullRecovery";
 import ChestIcon from "@icons/Chest";
 
@@ -26,7 +26,7 @@ const ClaimBooster = ({ title, icon, remain, onClose, taskKey }) => {
           dispatch(updateBoost({ key: taskKey, value: response.data.count }));
           if (taskKey === "boostRecovery") dispatch(fullRecovery());
           else if (taskKey === "boostChest") {
-            dispatch(startAirdrop());
+            dispatch(appearChestBox());
           }
           onClose();
         } catch (error) {

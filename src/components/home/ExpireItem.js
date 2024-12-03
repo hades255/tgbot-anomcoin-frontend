@@ -4,11 +4,11 @@ import { removeErasedItem } from "@redux/coinSlice";
 
 const ExpireItem = ({ coin, multiValue }) => {
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setVisible(true);
+      setVisible(false);
     }, 10);
     return () => {
       clearTimeout(timer);
@@ -27,7 +27,7 @@ const ExpireItem = ({ coin, multiValue }) => {
   return (
     <div
       className={`no-select ${
-        visible ? "expireitem-hidden" : "expireitem-visible"
+        visible ? "expireitem-visible" : "expireitem-hidden"
       }`}
       style={{
         position: "absolute",

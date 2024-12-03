@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { autoCatcherMove } from "@redux/coinSlice";
 
+const speed = 5;
+
 const Auto = ({ auto }) => {
-  console.log(auto)
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -56,7 +57,7 @@ const Auto = ({ auto }) => {
         this.x = 50;
         this.y = 50;
         this.size = 20;
-        this.speedX = 3;
+        this.speedX = speed;
         this.speedY = 0;
         this.color = "#58A9E8";
       }
@@ -72,24 +73,24 @@ const Auto = ({ auto }) => {
           ];
         if (currentNode.x === nextNode.x && currentNode.y < nextNode.y) {
           this.speedX = 0;
-          this.speedY = 3;
+          this.speedY = speed;
           if (this.y + this.speedY >= nextNode.y) {
             updateCount();
           }
         } else if (currentNode.x === nextNode.x && currentNode.y > nextNode.y) {
           this.speedX = 0;
-          this.speedY = -3;
+          this.speedY = -speed;
           if (this.y + this.speedY <= nextNode.y) {
             updateCount();
           }
         } else if (currentNode.y === nextNode.y && currentNode.x < nextNode.x) {
-          this.speedX = 3;
+          this.speedX = speed;
           this.speedY = 0;
           if (this.x + this.speedX >= nextNode.x) {
             updateCount();
           }
         } else if (currentNode.y === nextNode.y && currentNode.x > nextNode.x) {
-          this.speedX = -3;
+          this.speedX = -speed;
           this.speedY = 0;
           if (this.x + this.speedX <= nextNode.x) {
             updateCount();

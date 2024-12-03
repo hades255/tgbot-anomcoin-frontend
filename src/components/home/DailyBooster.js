@@ -18,10 +18,10 @@ const DailyBooster = () => {
       <div
         onClick={handleClickDailyBooster}
         className={clsx(
-          "z-10 absolute bottom-0 right-0 w-6 h-6 rounded-[12px] bg-white hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
+          "z-10 absolute bottom-0 right-0 w-8 h-8 rounded-full border bg-[#58A9E8] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
         )}
       >
-        B
+        🚀
       </div>
       <BoosterModal onClose={handleClose} show={show} />
     </>
