@@ -11,9 +11,11 @@ import AnomIcon from "@icons/Anom";
 import AnomGoldIcon from "@icons/AnomGold";
 import AnomGreyIcon from "@icons/AnomGrey";
 import AnomPurpleIcon from "@icons/AnomPurple";
+import { useNavigate } from "react-router-dom";
 
 const SquadItem = ({ squad, daily = true, index = null }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { squad: squadId, userId } = useAuth();
   const [showSquad, setShowSquad] = useState(false);
 
@@ -23,12 +25,13 @@ const SquadItem = ({ squad, daily = true, index = null }) => {
         if (id) {
           await axios.post(`${BACKEND_PATH}/squad/${id}`, { userId });
           dispatch(updateUser([{ key: "squad", value: id }]));
+          navigate("/squadhome");
         }
       } catch (error) {
         console.log(error);
       }
     },
-    [userId, dispatch]
+    [userId, dispatch, navigate]
   );
 
   const handleCloseSquadModal = useCallback(

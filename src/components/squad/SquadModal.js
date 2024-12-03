@@ -92,7 +92,7 @@ const SquadModal = ({ show, onClose, squadid }) => {
               onClick={handleJoin}
               className="w-full h-full rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF] text-white text-[16px] font-sf-pro-text font-bold flex items-center justify-center p-3"
             >
-              Join
+              {mySquadId === squadid ? "View" : "Join"}
             </button>
           </div>
         </div>

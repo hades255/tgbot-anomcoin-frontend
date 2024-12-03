@@ -105,7 +105,6 @@ const TouchPad = () => {
                   {
                     "bg-[#58A9E8]": !auto,
                     "bg-blue-700": auto,
-                    "bg-black": yesPac === 0,
                   }
                 )}
               >

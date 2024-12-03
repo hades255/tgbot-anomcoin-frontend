@@ -27,7 +27,7 @@ const BoosterModal = ({ booster, level, onClose, show }) => {
         console.log(error);
       }
     })();
-  }, [onClose, booster, userId, dispatch]);
+  }, [onClose, booster, level, userId, dispatch]);
 
   return (
     <>
