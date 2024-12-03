@@ -101,8 +101,11 @@ const FireworksEffect = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen fixed top-0 left-0">
-      <canvas ref={canvasRef} style={{ display: "block" }} />
+    <div className="w-screen h-screen fixed top-0 left-0 bg-transparent">
+      <canvas
+        ref={canvasRef}
+        style={{ display: "block", backgroundColor: "transparent" }}
+      />
     </div>
   );
 };
