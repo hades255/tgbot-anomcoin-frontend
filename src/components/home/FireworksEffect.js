@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import Particle from "./Particle";
 
 const FireworksEffect = () => {
   const canvasRef = useRef(null);
@@ -18,7 +19,6 @@ const FireworksEffect = () => {
 
     const ctx = canvas.getContext("2d");
     let particlesArray = [];
-    const colors = ["#58A9E8", "#13A0FF"];
 
     const mouse = {
       x: null,
@@ -29,7 +29,7 @@ const FireworksEffect = () => {
       mouse.x = event.x - rect.left;
       mouse.y = event.y - rect.top;
       for (let i = 0; i < 2; i++) {
-        particlesArray.push(new Particle());
+        particlesArray.push(new Particle(ctx, mouse));
       }
     });
 
@@ -37,42 +37,9 @@ const FireworksEffect = () => {
       mouse.x = event.touches[0].clientX - rect.left;
       mouse.y = event.touches[0].clientY - rect.top;
       for (let i = 0; i < 2; i++) {
-        particlesArray.push(new Particle());
+        particlesArray.push(new Particle(ctx, mouse));
       }
     });
-
-    class Particle {
-      constructor() {
-        this.x = mouse.x;
-        this.y = mouse.y;
-        this.size = Math.random() * 6 + 5;
-        this.speedX = Math.random() * 6 - 3;
-        this.speedY = Math.random() * 6 - 3;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.2;
-      }
-      draw() {
-        const gradient = ctx.createRadialGradient(
-          this.x,
-          this.y,
-          0,
-          this.x,
-          this.y,
-          this.size
-        );
-        gradient.addColorStop(0, "#FFF");
-        gradient.addColorStop(1, this.color);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
 
     const handleParticles = () => {
       for (let i = 0; i < particlesArray.length; i++) {

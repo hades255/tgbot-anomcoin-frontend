@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { autoCatcherMove } from "@redux/coinSlice";
 import { EATER } from "@constants/constants";
+import Particle from "./Particle";
 
 const speed = 5;
 
@@ -52,7 +53,10 @@ const Auto = ({ auto }) => {
     const updateCount = () => {
       count = (count + 1) % course.length;
     };
+
     //** start auto catcher code */
+    let particlesArray = [];
+
     class Catcher {
       constructor() {
         this.x = 50;
@@ -98,6 +102,7 @@ const Auto = ({ auto }) => {
         this.y += speed * EATER[this.direction].y;
       }
       draw() {
+        particlesArray.push(new Particle(ctx, this));
         ctx.beginPath();
         if (this.mouthOpen) {
           ctx.arc(
@@ -137,8 +142,21 @@ const Auto = ({ auto }) => {
       catcher.draw();
       dispatch(autoCatcherMove({ x: catcher.x, y: catcher.y }));
     };
+
+    const handleParticles = () => {
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        if (particlesArray[i].size <= 0.2) {
+          particlesArray.splice(i, 1);
+          i--;
+        }
+      }
+    };
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      handleParticles();
       handleCatcher();
       animationRef.current = requestAnimationFrame(animate);
     };
