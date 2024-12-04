@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import { useAuth } from "@contexts/AuthContext";
+import { APP_URL } from "@constants/config";
 
 const InviteBtn = () => {
   const { userId } = useAuth();
 
   const message = useMemo(
-    () =>
-      `https://t.me/anom_invaders_bot/ANOM_Invaders?startapp=linkCode_${userId}\nLet's race! Predict Ethereum's price and rack up points`,
+    () => `${APP_URL}?startapp=linkCode_${userId}`,
     [userId]
   );
   const encodedMessage = useMemo(() => encodeURIComponent(message), [message]);
