@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
-import { earnCoin, initSize, onMouseDown, onMouseUp } from "@redux/coinSlice";
+import { earnCoin, initSize } from "@redux/coinSlice";
 import FireworksEffect from "./FireworksEffect";
 import CoinGround from "./CoinGround";
 import ExpireGround from "./ExpireGround";
@@ -18,6 +18,7 @@ const TouchPad = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      window.alert(window.innerWidth + "-" + window.innerHeight);
       dispatch(
         initSize({
           width: window.innerWidth - 32,
