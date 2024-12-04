@@ -87,16 +87,14 @@ const TouchPad = () => {
   }, [auto, yesPac]);
 
   useEffect(() => {
-    if (!airdrop) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("touchmove", handleTouchMove);
-    }
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
 
     return () => {
       window.removeEventListener("mousemove", () => {});
       window.removeEventListener("touchmove", () => {});
     };
-  }, [handleMouseMove, handleTouchMove, airdrop]);
+  }, [handleMouseMove, handleTouchMove]);
 
   return (
     <>

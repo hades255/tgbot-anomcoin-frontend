@@ -53,6 +53,7 @@ const coinSlice = createSlice({
     },
     earnCoin: (state, payload) => {
       // if (state.unclicked) return;
+      if (state.airdrop) return;
       let remaining = [];
       let diff = [];
       for (let item of state.coins) {
