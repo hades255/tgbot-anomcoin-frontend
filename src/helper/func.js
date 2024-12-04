@@ -23,11 +23,20 @@ export const queryStringToObject = (queryString) => {
   return result;
 };
 
+const randomId = function (length = 6) {
+  return (
+    Date.now().toString(36) +
+    Math.random()
+      .toString(36)
+      .substring(2, length + 2)
+  );
+};
+
 export const newCoin = (width = 360, height = 320, types = 8) => {
   const x = Math.round(Math.random() * (width - 80));
   const y = Math.round(Math.random() * (height - 60));
   const type = Math.round(Math.random() * types);
-  return { key: crypto.randomUUID(), x, y, type };
+  return { key: randomId(), x, y, type };
 };
 
 export const boosterCoin = (level) => {
