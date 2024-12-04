@@ -92,6 +92,8 @@ const ProfilePad = ({ miner, rank }) => {
   const handleClickTab = useCallback((param) => setTab(param), []);
 
   useEffect(() => {
+    setUsers([]);
+    setUser(null);
     (async () => {
       try {
         const response = await axios.get(
@@ -174,7 +176,6 @@ const ProfilePad = ({ miner, rank }) => {
           </div>
         </div>
       )}
-      {/* )} */}
     </div>
   );
 };

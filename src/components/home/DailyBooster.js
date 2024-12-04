@@ -79,12 +79,12 @@ const BoosterModal = ({ onClose, show }) => {
                   </div>
                 </div>
               </div>
-              <div className="my-2 h-[29px] rounded-[4px] bg-black flex justify-center items-center">
+              <button className="my-2 h-[29px] rounded-[4px] bg-black flex justify-center items-center">
                 ⭐
                 <span className="text-center font-sf-pro-text text-[12px] text-white">
                   9 stars
                 </span>
-              </div>
+              </button>
               <div className="text-center font-sf-pro-text text-[12px] text-white">
                 Limited to one claim per day
               </div>

@@ -15,6 +15,7 @@ export * from "./coins";
 export * from "./invite";
 export * from "./navbar";
 export * from "./task";
+export * from "./loader";
 
 export {
   AnomIcon,
