@@ -18,7 +18,6 @@ const TouchPad = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      window.alert(window.innerWidth + "-" + window.innerHeight);
       dispatch(
         initSize({
           width: window.innerWidth - 32,
