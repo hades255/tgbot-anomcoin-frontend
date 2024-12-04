@@ -24,7 +24,7 @@ const Profile = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-[14px] text-white font-comicneue-bold overflow-hidden text-nowrap">
-                LVL 1 - 10X BOOST
+                LVL 1
               </span>
               <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden">
                 {username}

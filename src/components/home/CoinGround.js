@@ -7,6 +7,9 @@ const CoinGround = () => {
 
   return (
     <>
+      <span className="absolute top-0 left-0 text-white">
+        {coins ? coins.length : "X"}
+      </span>
       {coins.map((item) => (
         <CoinItem key={item.key} coin={item} />
       ))}

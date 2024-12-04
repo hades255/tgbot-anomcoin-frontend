@@ -40,7 +40,7 @@ const CoinAirdrop = () => {
     const newCoins = [];
     for (let i = 0; i < 160; i++) {
       newCoins.push({
-        x: Math.random() * 220 + 80,
+        x: Math.random() * 200 + 90,
         y: -400 - Math.random() * 2400,
         radius: 40,
       });

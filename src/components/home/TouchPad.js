@@ -27,6 +27,7 @@ const TouchPad = () => {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -67,27 +68,38 @@ const TouchPad = () => {
     [dispatch]
   );
 
-  const handleTouchStart = useCallback(
-    (event) =>
-      dispatch(
-        onMouseDown({
-          x: event.touches[0].clientX - 16,
-          y: event.touches[0].clientY - 188,
-        })
-      ),
-    [dispatch]
-  );
+  // const handleTouchStart = useCallback(
+  //   (event) =>
+  //     dispatch(
+  //       onMouseDown({
+  //         x: event.touches[0].clientX - 16,
+  //         y: event.touches[0].clientY - 188,
+  //       })
+  //     ),
+  //   [dispatch]
+  // );
 
-  const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
+  // const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
   const handleClickAuto = useCallback(() => {
     if (yesPac === 0) setAuto(false);
     else setAuto(!auto);
   }, [auto, yesPac]);
 
+  useEffect(() => {
+    if (!airdrop) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("touchmove", handleTouchMove);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", () => {});
+      window.removeEventListener("touchmove", () => {});
+    };
+  }, [handleMouseMove, handleTouchMove, airdrop]);
+
   return (
     <>
-      <FireworksEffect />
       {!airdrop && (
         <>
           <div className="pt-44 px-2">
@@ -113,18 +125,10 @@ const TouchPad = () => {
               <DailyBooster />
             </div>
           </div>
-          <div
-            className="w-screen h-screen fixed top-0 left-0"
-            onMouseMove={handleMouseMove}
-            // onMouseDown={handleMouseDown}
-            // onMouseUp={handleMouseUp}
-            onTouchMove={handleTouchMove}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          />
           <ChestBox />
         </>
       )}
+      <FireworksEffect />
       {airdrop && <AirDrop />}
       <ExpireGround />
       <PointSender />
