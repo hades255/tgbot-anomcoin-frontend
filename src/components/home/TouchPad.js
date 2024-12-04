@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { earnCoin, initSize } from "@redux/coinSlice";
@@ -15,6 +15,7 @@ const TouchPad = () => {
   const dispatch = useDispatch();
   const { yesPac, airdrop } = useSelector((state) => state.coin);
   const [auto, setAuto] = useState(false);
+  const touchRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,13 +88,16 @@ const TouchPad = () => {
   }, [auto, yesPac]);
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove);
+    const touchpad = touchRef.current;
+    if (touchpad) {
+      touchpad.addEventListener("mousemove", handleMouseMove);
+      touchpad.addEventListener("touchmove", handleTouchMove);
 
-    return () => {
-      window.removeEventListener("mousemove", () => {});
-      window.removeEventListener("touchmove", () => {});
-    };
+      return () => {
+        touchpad.removeEventListener("mousemove", () => {});
+        touchpad.removeEventListener("touchmove", () => {});
+      };
+    }
   }, [handleMouseMove, handleTouchMove]);
 
   return (
@@ -128,6 +132,12 @@ const TouchPad = () => {
       )}
       <FireworksEffect />
       {airdrop && <AirDrop />}
+      {!airdrop && (
+        <div
+          ref={touchRef}
+          className="fixed top-0 left-0 w-screen h-screen"
+        ></div>
+      )}
       <ExpireGround />
       <PointSender />
     </>
