@@ -89,7 +89,7 @@ const TouchPad = () => {
 
   useEffect(() => {
     const touchpad = touchRef.current;
-    if (touchpad) {
+    if (touchpad && !airdrop) {
       touchpad.addEventListener("mousemove", handleMouseMove);
       touchpad.addEventListener("touchmove", handleTouchMove);
 
@@ -98,7 +98,7 @@ const TouchPad = () => {
         touchpad.removeEventListener("touchmove", () => {});
       };
     }
-  }, [handleMouseMove, handleTouchMove]);
+  }, [handleMouseMove, handleTouchMove, airdrop]);
 
   return (
     <>
