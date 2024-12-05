@@ -47,7 +47,22 @@ const ShakeDetector = () => {
     };
   }, []);
 
-  return <div className="fixed top-0 left-0 bg-white z-50">{count}</div>;
+  const handleVibrate = () => {
+    if (navigator.vibrate) {
+      navigator.vibrate(200); // Vibrate for 200 milliseconds
+    } else {
+      console.log("Vibration API is not supported on this device.");
+    }
+  };
+
+  return (
+    <div className="fixed top-0 left-0 z-50">
+      <span className="bg-white">{count}</span>
+      <button className="border bg-blue-700 text-white" onClick={handleVibrate}>
+        Vibrate Device
+      </button>
+    </div>
+  );
 };
 
 export default ShakeDetector;
