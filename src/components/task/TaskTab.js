@@ -12,9 +12,6 @@ const TaskTab = () => {
         {normalTasks.map((item) => (
           <DailyTaskItem key={item.id} task={item} category="ot" />
         ))}
-        <div className="text-white text-[16px] font-sf-pro-text pt-2">
-          Yes Questing
-        </div>
       </div>
     </>
   );

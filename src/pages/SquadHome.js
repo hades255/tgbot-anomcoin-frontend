@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import clsx from "clsx";
-import { TabItem } from "@frens/FrensList";
 import { useAuth } from "@contexts/AuthContext";
 import { BACKEND_PATH } from "@constants/config";
+import { updateUser } from "@redux/authSlice";
+import UserItem from "@profile/UserItem";
+import { TabItem } from "@frens/FrensList";
+import { IntroItem } from "@squad/SquadModal";
 import AnomGreyIcon from "@icons/AnomGrey";
 import UsersIcon from "@icons/invite/Users";
 import AnomIcon from "@icons/Anom";
-import UserItem from "@profile/UserItem";
-import { useDispatch } from "react-redux";
-import { updateUser } from "@redux/authSlice";
 
 const Squad = () => {
   const navigate = useNavigate();
@@ -48,51 +49,59 @@ const Squad = () => {
     <>
       <div className="flex flex-col mb-8">
         <div className="mt-6 flex justify-center">
-          <AnomIcon width={80} height={80} />
+          <AnomIcon width={120} height={120} />
         </div>
-        <div className="my-3 flex justify-center">
+        <div className="mb-3 flex justify-center">
           <span className="text-white font-sf-pro-text text-sm ">
             {squad_ && squad_.squad.name}
           </span>
         </div>
         <div className="mx-8 my-2 flex justify-center flex-col text-white gap-2">
           <div className="flex justify-center items-center flex-row gap-2">
-            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
-              <div className="h-16 flex items-center justify-center">
-                <AnomGreyIcon width={60} height={60} />
+            <IntroItem>
+              <div className="bg-[#235ECA80] w-full h-full flex justify-center items-center flex-col rounded-lg">
+                <div className="h-16 flex items-center justify-center">
+                  <AnomGreyIcon width={60} height={60} />
+                </div>
+                <div className="flex justify-center flex-col text-lg ">
+                  Diamond
+                </div>
               </div>
-              <div className="flex justify-center flex-col text-lg ">
-                Diamond
+            </IntroItem>
+            <IntroItem>
+              <div className="bg-[#235ECA80] w-full h-full flex justify-center items-center flex-col rounded-lg">
+                <div className="h-16 flex items-center justify-center">
+                  <AnomIcon width={60} height={60} />
+                </div>
+                <div className="flex justify-center  flex-col text-lg ">
+                  {squad_ && squad_.totalPoint
+                    ? squad_.totalPoint
+                    : "Calculating..."}
+                </div>
               </div>
-            </div>
-            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
-              <div className="h-16 flex items-center justify-center">
-                <AnomIcon width={60} height={60} />
-              </div>
-              <div className="flex justify-center  flex-col text-lg ">
-                {squad_ && squad_.totalPoint
-                  ? squad_.totalPoint
-                  : "Calculating..."}
-              </div>
-            </div>
+            </IntroItem>
           </div>
           <div className="flex justify-center items-center flex-row gap-2">
-            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
-              <div className="h-16 flex items-center justify-center">
-                <UsersIcon width={40} height={40} />
+            <IntroItem>
+              <div className="bg-[#235ECA80] w-full h-full flex justify-center items-center flex-col rounded-lg">
+                <div className="h-16 flex items-center justify-center">
+                  <UsersIcon width={40} height={40} />
+                </div>
+                <div className="flex justify-center flex-col text-lg">
+                  {squad_ && squad_.count ? squad_.count : "Calculating..."}
+                </div>
               </div>
-              <div className="flex justify-center flex-col text-lg">
-                {squad_ && squad_.count ? squad_.count : "Calculating..."}
+            </IntroItem>
+            <IntroItem>
+              <div className="bg-[#235ECA80] w-full h-full flex justify-center items-center flex-col rounded-lg">
+                <div className="h-16 flex items-center justify-center">
+                  <AnomGreyIcon width={60} height={60} />
+                </div>
+                <div className="flex justify-center flex-col text-lg">
+                  Community
+                </div>
               </div>
-            </div>
-            <div className="w-full flex justify-center items-center flex-col border bg-telegram-btn rounded-lg">
-              <div className="h-16 flex items-center justify-center">
-                <AnomGreyIcon width={60} height={60} />
-              </div>
-              <div className="flex justify-center flex-col text-lg">
-                Community
-              </div>
-            </div>
+            </IntroItem>
           </div>
         </div>
         <div className="mx-8 my-2 flex justify-around flex-row text-white gap-2">
@@ -147,7 +156,6 @@ const ProfilePad = () => {
             `${BACKEND_PATH}/squad/${squad}/users?period=${tab}`
           );
           setUsers(response.data.users);
-          console.log(response);
         } catch (error) {
           console.log(error);
         }

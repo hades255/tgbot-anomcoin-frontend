@@ -43,9 +43,9 @@ const SquadModal = ({ show, onClose, squadid }) => {
       onClose={handleClose}
       title={
         show && (
-          <div className="mt-4 mx-8 flex flex-col">
+          <div className="mt-2 mx-8 flex flex-col">
             <div className="flex justify-center">
-              <AnomIcon width={80} height={80} />
+              <AnomIcon width={100} height={100} />
             </div>
             <div className="flex justify-center">
               <span className="font-sf-pro-text text-white text-sm">
@@ -55,37 +55,45 @@ const SquadModal = ({ show, onClose, squadid }) => {
           </div>
         )
       }
-      className={`mx-7 pb-8 h-1/2  bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
+      className={`mx-4 pb-8 h-1/2  bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
     >
       {show && (
         <div className="mt-2 flex flex-col gap-4 text-white">
-          <div className="flex flex-row justify-center items-center">
-            <div className="w-1/2 flex flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
-              <AnomGreyIcon width={35} height={35} />
-              <span className="font-sf-pro-text text-white text-sm">
-                Diamond
-              </span>
-            </div>
-            <div className="w-1/2 flex flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
-              <AnomIcon width={35} height={35} />
-              <span className="font-sf-pro-text text-white text-sm">
-                {totalPoint ? totalPoint : "Calculating"}
-              </span>
-            </div>
+          <div className="flex flex-row justify-center items-center gap-2">
+            <IntroItem>
+              <div className="w-full flex flex-col justify-center items-center bg-[#235ECA80] rounded-lg py-2">
+                <AnomGreyIcon width={35} height={35} />
+                <span className="font-sf-pro-text text-white text-sm">
+                  Diamond
+                </span>
+              </div>
+            </IntroItem>
+            <IntroItem>
+              <div className="w-full flex flex-col justify-center items-center bg-[#235ECA80] rounded-lg py-2">
+                <AnomIcon width={35} height={35} />
+                <span className="font-sf-pro-text text-white text-sm">
+                  {totalPoint ? totalPoint : "Calculating"}
+                </span>
+              </div>
+            </IntroItem>
           </div>
-          <div className="flex flex-row justify-center items-center">
-            <div className="flex w-1/2 flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
-              <UsersIcon width={35} height={35} />
-              <span className="font-sf-pro-text text-white text-sm">
-                {count ? count : "Calculating"}
-              </span>
-            </div>
-            <div className="flex w-1/2 flex-col mx-3 justify-center items-center bg-task-claim rounded-lg py-2">
-              <AnomGreyIcon width={35} height={35} />
-              <span className="font-sf-pro-text text-white text-sm">
-                Community
-              </span>
-            </div>
+          <div className="flex flex-row justify-center items-center gap-2">
+            <IntroItem>
+              <div className="w-full flex flex-col justify-center items-center bg-[#235ECA80] rounded-lg py-2">
+                <UsersIcon width={35} height={35} />
+                <span className="font-sf-pro-text text-white text-sm">
+                  {count ? count : "Calculating"}
+                </span>
+              </div>
+            </IntroItem>
+            <IntroItem>
+              <div className="w-full flex flex-col justify-center items-center bg-[#235ECA80] rounded-lg py-2">
+                <AnomGreyIcon width={35} height={35} />
+                <span className="font-sf-pro-text text-white text-sm">
+                  Community
+                </span>
+              </div>
+            </IntroItem>
           </div>
           <div className="px-6">
             <button
@@ -102,3 +110,11 @@ const SquadModal = ({ show, onClose, squadid }) => {
 };
 
 export default SquadModal;
+
+export const IntroItem = ({ children }) => {
+  return (
+    <div className="w-full flex justify-center items-center rounded-lg bg-squad-intro-border p-1">
+      {children}
+    </div>
+  );
+};

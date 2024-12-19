@@ -115,10 +115,10 @@ const TouchPad = () => {
               <div
                 onClick={handleClickAuto}
                 className={clsx(
-                  "z-10 absolute bottom-0 right-9 w-8 h-8 rounded-full border hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
+                  "z-10 absolute bottom-0 right-9 w-8 h-8 rounded-full border border-black hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
                   {
-                    "bg-[#58A9E8]": !auto,
-                    "bg-blue-700": auto,
+                    "bg-[#367cff]": !auto,
+                    "bg-blue-800": auto,
                   }
                 )}
               >

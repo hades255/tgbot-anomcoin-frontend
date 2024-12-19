@@ -1,3 +1,5 @@
+import { boosterCoin } from "@helper/func";
+import AntiCounter from "@task/AntiCounter";
 import DiscordIcon from "@icons/task/Discord";
 import TelegramIcon from "@icons/task/Telegram";
 import TwitterIcon from "@icons/task/Twitter";
@@ -12,7 +14,6 @@ import UTVIcon from "@icons/task/UTV";
 import AlpCoinsIcon from "@icons/build/AlpCoins";
 import CoinsIcon from "@icons/build/Coins";
 import LighteningIcon from "@icons/build/Lightening";
-import { boosterCoin } from "@helper/func";
 
 export const navbarItems = [
   {
@@ -161,7 +162,9 @@ export const taskTabItems = [
     content: (
       <div>
         <p className="text-white text-[16px] font-sf-pro-text">Daily Task</p>
-        <p className="text-white text-[12px] font-sf-pro-text">08:05:05</p>
+        <p className="text-white text-[12px] font-sf-pro-text">
+          <AntiCounter />
+        </p>
       </div>
     ),
   },

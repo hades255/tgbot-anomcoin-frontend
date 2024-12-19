@@ -30,6 +30,7 @@ module.exports = {
         "profile-item": "linear-gradient(to top, #9CCAFF26, #A8D1FF00)",
         "modal-close":
           "radial-gradient(circle at top right, #FF999B, #FF1418, #FF0000)",
+        "squad-intro-border": "linear-gradient(to top, #DDDD, #DDD4, transparent, transparent)",
       },
       boxShadow: {
         "navbar-item": "inset 0 0 12px 0 #003B8F",

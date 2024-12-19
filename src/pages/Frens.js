@@ -32,7 +32,7 @@ const Frens = () => {
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
-                  invite 1 friend
+                  invite 3 friend
                 </div>
                 <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
                   +10k
@@ -53,10 +53,10 @@ const Frens = () => {
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
-                  invite 1 friend
+                  invite 10 friend
                 </div>
                 <div className="flex items-center text-white font-sf-pro-text font-semibold text-[16px]">
-                  +10k
+                  +100k
                   <AnomIcon />
                 </div>
               </div>

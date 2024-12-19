@@ -45,7 +45,7 @@ const Info = () => {
                 <img src="/icons/dice.png" alt="dice" />
               </div>
               <div className="flex items-center text-white font-sf-pro-text">
-                You and your invite both get 100L and random bonus.
+                You and your invite both get 100K and random bonus.
               </div>
             </div>
             <div className="mb-4 flex">

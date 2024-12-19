@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import clsx from "clsx";
 import axios from "axios";
+import clsx from "clsx";
 import { BACKEND_PATH } from "@constants/config";
 import { useAuth } from "@contexts/AuthContext";
 import { updateUser } from "@redux/authSlice";
 import Modal from "@common/Modal";
-import UsersIcon from "@icons/invite/Users";
-import AnomIcon from "@icons/Anom";
-import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
 import SquadModal from "@squad/SquadModal";
+import AnomIcon from "@icons/Anom";
+import UsersIcon from "@icons/invite/Users";
+import RightArrowCircleIcon from "@icons/task/RightArrowCircle";
 
 const Squad = () => {
   const router = useNavigate();
@@ -214,7 +214,7 @@ const CreateSquadModal = ({ show, onClose }) => {
           </div>
         )
       }
-      className={`mx-7 h-1/2 bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
+      className={`mx-4 h-1/2 bg-telegram-btn rounded-t-[20px] shadow-xl w-full border-2 border-b-0`}
     >
       {show && (
         <form method="POST" onSubmit={handleJoin}>
