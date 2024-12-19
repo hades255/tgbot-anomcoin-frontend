@@ -13,7 +13,7 @@ const AntiCounter = () => {
     const minutes = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
     const seconds = String(diff % 60).padStart(2, "0");
     setTime(`${hours}:${minutes}:${seconds}`);
-  });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(timerFunc, 1000);
