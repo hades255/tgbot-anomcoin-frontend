@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
-import { earnCoin, initSize } from "@redux/coinSlice";
+import { earnCoin, initSize, setRunAuto } from "@redux/coinSlice";
 import FireworksEffect from "./FireworksEffect";
 import CoinGround from "./CoinGround";
 import ExpireGround from "./ExpireGround";
@@ -13,9 +13,11 @@ import Auto from "./Auto";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
-  const { yesPac, airdrop } = useSelector((state) => state.coin);
+  const { yesPac, airdrop, runAuto } = useSelector((state) => state.coin);
   const [auto, setAuto] = useState(false);
   const touchRef = useRef(null);
+
+  useEffect(() => setAuto(runAuto), [runAuto]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -83,9 +85,12 @@ const TouchPad = () => {
   // const handleTouchEnd = useCallback(() => dispatch(onMouseUp()), [dispatch]);
 
   const handleClickAuto = useCallback(() => {
-    if (yesPac === 0) setAuto(false);
-    else setAuto(!auto);
-  }, [auto, yesPac]);
+    if (yesPac === 0) {
+      dispatch(setRunAuto(false));
+    } else {
+      dispatch(setRunAuto(!auto));
+    }
+  }, [auto, yesPac, dispatch]);
 
   useEffect(() => {
     const touchpad = touchRef.current;
@@ -115,14 +120,14 @@ const TouchPad = () => {
               <div
                 onClick={handleClickAuto}
                 className={clsx(
-                  "z-10 absolute bottom-0 right-9 w-8 h-8 rounded-full border border-black hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
+                  "z-10 absolute bottom-0 right-9 w-8 h-8 p-[2px] rounded-full border border-black hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
                   {
                     "bg-[#367cff]": !auto,
                     "bg-blue-800": auto,
                   }
                 )}
               >
-                ▶
+                <img alt="catcher" src="/catcher.png" />
               </div>
               <DailyBooster />
             </div>

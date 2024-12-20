@@ -52,16 +52,24 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex justify-around items-center h-28">
-          <div onClick={handleClickPrev} className="cursor-pointer">
-            <LeftArrowCircleFillIcon opacity={rank === 0 ? 0.5 : 1} />
+          <div
+            onClick={handleClickPrev}
+            className={clsx("cursor-pointer", { invisible: rank === 0 })}
+          >
+            <LeftArrowCircleFillIcon opacity={0.8} />
           </div>
           <div>
             {rank === 0 && <AnomGreyIcon />}
-            {rank === 2 && <AnomPurpleIcon width={116} height={128} />}
             {rank === 1 && <AnomGoldIcon width={116} height={128} />}
+            {rank === 2 && <AnomPurpleIcon width={116} height={128} />}
           </div>
-          <div onClick={handleClickNext} className="cursor-pointer">
-            <RightArrowCircleFillIcon opacity={rank === rankCount ? 0.5 : 1} />
+          <div
+            onClick={handleClickNext}
+            className={clsx("cursor-pointer", {
+              invisible: rank === rankCount,
+            })}
+          >
+            <RightArrowCircleFillIcon opacity={0.8} />
           </div>
         </div>
         <div

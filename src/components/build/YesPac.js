@@ -184,7 +184,7 @@ const YesPacModal = ({ booster, level, onClose, show }) => {
                 Offline mining mode lasts for 12 hours
               </p>
               <p className="text-[9px] text-white font-sf-pro-text text-center">
-                Earn an extra 30% offline mining bonus * 7 days
+                Earn an extra 60% offline mining bonus * 7 days
               </p>
             </div>
             <div className="my-1 flex justify-center items-center">

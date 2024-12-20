@@ -21,6 +21,7 @@ const coinSlice = createSlice({
     yesPac: 0,
     /** */
     airdrop: false,
+    runAuto: false,
     chestbox: null,
   },
   reducers: {
@@ -153,6 +154,9 @@ const coinSlice = createSlice({
     stopAirdrop: (state) => {
       state.airdrop = false;
     },
+    setRunAuto: (state, payload) => {
+      state.runAuto = payload.payload;
+    },
   },
 });
 
@@ -176,6 +180,7 @@ export const {
   stopAirdrop,
   appearChestBox,
   disappearChestBox,
+  setRunAuto,
 } = coinSlice.actions;
 
 export default coinSlice.reducer;
