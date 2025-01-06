@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import Particle from "./Particle";
+import Particle from "@helper/Particle";
 
 const FireworksEffect = () => {
   const canvasRef = useRef(null);

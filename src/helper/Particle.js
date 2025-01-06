@@ -1,9 +1,9 @@
 const colors = ["#58A9E8", "#13A0FF"];
 
 class Particle {
-  constructor(ctx, mouse) {
-    this.x = mouse.x;
-    this.y = mouse.y;
+  constructor(ctx, pos) {
+    this.x = pos.x;
+    this.y = pos.y;
     this.ctx = ctx;
     this.size = Math.random() * 6 + 5;
     this.speedX = Math.random() * 6 - 3;

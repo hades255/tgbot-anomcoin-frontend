@@ -18,7 +18,7 @@ const DailyBooster = () => {
       <div
         onClick={handleClickDailyBooster}
         className={clsx(
-          "z-10 absolute bottom-0 right-0 w-8 h-8 rounded-full border border-black bg-[#367cff] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
+          "z-10 absolute bottom-0 right-0 w-8 h-8 rounded-full border border-white bg-[#367cff] hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
         )}
       >
         🚀

@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { autoCatcherMove } from "@redux/coinSlice";
-import { EATER } from "@constants/constants";
-import Particle from "./Particle";
-
-const speed = 5;
+import Catcher from "@helper/Catcher";
 
 const Auto = ({ auto }) => {
   const dispatch = useDispatch();
@@ -57,96 +54,17 @@ const Auto = ({ auto }) => {
     //** start auto catcher code */
     let particlesArray = [];
 
-    class Catcher {
-      constructor() {
-        this.x = 50;
-        this.y = 50;
-        this.size = 20;
-        this.direction = 0;
-        this.color = "#58A9E8";
-        this.mouthOpen = false;
-      }
-      update() {
-        const currentNode = course[count];
-        const nextNode =
-          course[
-            count === 0
-              ? course.length - 1
-              : count === course.length - 1
-              ? 0
-              : count + 1
-          ];
-        if (currentNode.x === nextNode.x && currentNode.y < nextNode.y) {
-          this.direction = 1;
-          if (this.y + speed >= nextNode.y) {
-            updateCount();
-          }
-        } else if (currentNode.x === nextNode.x && currentNode.y > nextNode.y) {
-          this.direction = 3;
-          if (this.y - speed <= nextNode.y) {
-            updateCount();
-          }
-        } else if (currentNode.y === nextNode.y && currentNode.x < nextNode.x) {
-          this.direction = 0;
-          if (this.x + speed >= nextNode.x) {
-            updateCount();
-          }
-        } else if (currentNode.y === nextNode.y && currentNode.x > nextNode.x) {
-          this.direction = 2;
-          if (this.x - speed <= nextNode.x) {
-            updateCount();
-          }
-        }
-
-        this.x += speed * EATER[this.direction].x;
-        this.y += speed * EATER[this.direction].y;
-      }
-      draw() {
-        particlesArray.push(new Particle(ctx, this));
-        ctx.beginPath();
-        if (this.mouthOpen) {
-          ctx.arc(
-            this.x,
-            this.y,
-            this.size,
-            EATER[this.direction].mouth.start * Math.PI,
-            EATER[this.direction].mouth.end * Math.PI
-          );
-        } else {
-          ctx.arc(
-            this.x,
-            this.y,
-            this.size,
-            (EATER[this.direction].mouth.start + 0.15) * Math.PI,
-            (EATER[this.direction].mouth.end - 0.2) * Math.PI
-          );
-        }
-        ctx.lineTo(this.x, this.y);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(
-          this.x - EATER[this.direction].eye.x,
-          this.y - EATER[this.direction].eye.y,
-          3,
-          0,
-          Math.PI * 2
-        );
-        ctx.fillStyle = "white";
-        ctx.fill();
-      }
-    }
-    const catcher = new Catcher();
+    const catcher = new Catcher(ctx);
     const handleCatcher = () => {
-      catcher.update();
-      catcher.draw();
+      catcher.update(course, count, updateCount);
+      catcher.draw(particlesArray);
       dispatch(autoCatcherMove({ x: catcher.x, y: catcher.y }));
     };
 
     const handleParticles = () => {
       for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
+        particlesArray[i].update(course, count, updateCount);
+        particlesArray[i].draw(particlesArray);
         if (particlesArray[i].size <= 0.2) {
           particlesArray.splice(i, 1);
           i--;

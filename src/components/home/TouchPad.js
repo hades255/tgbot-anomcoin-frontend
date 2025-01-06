@@ -10,6 +10,7 @@ import DailyBooster from "./DailyBooster";
 import ChestBox from "./airdrop/ChestBox";
 import AirDrop from "./airdrop";
 import Auto from "./Auto";
+import Catcher from "@helper/Catcher";
 
 const TouchPad = () => {
   const dispatch = useDispatch();
@@ -117,18 +118,7 @@ const TouchPad = () => {
                   <Auto auto={auto} />
                 </div>
               )}
-              <div
-                onClick={handleClickAuto}
-                className={clsx(
-                  "z-10 absolute bottom-0 right-9 w-8 h-8 p-[2px] rounded-full border border-black hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
-                  {
-                    "bg-[#367cff]": !auto,
-                    "bg-blue-800": auto,
-                  }
-                )}
-              >
-                <img alt="catcher" src="/catcher.png" />
-              </div>
+              <AutoIcon auto={auto} click={handleClickAuto} />
               <DailyBooster />
             </div>
           </div>
@@ -150,3 +140,62 @@ const TouchPad = () => {
 };
 
 export default TouchPad;
+
+const AutoIcon = ({ auto, click }) => {
+  const canvasRef = useRef(null);
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    let timerEater = null;
+    const canvas = canvasRef.current;
+    const parentElement = canvas.parentElement;
+    const rect = parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    const ctx = canvas.getContext("2d");
+    const catcher = new Catcher(ctx);
+    catcher.size = 15;
+    catcher.x = 16;
+    catcher.y = 16;
+    catcher.color = "white";
+    catcher.eyeColor = "blue";
+    catcher.strokeColor = "cyan";
+
+    if (auto) {
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        catcher.show();
+        animationRef.current = requestAnimationFrame(animate);
+      };
+      animate();
+      timerEater = setInterval(() => {
+        catcher.mouthOpen = !catcher.mouthOpen;
+      }, 150);
+    } else {
+      catcher.show();
+    }
+    return () => {
+      if (timerEater) clearInterval(timerEater);
+      cancelAnimationFrame(animationRef.current);
+    };
+  }, [auto]);
+
+  return (
+    <div
+      onClick={click}
+      className={clsx(
+        "z-10 absolute bottom-0 right-9 w-8 h-8 p-[2px] rounded-full border border-white hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
+        {
+          "bg-[#367cff]": !auto,
+          "bg-blue-800": auto,
+        }
+      )}
+    >
+      <canvas
+        ref={canvasRef}
+        style={{ display: "block", width: "100%", height: "100%" }}
+      />
+    </div>
+  );
+};

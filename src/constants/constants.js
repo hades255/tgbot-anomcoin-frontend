@@ -239,7 +239,7 @@ export const min_maxByPoint = (miner = 0, rank = 0) => {
 };
 
 export const EATER = [
-  { x: 1, y: 0, eye: { x: 10, y: 5 }, mouth: { start: 0.1, end: 1.95 } },
+  { x: 1, y: 0, eye: { x: 5, y: 5 }, mouth: { start: 0.1, end: 1.95 } },
   { x: 0, y: 1, eye: { x: 10, y: 5 }, mouth: { start: 0.6, end: 0.45 } },
   { x: -1, y: 0, eye: { x: -5, y: 10 }, mouth: { start: 1.1, end: 0.95 } },
   { x: 0, y: -1, eye: { x: 10, y: -5 }, mouth: { start: 1.6, end: 1.45 } },
