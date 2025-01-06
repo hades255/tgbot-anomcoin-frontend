@@ -5,6 +5,7 @@ import Info from "@frens/Info";
 import UsersIcon from "@icons/invite/Users";
 import RightAngleIcon from "@icons/RightAngle";
 import AnomIcon from "@icons/Anom";
+import HorizontalScroll from "@common/HorizontalScroll";
 
 const Frens = () => {
   return (
@@ -24,7 +25,7 @@ const Frens = () => {
         <p className="mb-2 mx-8 pl-1 text-white font-sf-pro-text text-lg font-bold">
           Extra bonus
         </p>
-        <div className="px-8 pb-2 flex overflow-x-visible overflow-y-hidden gap-3">
+        <HorizontalScroll className="px-8 pb-2 flex overflow-x-visible overflow-y-hidden gap-3">
           <div className="w-[calc(100vw_-_64px)] min-w-[calc(100vw_-_64px)] rounded-[20px] flex justify-between bg-discord-btn shadow-[inset_0_-2px_2px_#0000001A,0_4px_2px_#2436FD] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] py-2 px-6">
             <div className="flex items-center">
               <div className="w-12 min-w-12 h-12 min-h-12 rounded mr-3 flex justify-center items-center">
@@ -67,7 +68,7 @@ const Frens = () => {
               </div>
             </div>
           </div>
-        </div>
+        </HorizontalScroll>
       </div>
       <FrensList />
       <div className="fixed bottom-16 mx-7 w-[calc(100vw_-_56px)] h-11">
