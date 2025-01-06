@@ -27,9 +27,9 @@ const UserItem = ({ user, daily = true, index = null }) => {
           <AnomGoldIcon width={48} height={48} />
         )}
       </div>
-      <div className="w-[56px] h-[52px] bg-profile-image-border rounded-lg flex justify-center items-center mr-4 p-[1px]">
+      <div className="w-[56px] h-[54px] bg-profile-image-border rounded-lg flex justify-center items-center mr-4 p-[1px]">
         <div className="bg-profile-item w-full h-full rounded-lg flex justify-center items-center">
-          <UserAvatar avatar={user.avatar} />
+          <UserAvatar avatar={user.avatar} className="rounded-lg" />
         </div>
       </div>
       <div className="flex flex-col">

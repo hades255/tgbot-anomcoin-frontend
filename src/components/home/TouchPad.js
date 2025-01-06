@@ -185,11 +185,7 @@ const AutoIcon = ({ auto, click }) => {
     <div
       onClick={click}
       className={clsx(
-        "z-10 absolute bottom-0 right-9 w-8 h-8 p-[2px] rounded-full border border-white hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer",
-        {
-          "bg-[#367cff]": !auto,
-          "bg-blue-800": auto,
-        }
+        "z-10 absolute bottom-0 right-9 w-8 h-8 p-[2px] rounded-full border border-white hover:bg-blue-600 transition-all flex justify-center items-center cursor-pointer"
       )}
     >
       <canvas

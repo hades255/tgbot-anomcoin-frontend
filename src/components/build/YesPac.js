@@ -18,10 +18,15 @@ const YesPac = () => {
       title: "YesPac",
       icon: () => <Doll3Icon />,
       coin: yespacCoin,
-      subcontent:
-        "upgrade to lvl1-extend offline reward duration to 1 hours Auto collect if don't play for 10 min, max work duration is 1 hours",
+      subcontent: `upgrade to lvl${
+        level + 1
+      }-extend offline reward duration to ${
+        level + 1
+      } hours Auto collect if don't play for ${
+        level + 1
+      }0 min, max work duration is ${level + 1} hours`,
     }),
-    []
+    [level]
   );
 
   const [show, setShow] = useState(false);

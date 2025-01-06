@@ -34,7 +34,7 @@ const Progress = () => {
               width: ((totalprogress - progress) / totalprogress) * 148,
             }}
           >
-            {progress}
+            {progress < 0 ? 0 : progress}
           </div>
         </div>
         <div className="-ml-9">

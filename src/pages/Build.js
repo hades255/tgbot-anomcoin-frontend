@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Boosters from "@build/Boosters";
 import RocketIcon from "@icons/build/Rocket";
+import AnimatedCounter from "@common/AnimatedCounter";
 
 const Bulid = () => {
   const { point } = useSelector((state) => state.coin);
@@ -15,7 +16,7 @@ const Bulid = () => {
         </div>
         <div className="flex justify-center">
           <span className="pt-2 text-white font-sf-pro-text text-[32px] font-bold">
-            {point.toLocaleString()}
+            <AnimatedCounter endValue={point} duration={300} />
           </span>
         </div>
         <div className="flex justify-center">

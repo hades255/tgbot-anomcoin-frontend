@@ -49,6 +49,13 @@ const Modal = ({
               )}
               onClick={handleClickBody}
             >
+              {!showClose && (
+                <div className="absolute top-2 right-4">
+                  <button onClick={handleClickBlur} className="text-white">
+                    X
+                  </button>
+                </div>
+              )}
               <div className="flex justify-center items-center">
                 <div className="text-[20px] font-medium text-white text-center">
                   {title}
