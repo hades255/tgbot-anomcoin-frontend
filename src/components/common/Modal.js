@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 
 const Modal = ({
@@ -10,7 +10,18 @@ const Modal = ({
   showClose,
   blur = true,
 }) => {
-  const handleClickBlur = useCallback(() => onClose(false), [onClose]);
+  const [hide, setHide] = useState(false);
+
+  const handleClickBlur = useCallback(() => {
+    setHide(true);
+    const timer = setTimeout(() => {
+      setHide(false);
+      onClose(false);
+    }, 300);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [onClose]);
 
   const handleClickBody = useCallback((e) => e.stopPropagation(), []);
 
@@ -21,7 +32,7 @@ const Modal = ({
           `fixed inset-0 h-screen flex justify-center items-end bg-[#0000005A] z-40 px-1`,
           {
             "animate-slideIn": show,
-            "animate-slideOut": !show,
+            "animate-slideOut": hide,
           }
         )}
         onClick={blur ? handleClickBlur : () => {}}
@@ -32,7 +43,7 @@ const Modal = ({
               className={clsx(
                 {
                   "animate-slideUpIn": show,
-                  "animate-slideUpOut": !show,
+                  "animate-slideUpOut": hide,
                 },
                 className
               )}

@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { formatNumber } from "@helper/func";
 import { useAuth } from "@contexts/AuthContext";
 import AnomIcon from "@icons/Anom";
 import UserAvatar from "./UserAvatar";
@@ -26,7 +27,7 @@ const Profile = () => {
               <span className="text-[14px] text-white font-comicneue-bold overflow-hidden text-nowrap">
                 LVL 1
               </span>
-              <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden">
+              <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden px-[2px]">
                 {username}
               </button>
             </div>
@@ -34,7 +35,7 @@ const Profile = () => {
           <div className="flex items-center">
             <AnomIcon width={56} height={56} />
             <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20 whitespace-normal break-words">
-              {point.toLocaleString()}
+              {point > 999999 ? formatNumber(point, 2) : point.toLocaleString()}
             </span>
           </div>
         </div>
