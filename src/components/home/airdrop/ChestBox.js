@@ -21,7 +21,7 @@ const ChestBox = () => {
   return (
     chestbox && (
       <motion.div
-        className={`z-10 w-11 h-11 transition-transform transform hover:scale-105 hover:animate-chestboxvibrate hover:cursor-pointer`}
+        className={`z-10 w-16 h-16 transition-transform transform hover:scale-105 hover:animate-chestboxvibrate hover:cursor-pointer`}
         onMouseEnter={handleMouseEnter}
         style={{
           position: "absolute",
@@ -29,7 +29,7 @@ const ChestBox = () => {
           top: chestbox.y + 192,
         }}
       >
-        <ChestIcon width={48} height={48} />
+        <ChestIcon width={64} height={64} />
       </motion.div>
     )
   );

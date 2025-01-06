@@ -244,3 +244,5 @@ export const EATER = [
   { x: -1, y: 0, eye: { x: -5, y: 10 }, mouth: { start: 1.1, end: 0.95 } },
   { x: 0, y: -1, eye: { x: 10, y: -5 }, mouth: { start: 1.6, end: 1.45 } },
 ];
+
+export const AIRDROP_COUNT = 200;

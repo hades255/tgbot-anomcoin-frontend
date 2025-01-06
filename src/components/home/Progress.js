@@ -47,7 +47,7 @@ const Progress = () => {
             className="flex justify-center items-center h-[55px] w-[55px] bg-[#00040C] rounded"
             onClick={handleClickTask}
           >
-            <GreenEnergyIcon width={39} height={45} />
+            <GreenEnergyIcon width={38} height={45} />
           </div>
         </div>
         <div className="flex justify-center items-center h-[59px] w-[59px] hover:cursor-pointer bg-navbar-item rounded shadow-navbar-item">

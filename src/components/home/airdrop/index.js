@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { useDispatch } from "react-redux";
 import { earnAirdrop, stopAirdrop } from "@redux/coinSlice";
+import { AIRDROP_COUNT } from "@constants/constants";
 
 const CoinAirdrop = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const CoinAirdrop = () => {
 
   const generateCoins = () => {
     const newCoins = [];
-    for (let i = 0; i < 160; i++) {
+    for (let i = 0; i < AIRDROP_COUNT; i++) {
       newCoins.push({
         x: Math.random() * 200 + 90,
         y: -400 - Math.random() * 2400,
