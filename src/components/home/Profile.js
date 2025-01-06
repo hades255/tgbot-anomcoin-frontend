@@ -28,14 +28,16 @@ const Profile = () => {
                 LVL 1
               </span>
               <button className="text-[16px] text-white font-comicneue-bold bg-[#14A1FF] w-full max-w-[104px] h-7 rounded overflow-hidden px-[2px]">
-                {username}
+                {username.length > 10
+                  ? `${username.substr(0, 4)}...${username.substr(-4, 4)}`
+                  : username}
               </button>
             </div>
           </div>
           <div className="flex items-center">
             <AnomIcon width={56} height={56} />
             <span className="text-[23px] text-white font-bold font-comic-sans-ms spaced-text-1 min-w-20 whitespace-normal break-words">
-              {point > 999999 ? formatNumber(point, 2) : point.toLocaleString()}
+              {point > 9999999 ? formatNumber(point, 2) : point.toLocaleString()}
             </span>
           </div>
         </div>
