@@ -1,25 +1,27 @@
-import React, { useMemo } from "react";
-import { useAuth } from "@contexts/AuthContext";
-import { APP_URL } from "@constants/config";
+import React, { useCallback, useState } from "react";
+import InviteModal from "./InviteModal";
 
 const InviteBtn = () => {
-  const { userId } = useAuth();
+  const [show, setShow] = useState(false);
 
-  const message = useMemo(
-    () => `${APP_URL}?startapp=linkCode_${userId}`,
-    [userId]
-  );
-  const encodedMessage = useMemo(() => encodeURIComponent(message), [message]);
+  const handleClick = useCallback(() => {
+    setShow(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setShow(false);
+  }, []);
 
   return (
-    <a
-      className="w-full h-full rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF] text-white text-[20px] font-sf-pro-text font-bold flex items-center justify-center"
-      href={`https://telegram.me/share/url?url=${encodedMessage}`}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Send to invite
-    </a>
+    <>
+      <button
+        onClick={handleClick}
+        className="w-full h-full rounded-[40px] border border-[#FFFFFF0A_#FFF0_#FFFFFF14_#FFF0] bg-task-claim shadow-[0_4px_0px_#0090FF] text-white text-[20px] font-sf-pro-text font-bold flex items-center justify-center"
+      >
+        Send to invite
+      </button>
+      <InviteModal show={show} onClose={handleClose} />
+    </>
   );
 };
 

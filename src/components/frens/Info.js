@@ -52,8 +52,12 @@ const Info = () => {
               <div className="w-12 min-w-12 h-12 min-h-12 bg-white rounded mr-3 flex justify-center items-center">
                 <img src="/icons/star.png" alt="star" />
               </div>
-              <div className="flex items-center text-white font-sf-pro-text">
-                Send gift to invite friend
+              <div className="flex items-center">
+                <span className="text-white font-sf-pro-text">
+                  Invite
+                  <span className="text-[#61dafb] font-sf-pro-text underline px-[2px]">Telegram Premium</span>
+                  both get 500K and random bonus.
+                </span>
               </div>
             </div>
           </div>
