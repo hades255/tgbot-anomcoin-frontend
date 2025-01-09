@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
-import UserIcon from "@icons/User";
 import clsx from "clsx";
+import UserIcon from "@icons/User";
 
 const UserAvatar = ({ avatar, width = 48, height = 48, className = "" }) => {
   const [loading, setLoading] = useState(true);

@@ -7,7 +7,7 @@ import { AuthProvider } from "@contexts/AuthContext";
 import { SoundProvider } from "@contexts/SoundContext";
 import CoinHelper from "@helper/coin";
 import store from "@redux/store";
-import LoadingIcon from "@icons/loading";
+import LoadingIcon, { LoadingDrop } from "@icons/loading";
 import "./App.css";
 
 const Maintenance = lazy(() => import("@pages/Maintenance"));
@@ -63,15 +63,7 @@ function App() {
       <AuthProvider>
         <CoinHelper />
         <SoundProvider>
-          <Suspense
-            fallback={
-              <div className="fixed top-0 left-0 z-20 w-full h-screen bg-[#000000] opacity-80 flex justify-center items-center">
-                <div className="animate-spin">
-                  <LoadingIcon />
-                </div>
-              </div>
-            }
-          >
+          <Suspense fallback={<LoadingDrop />}>
             <Routes>
               <Route
                 path="/"

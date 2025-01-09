@@ -1,4 +1,5 @@
 import React from "react";
+import "./loading.css";
 
 const LoadingIcon = ({ width = 120, height = 120 }) => {
   return (
@@ -46,3 +47,18 @@ const LoadingIcon = ({ width = 120, height = 120 }) => {
 };
 
 export default LoadingIcon;
+
+export const LoadingDrop = () => {
+  return (
+    <div className="fixed z-50 top-0 left-0 w-screen h-screen flex justify-center items-center bg-twitter-btn opacity-95">
+      <div className="loader-drop flex justify-center">
+        <span className="box"></span>
+        <span className="box"></span>
+        <div className="code">
+          <img src="/chest.png" width={80} />
+        </div>
+        <span className="txt font-bold">LOADING ...</span>
+      </div>
+    </div>
+  );
+};
